@@ -4,9 +4,14 @@
 
 // ─── Header height CSS variable ────────────────────────────────────
 const siteHeader = document.querySelector('.site-header');
+const announcementBarSection = document.querySelector('.announcement-bar-section');
+
 function syncHeaderHeight() {
   if (siteHeader) {
-    document.documentElement.style.setProperty('--header-height', siteHeader.offsetHeight + 'px');
+    const headerH = siteHeader.offsetHeight;
+    document.documentElement.style.setProperty('--header-height', headerH + 'px');
+    const barH = announcementBarSection ? announcementBarSection.offsetHeight : 0;
+    document.documentElement.style.setProperty('--topbar-total-height', (headerH + barH) + 'px');
   }
 }
 syncHeaderHeight();
