@@ -1,6 +1,5 @@
 {%- style -%}
   #shopify-section-{{ section.id }} .hero {
-    min-height: {{ section.settings.hero_height }}vh;
     {%- if section.settings.text_color == 'dark' -%}color: rgb(var(--color-base-text));{%- else -%}color: #fff;{%- endif -%}
   }
 {%- endstyle -%}
@@ -24,7 +23,9 @@
   {%- endif -%}
 
   {%- if section.settings.show_overlay -%}
-    <div class="hero__overlay" style="background:linear-gradient(to bottom, rgba(0,0,0,{{ section.settings.overlay_top }}) 0%, rgba(0,0,0,{{ section.settings.overlay_bottom }}) 100%);"></div>
+    {%- assign overlay_top = section.settings.overlay_top | divided_by: 100.0 -%}
+    {%- assign overlay_bottom = section.settings.overlay_bottom | divided_by: 100.0 -%}
+    <div class="hero__overlay" style="background:linear-gradient(to bottom, rgba(0,0,0,{{ overlay_top }}) 0%, rgba(0,0,0,{{ overlay_bottom }}) 100%);"></div>
   {%- endif -%}
 
   <div class="hero__content" style="text-align:{{ section.settings.content_alignment }}">
@@ -161,18 +162,20 @@
       "type": "range",
       "id": "overlay_top",
       "min": 0,
-      "max": 0.8,
-      "step": 0.05,
-      "default": 0.15,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 15,
       "label": "Opacidade topo"
     },
     {
       "type": "range",
       "id": "overlay_bottom",
       "min": 0,
-      "max": 0.9,
-      "step": 0.05,
-      "default": 0.5,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 50,
       "label": "Opacidade rodapé"
     }
   ],
