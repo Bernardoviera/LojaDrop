@@ -120,7 +120,14 @@
       <div class="page-width">
         <p class="footer__payment-title">{{ section.settings.payment_heading }}</p>
         <div class="footer__payment-icons">
-          {{ shop.enabled_payment_types | payment_type_svg_tag: class: 'footer__payment-svg' }}
+          <img src="{{ 'Visa.svg' | asset_url }}" alt="Visa" class="footer__payment-svg" loading="lazy">
+          <img src="{{ 'mastercard.svg' | asset_url }}" alt="Mastercard" class="footer__payment-svg" loading="lazy">
+          <img src="{{ 'Pix.svg' | asset_url }}" alt="Pix" class="footer__payment-svg" loading="lazy">
+          <img src="{{ 'Boleto.svg' | asset_url }}" alt="Boleto" class="footer__payment-svg" loading="lazy">
+          <img src="{{ 'Elo.svg' | asset_url }}" alt="Elo" class="footer__payment-svg" loading="lazy">
+          <img src="{{ 'Amex.svg' | asset_url }}" alt="American Express" class="footer__payment-svg" loading="lazy">
+          <img src="{{ 'hipercard.svg' | asset_url }}" alt="Hipercard" class="footer__payment-svg" loading="lazy">
+          <img src="{{ 'Diners.svg' | asset_url }}" alt="Diners" class="footer__payment-svg" loading="lazy">
         </div>
       </div>
     </div>

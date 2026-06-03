@@ -42,6 +42,8 @@
           {%- render 'price', product: product -%}
         </div>
 
+        {%- render 'parcelamento', product: product -%}
+
         {%- if product.description != blank -%}
           <div class="product-info__description">{{ product.description }}</div>
         {%- endif -%}
