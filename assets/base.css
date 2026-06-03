@@ -107,11 +107,36 @@ img, svg { display: block; max-width: 100%; }
   z-index: 100;
   background-color: rgb(var(--color-base-background-1));
   border-bottom: 1px solid rgba(var(--color-base-text), 0.08);
-  transition: box-shadow 0.3s ease;
+  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, color 0.4s ease;
 }
 
 .site-header.scrolled {
+  background-color: rgb(var(--color-base-background-1));
+  border-bottom-color: rgba(var(--color-base-text), 0.08);
   box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+}
+
+/* Header transparente sobre o hero — só na página inicial */
+.template-index .site-header:not(.scrolled) {
+  background-color: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+}
+.template-index .site-header:not(.scrolled) .header__logo-text,
+.template-index .site-header:not(.scrolled) .header__nav a,
+.template-index .site-header:not(.scrolled) .header__icon-btn {
+  color: #fff;
+}
+.template-index .site-header:not(.scrolled) .header__nav a:hover {
+  color: rgba(255,255,255,0.75);
+}
+
+/* Hero sobe por trás do header (sem espaço branco) */
+.template-index .hero-section {
+  margin-top: -8rem;
+}
+.template-index .hero {
+  padding-top: 8rem;
 }
 
 .header-wrapper {
