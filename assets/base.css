@@ -133,10 +133,12 @@ img, svg { display: block; max-width: 100%; }
 
 /* Hero sobe por trás do header (sem espaço branco) */
 .template-index .hero-section {
-  margin-top: -8rem;
+  margin-top: calc(-1 * var(--header-height, 8rem));
+  position: relative;
+  z-index: 1;
 }
 .template-index .hero {
-  padding-top: 8rem;
+  padding-top: var(--header-height, 8rem);
 }
 
 .header-wrapper {

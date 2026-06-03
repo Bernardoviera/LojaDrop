@@ -2,12 +2,21 @@
 
 'use strict';
 
-// ─── Header scroll effect ──────────────────────────────────────────
+// ─── Header height CSS variable ────────────────────────────────────
 const siteHeader = document.querySelector('.site-header');
+function syncHeaderHeight() {
+  if (siteHeader) {
+    document.documentElement.style.setProperty('--header-height', siteHeader.offsetHeight + 'px');
+  }
+}
+syncHeaderHeight();
+window.addEventListener('resize', syncHeaderHeight, { passive: true });
+
+// ─── Header scroll effect ──────────────────────────────────────────
 if (siteHeader) {
-  window.addEventListener('scroll', () => {
-    siteHeader.classList.toggle('scrolled', window.scrollY > 10);
-  }, { passive: true });
+  const updateScrolled = () => siteHeader.classList.toggle('scrolled', window.scrollY > 10);
+  updateScrolled();
+  window.addEventListener('scroll', updateScrolled, { passive: true });
 }
 
 // ─── Mobile nav ────────────────────────────────────────────────────
