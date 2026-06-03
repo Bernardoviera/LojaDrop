@@ -29,6 +29,15 @@
     "spacing_grid_horizontal": 24,
     "spacing_grid_vertical": 36,
     "cart_type": "drawer",
+    "whatsapp_number": "",
+    "whatsapp_show_desktop": true,
+    "whatsapp_show_mobile": true,
+    "parcelamento_enable": true,
+    "max_parcelas": 12,
+    "juros_parcelamento": 0,
+    "show_pix_parcelamento": true,
+    "show_boleto_parcelamento": true,
+    "desconto_pix": "5",
     "card_image_padding": 0,
     "card_corner_radius": 4,
     "card_text_alignment": "left",
@@ -68,14 +77,55 @@
     "media_shadow_vertical_offset": 0,
     "media_shadow_blur": 0,
     "animations_hover_elements": "lift",
-    "whatsapp_number": "",
-    "whatsapp_show_desktop": true,
-    "whatsapp_show_mobile": true,
-    "parcelamento_enable": true,
-    "max_parcelas": 12,
-    "juros_parcelamento": 0,
-    "show_pix_parcelamento": true,
-    "show_boleto_parcelamento": true,
-    "desconto_pix": "5"
+    "sections": {
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {}
+      },
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "show_announcement": true,
+          "announcement_text": "Frete grátis em compras acima de R$250 • Use o código BEMVINDO10 para 10% off",
+          "announcement_link": ""
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_height": 40,
+          "menu": "main-menu",
+          "show_search": true,
+          "show_account": true
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "policies_heading": "Políticas",
+          "policies_menu": "footer",
+          "company_name": "BELLA LUNA STORE LTDA",
+          "contact_email": "contato@lojadrop.com.br",
+          "contact_whatsapp": "(21) 97354-3216",
+          "show_newsletter": true,
+          "newsletter_text": "Cadastre-se e receba nossas ofertas por e-mail",
+          "newsletter_placeholder": "Seu e-mail",
+          "newsletter_button": "Enviar",
+          "social_heading": "Siga-nos",
+          "social_facebook": "",
+          "social_instagram": "",
+          "social_youtube": "",
+          "social_tiktok": "",
+          "show_security_seals": true,
+          "seal_google": true,
+          "seal_ssl": true,
+          "seal_site_blindado": true,
+          "seals_text": "Selos de Garantia - Loja 100% Segura.",
+          "show_payment": true,
+          "payment_heading": "Nós Aceitamos"
+        }
+      }
+    },
+    "content_for_index": []
   }
 }
