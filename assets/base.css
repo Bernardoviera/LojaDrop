@@ -116,30 +116,9 @@ img, svg { display: block; max-width: 100%; }
   box-shadow: 0 2px 20px rgba(0,0,0,0.08);
 }
 
-/* Header transparente sobre o hero — só na página inicial */
-.template-index .site-header:not(.scrolled) {
-  background-color: transparent;
-  border-bottom-color: transparent;
-  box-shadow: none;
-}
-.template-index .site-header:not(.scrolled) .header__logo-text,
-.template-index .site-header:not(.scrolled) .header__nav a,
-.template-index .site-header:not(.scrolled) .header__icon-btn {
-  color: #fff;
-}
-.template-index .site-header:not(.scrolled) .header__nav a:hover {
-  color: rgba(255,255,255,0.75);
-}
-
-/* Hero sobe por trás do header (sem espaço branco) */
-.template-index .hero-section {
-  margin-top: calc(-1 * var(--header-height, 8rem));
-  position: relative;
-  z-index: 1;
-}
-.template-index .hero {
-  padding-top: var(--header-height, 8rem);
-}
+/* Remove espaço entre header e hero banner */
+.hero-section { margin-top: 0; }
+.hero { margin: 0; }
 
 .header-wrapper {
   display: flex;
