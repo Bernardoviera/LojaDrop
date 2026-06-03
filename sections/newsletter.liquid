@@ -8,7 +8,8 @@
       <p class="newsletter__subtitle">{{ section.settings.subtitle }}</p>
     {%- endif -%}
 
-    {%- form 'customer', id: 'newsletter-form-' | append: section.id -%}
+    {%- assign newsletter_form_id = 'newsletter-form-' | append: section.id -%}
+    {%- form 'customer', id: newsletter_form_id -%}
       <input type="hidden" name="contact[tags]" value="newsletter">
       <div class="newsletter__form">
         <input
