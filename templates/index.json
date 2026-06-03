@@ -1,15 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero-banner": {
       "type": "hero-banner",
       "settings": {
-        "height_option": "medium",
+        "image": "shopify://shop_images/lucid-realism_a_cinematic_photo_of_Elegant_Brazilian_woman_from_waist_up_wearing_layered_gold_-1.jpg",
+        "height_option": "full-height",
         "content_alignment": "center",
-        "eyebrow": "Nova Coleção 2025",
+        "eyebrow": "",
         "title": "Elegância que Transforma",
         "subtitle": "Descubra peças exclusivas de moda e joias criadas para mulheres com estilo",
+        "text_color": "light",
         "button_label": "Explorar Coleção",
-        "show_overlay": true
+        "button_link": "",
+        "button2_label": "",
+        "button2_link": "",
+        "show_overlay": true,
+        "overlay_top": 15,
+        "overlay_bottom": 50
       }
     },
     "trust-bar": {
@@ -48,41 +64,55 @@
           }
         }
       },
-      "block_order": ["badge-1", "badge-2", "badge-3", "badge-4"]
+      "block_order": [
+        "badge-1",
+        "badge-2",
+        "badge-3",
+        "badge-4"
+      ],
+      "settings": {}
     },
     "category-highlights": {
       "type": "category-highlights",
-      "settings": {
-        "title": "Explore as Categorias"
-      },
       "blocks": {
         "cat-1": {
           "type": "category",
           "settings": {
             "title": "Vestidos",
-            "cta_label": "Ver coleção"
+            "cta_label": "Ver coleção",
+            "link": ""
           }
         },
         "cat-2": {
           "type": "category",
           "settings": {
             "title": "Joias",
-            "cta_label": "Ver coleção"
+            "cta_label": "Ver coleção",
+            "link": ""
           }
         },
         "cat-3": {
           "type": "category",
           "settings": {
             "title": "Acessórios",
-            "cta_label": "Ver coleção"
+            "cta_label": "Ver coleção",
+            "link": ""
           }
         }
       },
-      "block_order": ["cat-1", "cat-2", "cat-3"]
+      "block_order": [
+        "cat-1",
+        "cat-2",
+        "cat-3"
+      ],
+      "settings": {
+        "title": "Explore as Categorias"
+      }
     },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
+        "collection": "",
         "eyebrow": "Mais Vendidos",
         "title": "Produtos em Destaque",
         "subtitle": "Os favoritos das nossas clientes",
@@ -110,7 +140,8 @@
         "title": "Receba Novidades e Ofertas Exclusivas",
         "subtitle": "Cadastre-se e ganhe 10% de desconto na primeira compra.",
         "placeholder": "Seu melhor e-mail",
-        "button_label": "Quero desconto"
+        "button_label": "Quero desconto",
+        "disclaimer": "Ao se inscrever, você concorda com nossa política de privacidade."
       }
     }
   },
