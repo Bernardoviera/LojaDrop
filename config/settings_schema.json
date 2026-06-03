@@ -80,13 +80,13 @@
       {
         "type": "font_picker",
         "id": "type_header_font",
-        "default": "cormorant_garamond_n4",
+        "default": "playfair_display_n4",
         "label": "Fonte dos títulos"
       },
       {
         "type": "font_picker",
         "id": "type_body_font",
-        "default": "assistant_n4",
+        "default": "lato_n4",
         "label": "Fonte do corpo"
       },
       {

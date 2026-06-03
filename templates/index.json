@@ -1,12 +1,5 @@
 {
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
-      "settings": {
-        "show_announcement": true,
-        "announcement_text": "🚚 Frete grátis em compras acima de R$250 | Use BEMVINDO10 para 10% off na primeira compra"
-      }
-    },
     "hero-banner": {
       "type": "hero-banner",
       "settings": {
@@ -122,7 +115,6 @@
     }
   },
   "order": [
-    "announcement-bar",
     "hero-banner",
     "trust-bar",
     "category-highlights",

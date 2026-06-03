@@ -1,0 +1,429 @@
+/* ============================================
+   LojaDrop — Ícones Animados
+   ============================================ */
+
+/* ─── Carrinho pulsando ─────────────────────── */
+.icon-cart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon-cart svg {
+  transition: transform 0.2s ease;
+}
+
+.icon-cart:hover svg {
+  transform: scale(1.12);
+}
+
+.icon-cart.is-adding {
+  animation: cart-bounce 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes cart-bounce {
+  0%   { transform: scale(1); }
+  20%  { transform: scale(1.3) rotate(-8deg); }
+  40%  { transform: scale(1.2) rotate(6deg); }
+  60%  { transform: scale(1.25) rotate(-4deg); }
+  80%  { transform: scale(1.1) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Bolinha de quantidade */
+.icon-cart__badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: rgb(var(--color-base-accent-1));
+  color: rgb(var(--color-base-solid-button-labels));
+  font-size: 1rem;
+  font-weight: 700;
+  min-width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.icon-cart__badge.is-visible {
+  transform: scale(1);
+}
+
+.icon-cart__badge.pop {
+  animation: badge-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes badge-pop {
+  0%   { transform: scale(0.5); }
+  60%  { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* ─── Coração favorito ─────────────────────── */
+.icon-heart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.icon-heart svg {
+  overflow: visible;
+  transition: transform 0.1s ease;
+}
+
+.icon-heart .heart-fill {
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  transition: fill 0.25s ease, stroke 0.25s ease;
+}
+
+.icon-heart.is-liked .heart-fill {
+  fill: #e8335a;
+  stroke: #e8335a;
+}
+
+.icon-heart.is-liked svg {
+  animation: heart-beat 0.5s ease;
+}
+
+@keyframes heart-beat {
+  0%   { transform: scale(1); }
+  14%  { transform: scale(1.35); }
+  28%  { transform: scale(1); }
+  42%  { transform: scale(1.2); }
+  70%  { transform: scale(1); }
+}
+
+/* Partículas ao curtir */
+.icon-heart__particles {
+  position: absolute;
+  pointer-events: none;
+  inset: 0;
+}
+
+.icon-heart__particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.icon-heart.is-liked .icon-heart__particle:nth-child(1)  { background: #e8335a; animation: particle 0.6s ease forwards; --angle: 0deg; --dist: 20px; }
+.icon-heart.is-liked .icon-heart__particle:nth-child(2)  { background: #ffb347; animation: particle 0.6s 0.05s ease forwards; --angle: 45deg; --dist: 22px; }
+.icon-heart.is-liked .icon-heart__particle:nth-child(3)  { background: #e8335a; animation: particle 0.6s 0.1s ease forwards; --angle: 90deg; --dist: 20px; }
+.icon-heart.is-liked .icon-heart__particle:nth-child(4)  { background: #c9a96e; animation: particle 0.6s 0.05s ease forwards; --angle: 135deg; --dist: 22px; }
+.icon-heart.is-liked .icon-heart__particle:nth-child(5)  { background: #e8335a; animation: particle 0.6s ease forwards; --angle: 180deg; --dist: 20px; }
+.icon-heart.is-liked .icon-heart__particle:nth-child(6)  { background: #ffb347; animation: particle 0.6s 0.08s ease forwards; --angle: 225deg; --dist: 22px; }
+.icon-heart.is-liked .icon-heart__particle:nth-child(7)  { background: #e8335a; animation: particle 0.6s 0.03s ease forwards; --angle: 270deg; --dist: 20px; }
+.icon-heart.is-liked .icon-heart__particle:nth-child(8)  { background: #c9a96e; animation: particle 0.6s 0.06s ease forwards; --angle: 315deg; --dist: 22px; }
+
+@keyframes particle {
+  0%   { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(0); opacity: 1; }
+  100% { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(-1 * var(--dist))); opacity: 0; }
+}
+
+/* ─── Menu hamburguer → X ───────────────────── */
+.icon-menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+  color: rgb(var(--color-base-text));
+}
+
+.icon-menu__bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 0.25s ease,
+              width 0.3s ease;
+  transform-origin: center;
+}
+
+.icon-menu__bars {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+}
+
+/* Estado fechado (X) */
+.icon-menu.is-open .icon-menu__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.icon-menu.is-open .icon-menu__bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.icon-menu.is-open .icon-menu__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Hover com efeito escalonado */
+.icon-menu:not(.is-open):hover .icon-menu__bar:nth-child(1) { width: 16px; }
+.icon-menu:not(.is-open):hover .icon-menu__bar:nth-child(3) { width: 16px; margin-left: 6px; }
+
+/* ─── Checkmark de sucesso ──────────────────── */
+.icon-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-check svg {
+  overflow: visible;
+}
+
+.check-circle {
+  fill: none;
+  stroke: #22c55e;
+  stroke-width: 2;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  stroke-linecap: round;
+}
+
+.check-mark {
+  fill: none;
+  stroke: #22c55e;
+  stroke-width: 2.5;
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-check.is-active .check-circle {
+  animation: draw-circle 0.5s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.icon-check.is-active .check-mark {
+  animation: draw-check 0.35s 0.4s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+@keyframes draw-circle {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes draw-check {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ─── Ícone de busca expansível ─────────────── */
+.icon-search-expand {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.icon-search-expand__input {
+  width: 0;
+  opacity: 0;
+  border: none;
+  border-bottom: 1.5px solid rgb(var(--color-base-text));
+  background: transparent;
+  font-size: 1.4rem;
+  color: rgb(var(--color-base-text));
+  padding: 0.2rem 0;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease;
+  outline: none;
+}
+
+.icon-search-expand.is-open .icon-search-expand__input {
+  width: 18rem;
+  opacity: 1;
+}
+
+.icon-search-expand__btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgb(var(--color-base-text));
+  display: flex;
+  padding: 0.4rem;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.icon-search-expand.is-open .icon-search-expand__btn {
+  transform: rotate(90deg);
+}
+
+/* ─── Seta scroll down ───────────────────────── */
+.icon-scroll-down {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.icon-scroll-down svg {
+  animation: scroll-bounce 1.6s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(8px); opacity: 0.5; }
+}
+
+/* ─── Ícone de loading ───────────────────────── */
+.icon-loading svg circle {
+  animation: dash 1.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.icon-loading svg {
+  animation: rotate-loading 2s linear infinite;
+}
+
+@keyframes rotate-loading {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes dash {
+  0%   { stroke-dasharray: 1, 150; stroke-dashoffset: 0; }
+  50%  { stroke-dasharray: 90, 150; stroke-dashoffset: -35; }
+  100% { stroke-dasharray: 90, 150; stroke-dashoffset: -124; }
+}
+
+/* ─── Ícone de entrega (caminhão) ────────────── */
+.icon-delivery {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.icon-delivery:hover svg,
+.icon-delivery.is-active svg {
+  animation: truck-drive 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes truck-drive {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-6px); }
+  100% { transform: translateX(8px); }
+}
+
+/* ─── Bolsa de compras vibrando ──────────────── */
+.icon-bag:hover svg {
+  animation: bag-shake 0.5s ease;
+}
+
+@keyframes bag-shake {
+  0%, 100% { transform: rotate(0); }
+  20%       { transform: rotate(-12deg); }
+  40%       { transform: rotate(10deg); }
+  60%       { transform: rotate(-8deg); }
+  80%       { transform: rotate(6deg); }
+}
+
+/* ─── Estrela brilhando ──────────────────────── */
+.icon-star svg {
+  transition: transform 0.2s ease;
+}
+
+.icon-star:hover svg,
+.icon-star.is-active svg {
+  animation: star-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.icon-star.is-active .star-fill {
+  fill: #f59e0b;
+  stroke: #f59e0b;
+  animation: star-glow 1.5s ease infinite;
+}
+
+@keyframes star-pop {
+  0%   { transform: scale(1) rotate(0deg); }
+  50%  { transform: scale(1.4) rotate(15deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes star-glow {
+  0%, 100% { filter: drop-shadow(0 0 2px rgba(245, 158, 11, 0.4)); }
+  50%       { filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.8)); }
+}
+
+/* ─── Sino de notificação ────────────────────── */
+.icon-bell svg {
+  transform-origin: top center;
+}
+
+.icon-bell:hover svg,
+.icon-bell.has-notification svg {
+  animation: bell-ring 0.6s ease;
+}
+
+@keyframes bell-ring {
+  0%, 100% { transform: rotate(0deg); }
+  15%       { transform: rotate(12deg); }
+  30%       { transform: rotate(-10deg); }
+  45%       { transform: rotate(8deg); }
+  60%       { transform: rotate(-6deg); }
+  75%       { transform: rotate(4deg); }
+}
+
+/* ─── Ícone de olho (visualizar) ─────────────── */
+.icon-eye .eye-lid {
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.icon-eye:hover .eye-lid {
+  animation: eye-blink 0.4s ease;
+}
+
+@keyframes eye-blink {
+  0%, 100% { transform: scaleY(1); }
+  50%       { transform: scaleY(0.1); }
+}
+
+/* ─── Compartilhar com expansão ──────────────── */
+.icon-share svg {
+  transition: transform 0.25s ease;
+}
+
+.icon-share:hover svg {
+  transform: translateY(-3px) scale(1.1);
+}
+
+/* ─── Lixeira de deletar ─────────────────────── */
+.icon-trash svg {
+  transition: transform 0.2s ease;
+}
+
+.icon-trash:hover svg {
+  animation: trash-shake 0.4s ease;
+}
+
+@keyframes trash-shake {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25%       { transform: rotate(-8deg) scale(1.05); }
+  75%       { transform: rotate(8deg) scale(1.05); }
+}
