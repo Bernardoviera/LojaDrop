@@ -1,0 +1,98 @@
+<section class="section image-with-text-section">
+  <div class="page-width">
+    <div class="image-with-text{% if section.settings.layout == 'image_second' %} image-with-text--reverse{% endif %}">
+
+      <div class="image-with-text__media">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 900
+            | image_tag:
+              loading: 'lazy',
+              width: 900,
+              alt: section.settings.title
+          }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+      <div class="image-with-text__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="image-with-text__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h2 class="image-with-text__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.text != blank -%}
+          <div class="image-with-text__text">{{ section.settings.text }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link }}" class="btn btn--primary">
+            {{ section.settings.button_label }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Imagem com Texto",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "image_first", "label": "Imagem à esquerda" },
+        { "value": "image_second", "label": "Imagem à direita" }
+      ],
+      "default": "image_first"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagem"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Supertítulo"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Sobre a Nossa Marca",
+      "label": "Título"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "default": "<p>Criamos peças com a mais alta qualidade, pensadas para mulheres que valorizam elegância e exclusividade no dia a dia.</p>",
+      "label": "Texto"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Saiba mais",
+      "label": "Texto do botão"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link do botão"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Imagem com Texto"
+    }
+  ]
+}
+{% endschema %}

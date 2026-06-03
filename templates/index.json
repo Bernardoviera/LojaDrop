@@ -1,0 +1,133 @@
+{
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_announcement": true,
+        "announcement_text": "🚚 Frete grátis em compras acima de R$250 | Use BEMVINDO10 para 10% off na primeira compra"
+      }
+    },
+    "hero-banner": {
+      "type": "hero-banner",
+      "settings": {
+        "height_option": "medium",
+        "content_alignment": "center",
+        "eyebrow": "Nova Coleção 2025",
+        "title": "Elegância que Transforma",
+        "subtitle": "Descubra peças exclusivas de moda e joias criadas para mulheres com estilo",
+        "button_label": "Explorar Coleção",
+        "show_overlay": true
+      }
+    },
+    "trust-bar": {
+      "type": "trust-bar",
+      "blocks": {
+        "badge-1": {
+          "type": "badge",
+          "settings": {
+            "icon": "🚚",
+            "title": "Frete Grátis",
+            "text": "Pedidos acima de R$250"
+          }
+        },
+        "badge-2": {
+          "type": "badge",
+          "settings": {
+            "icon": "💳",
+            "title": "Parcele em 12x",
+            "text": "Sem juros no cartão"
+          }
+        },
+        "badge-3": {
+          "type": "badge",
+          "settings": {
+            "icon": "🔄",
+            "title": "Troca Fácil",
+            "text": "30 dias para devolver"
+          }
+        },
+        "badge-4": {
+          "type": "badge",
+          "settings": {
+            "icon": "🔒",
+            "title": "Compra Segura",
+            "text": "Site 100% protegido"
+          }
+        }
+      },
+      "block_order": ["badge-1", "badge-2", "badge-3", "badge-4"]
+    },
+    "category-highlights": {
+      "type": "category-highlights",
+      "settings": {
+        "title": "Explore as Categorias"
+      },
+      "blocks": {
+        "cat-1": {
+          "type": "category",
+          "settings": {
+            "title": "Vestidos",
+            "cta_label": "Ver coleção"
+          }
+        },
+        "cat-2": {
+          "type": "category",
+          "settings": {
+            "title": "Joias",
+            "cta_label": "Ver coleção"
+          }
+        },
+        "cat-3": {
+          "type": "category",
+          "settings": {
+            "title": "Acessórios",
+            "cta_label": "Ver coleção"
+          }
+        }
+      },
+      "block_order": ["cat-1", "cat-2", "cat-3"]
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Mais Vendidos",
+        "title": "Produtos em Destaque",
+        "subtitle": "Os favoritos das nossas clientes",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "show_view_all": true,
+        "view_all_text": "Ver toda a coleção"
+      }
+    },
+    "image-with-text": {
+      "type": "image-with-text",
+      "settings": {
+        "layout": "image_first",
+        "eyebrow": "Nossa Essência",
+        "title": "Feito com Paixão e Qualidade",
+        "text": "<p>Cada peça da nossa coleção é cuidadosamente selecionada pensando em você. Acreditamos que moda é expressão, e cada detalhe conta na construção do seu estilo único.</p>",
+        "button_label": "Conheça nossa história",
+        "button_link": "/pages/sobre-nos"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Fique por dentro",
+        "title": "Receba Novidades e Ofertas Exclusivas",
+        "subtitle": "Cadastre-se e ganhe 10% de desconto na primeira compra.",
+        "placeholder": "Seu melhor e-mail",
+        "button_label": "Quero desconto"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "hero-banner",
+    "trust-bar",
+    "category-highlights",
+    "featured-collection",
+    "image-with-text",
+    "newsletter"
+  ]
+}

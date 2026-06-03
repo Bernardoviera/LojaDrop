@@ -1,0 +1,133 @@
+<section class="section">
+  <div class="page-width">
+    <div class="product">
+      <!-- Gallery -->
+      <div class="product-media-gallery">
+        <div class="product-media__main">
+          {%- if product.featured_image -%}
+            {{
+              product.featured_image
+              | image_url: width: 900
+              | image_tag: loading: 'eager', width: 900, alt: product.title, id: 'product-main-image'
+            }}
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+
+        {%- if product.images.size > 1 -%}
+          <div class="product-media__thumbnails">
+            {%- for image in product.images limit: 8 -%}
+              <div class="product-media__thumb{% if forloop.first %} is-active{% endif %}">
+                {{
+                  image
+                  | image_url: width: 200
+                  | image_tag: loading: 'lazy', width: 200, alt: product.title
+                }}
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Info -->
+      <div class="product-info">
+        {%- if product.vendor != blank -%}
+          <div class="product-info__vendor">{{ product.vendor }}</div>
+        {%- endif -%}
+
+        <h1 class="product-info__title">{{ product.title }}</h1>
+
+        <div class="product-info__price">
+          {%- render 'price', product: product -%}
+        </div>
+
+        {%- if product.description != blank -%}
+          <div class="product-info__description">{{ product.description }}</div>
+        {%- endif -%}
+
+        {%- form 'product', product,
+          id: 'product-form',
+          class: 'product-form',
+          data-variants: product.variants_json
+        -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+          <!-- Variant options -->
+          {%- unless product.has_only_default_variant -%}
+            <div class="product-form__variants">
+              {%- for option in product.options_with_values -%}
+                <div class="product-form__option">
+                  <label class="variant-label">
+                    {{ option.name }}
+                    <span id="selected-{{ option.name | handleize }}-{{ section.id }}">{{ option.selected_value }}</span>
+                  </label>
+                  <div class="variant-options{% if option.name == 'Cor' or option.name == 'Color' or option.name == 'Colour' %} variant-options--color{% endif %}">
+                    {%- for value in option.values -%}
+                      <button
+                        type="button"
+                        class="variant-opt{% if option.selected_value == value %} is-selected{% endif %}{% if option.name == 'Cor' or option.name == 'Color' %} variant-opt--color{% endif %}"
+                        data-option="option{{ forloop.parentloop.index }}"
+                        data-value="{{ value | escape }}"
+                        {% if option.name == 'Cor' or option.name == 'Color' %}
+                          style="background-color:{{ value | downcase }};"
+                          title="{{ value }}"
+                        {% endif %}
+                      >
+                        {%- unless option.name == 'Cor' or option.name == 'Color' -%}{{ value }}{%- endunless -%}
+                      </button>
+                    {%- endfor -%}
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endunless -%}
+
+          <!-- Quantity -->
+          <div class="product-form__quantity">
+            <div class="quantity-selector">
+              <button type="button" class="quantity-btn" data-action="decrease">−</button>
+              <input class="quantity-input" type="number" name="quantity" value="1" min="1" aria-label="Quantidade">
+              <button type="button" class="quantity-btn" data-action="increase">+</button>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="product-form__submit">
+            <button
+              type="submit"
+              name="add"
+              class="btn btn--primary btn--full"
+              data-add-to-cart
+              {%- unless product.selected_or_first_available_variant.available -%}disabled{%- endunless -%}
+            >
+              {%- if product.selected_or_first_available_variant.available -%}
+                Adicionar ao carrinho
+              {%- else -%}
+                Esgotado
+              {%- endif -%}
+            </button>
+          </div>
+        {%- endform -%}
+
+        <!-- Meta info -->
+        <div class="product-info__meta">
+          {%- if product.sku != blank -%}
+            <p>SKU: <span>{{ product.selected_or_first_available_variant.sku }}</span></p>
+          {%- endif -%}
+          {%- if product.type != blank -%}
+            <p>Categoria: <span>{{ product.type }}</span></p>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Produto Principal",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

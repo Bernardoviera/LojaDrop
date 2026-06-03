@@ -1,0 +1,102 @@
+<section class="section">
+  <div class="page-width">
+    <h1 style="margin-bottom:4rem">Carrinho</h1>
+
+    {%- if cart.item_count > 0 -%}
+      {%- form 'cart', cart, id: 'cart-form' -%}
+        <div class="cart-page">
+          <div class="cart-items">
+            <div class="cart-items-header">
+              <span>Produto</span>
+              <span>Qtd.</span>
+              <span>Total</span>
+            </div>
+
+            {%- for item in cart.items -%}
+              <div class="cart-item">
+                <div class="cart-item__media">
+                  <a href="{{ item.url }}">
+                    {{
+                      item.image
+                      | image_url: width: 200
+                      | image_tag: loading: 'lazy', width: 200, alt: item.title
+                    }}
+                  </a>
+                </div>
+                <div class="cart-item__info">
+                  <a href="{{ item.url }}" class="cart-item__title">{{ item.product.title }}</a>
+                  {%- unless item.variant.title == 'Default Title' -%}
+                    <span class="cart-item__variant">{{ item.variant.title }}</span>
+                  {%- endunless -%}
+                  <div class="cart-item__price">
+                    {%- render 'price', product: item.product, variant: item.variant -%}
+                  </div>
+                  <div class="quantity-selector" style="margin-top:0.8rem">
+                    <button type="button" class="quantity-btn" data-action="decrease">−</button>
+                    <input
+                      class="quantity-input"
+                      type="number"
+                      name="updates[]"
+                      id="updates_{{ item.key }}"
+                      value="{{ item.quantity }}"
+                      min="0"
+                      aria-label="{{ 'cart.item_quantity' | t }}"
+                    >
+                    <button type="button" class="quantity-btn" data-action="increase">+</button>
+                  </div>
+                  <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="cart-item__remove">Remover</a>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+
+          <!-- Summary -->
+          <div class="cart-summary">
+            <h2 class="cart-summary__title">Resumo do Pedido</h2>
+
+            <div class="cart-summary__row">
+              <span>Subtotal</span>
+              <span>{{ cart.total_price | money }}</span>
+            </div>
+            <div class="cart-summary__row">
+              <span>Frete</span>
+              <span>Calculado no checkout</span>
+            </div>
+            <div class="cart-summary__row cart-summary__row--total">
+              <span>Total</span>
+              <span>{{ cart.total_price | money }}</span>
+            </div>
+
+            <p class="cart-summary__note">
+              Impostos e frete calculados no checkout
+            </p>
+
+            <a href="/checkout" class="btn btn--primary btn--full">
+              Finalizar Compra
+            </a>
+
+            <div style="text-align:center;margin-top:1.6rem">
+              <a href="{{ routes.root_url }}" style="font-size:1.4rem;text-decoration:underline;color:rgba(var(--color-base-text),0.6)">
+                Continuar comprando
+              </a>
+            </div>
+          </div>
+        </div>
+      {%- endform -%}
+    {%- else -%}
+      <div class="cart-empty">
+        <h2 class="cart-empty__title">Seu carrinho está vazio</h2>
+        <p class="cart-empty__text">Adicione alguns produtos incríveis ao seu carrinho!</p>
+        <a href="{{ routes.root_url }}" class="btn btn--primary">Explorar produtos</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Carrinho Principal",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,66 @@
+{
+  "general": {
+    "search": {
+      "search": "Buscar",
+      "placeholder": "Buscar produtos...",
+      "results": "Resultados para \"{{ terms }}\"",
+      "no_results": "Nenhum resultado para \"{{ terms }}\""
+    },
+    "share": {
+      "success_message": "Link copiado!"
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Pular para o conteúdo principal",
+    "refresh_page": "Página atualizada",
+    "link_messages": {
+      "new_window": "Abre em nova janela"
+    }
+  },
+  "sections": {
+    "header": {
+      "announcement": "Barra de avisos"
+    },
+    "cart": {
+      "title": "Carrinho",
+      "cart_count": "{{ count }} items no carrinho",
+      "cart_error": "Não foi possível adicionar ao carrinho.",
+      "cart_quantity_error_html": "Só temos <strong>{{ quantity }}</strong> deste item."
+    },
+    "slideshow": {
+      "pause_slideshow": "Pausar slideshow",
+      "play_slideshow": "Reproduzir slideshow"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Adicionar ao carrinho",
+      "sold_out": "Esgotado",
+      "unavailable": "Indisponível",
+      "value_unavailable": "{{ option_value }} - indisponível",
+      "media": {
+        "image_available": "Imagem {{ index }}"
+      }
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Conta"
+    }
+  },
+  "newsletter": {
+    "success": "Obrigada por se cadastrar!"
+  },
+  "recipient": {
+    "form": {
+      "expanded": "Formulário expandido",
+      "collapsed": "Formulário recolhido"
+    }
+  },
+  "localization": {
+    "country_results_count": "{{ count }} resultados"
+  },
+  "cart": {
+    "item_quantity": "Quantidade"
+  }
+}

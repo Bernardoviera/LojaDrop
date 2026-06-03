@@ -1,0 +1,131 @@
+<header class="site-header" role="banner">
+  <div class="header-wrapper">
+    <!-- Logo -->
+    <div class="header__logo">
+      <a href="{{ routes.root_url }}">
+        {%- if section.settings.logo != blank -%}
+          {%- assign logo_height = section.settings.logo_height -%}
+          {{
+            section.settings.logo
+            | image_url: height: logo_height
+            | image_tag: class: 'header__logo-image', alt: shop.name, height: logo_height, loading: 'eager'
+          }}
+        {%- else -%}
+          <span class="header__logo-text">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="header__nav" role="navigation" aria-label="Menu principal">
+      {%- for link in section.settings.menu.links -%}
+        <li class="header__nav-item">
+          <a href="{{ link.url }}">{{ link.title }}</a>
+          {%- if link.links.size > 0 -%}
+            <ul class="dropdown-menu">
+              {%- for child_link in link.links -%}
+                <li><a href="{{ child_link.url }}">{{ child_link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </nav>
+
+    <!-- Actions -->
+    <div class="header__actions">
+      {%- if section.settings.show_search -%}
+        <a href="{{ routes.search_url }}" class="header__icon-btn" aria-label="{{ 'general.search.search' | t }}">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.show_account and shop.customer_accounts_enabled -%}
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon-btn" aria-label="{{ 'customer.account.title' | t }}">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+        </a>
+      {%- endif -%}
+
+      <button class="header__icon-btn" data-open-cart aria-label="{{ 'sections.cart.title' | t }}" style="position:relative">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        {%- if cart.item_count > 0 -%}
+          <span class="cart-count-bubble" aria-label="{{ 'sections.cart.cart_count' | t: count: cart.item_count }}">
+            {{ cart.item_count }}
+          </span>
+        {%- else -%}
+          <span class="cart-count-bubble" style="display:none" aria-hidden="true">0</span>
+        {%- endif -%}
+      </button>
+
+      <button class="header__hamburger" aria-label="Menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation -->
+<nav class="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
+  <button class="mobile-nav__close" aria-label="Fechar menu">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <ul class="mobile-nav__list">
+    {%- for link in section.settings.menu.links -%}
+      <li class="mobile-nav__item">
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
+
+{% schema %}
+{
+  "name": "Cabeçalho",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logotipo"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "default": 40,
+      "unit": "px",
+      "label": "Altura do logotipo"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "default": true,
+      "label": "Mostrar busca"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "default": true,
+      "label": "Mostrar conta"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,40 @@
+{%- if section.settings.show_announcement -%}
+  <div class="announcement-bar" role="region" aria-label="{{ 'sections.header.announcement' | t }}">
+    {%- if section.settings.announcement_link != blank -%}
+      <a href="{{ section.settings.announcement_link }}">{{ section.settings.announcement_text }}</a>
+    {%- else -%}
+      <p style="margin:0;">{{ section.settings.announcement_text }}</p>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Barra de Avisos",
+  "class": "announcement-bar-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "default": true,
+      "label": "Exibir barra de avisos"
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "default": "Frete grátis em compras acima de R$250 • Use o código BEMVINDO10 para 10% off",
+      "label": "Texto do aviso"
+    },
+    {
+      "type": "url",
+      "id": "announcement_link",
+      "label": "Link do aviso"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Barra de Avisos"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,111 @@
+{%- if section.settings.collection != blank -%}
+  {%- assign featured_collection = collections[section.settings.collection] -%}
+{%- endif -%}
+
+<section class="featured-collection section">
+  <div class="page-width">
+    <div class="section-header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="section-header__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      <h2 class="section-header__title">{{ section.settings.title }}</h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="section-header__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="product-grid" style="--grid-cols:{{ section.settings.columns_desktop }}">
+      {%- if featured_collection != blank -%}
+        {%- for product in featured_collection.products limit: section.settings.products_to_show -%}
+          {%- render 'card-product', product: product -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..section.settings.products_to_show) -%}
+          <div class="product-card">
+            <div class="product-card__media">
+              {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            <div class="product-card__info">
+              <div class="product-card__title">Produto de exemplo {{ i }}</div>
+              <div class="price"><span class="price__regular">R$ 129,00</span></div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.show_view_all and featured_collection != blank -%}
+      <div style="text-align:center;margin-top:4rem">
+        <a href="{{ featured_collection.url }}" class="btn btn--secondary">
+          {{ section.settings.view_all_text }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Coleção em Destaque",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Coleção"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Supertítulo",
+      "default": "Destaques"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Nova Coleção",
+      "label": "Título"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 8,
+      "label": "Número de produtos"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "Colunas no desktop"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "default": true,
+      "label": "Mostrar botão 'Ver todos'"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "default": "Ver toda a coleção",
+      "label": "Texto do botão"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Coleção em Destaque"
+    }
+  ]
+}
+{% endschema %}

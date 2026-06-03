@@ -1,0 +1,35 @@
+{% if request.page_type == 'index' %}
+  {% assign og_title = shop.name %}
+  {% assign og_url = shop.url %}
+  {% assign og_type = 'website' %}
+  {% assign og_description = shop.description | default: shop.name %}
+{% elsif request.page_type == 'product' %}
+  {% assign og_title = product.title | append: ' - ' | append: shop.name %}
+  {% assign og_url = product.url | prepend: shop.url %}
+  {% assign og_type = 'product' %}
+  {% assign og_description = product.description | strip_html | truncatewords: 25 %}
+  {% if product.featured_image %}
+    {% assign og_image = product.featured_image | image_url: width: 1200 %}
+  {% endif %}
+{% elsif request.page_type == 'collection' %}
+  {% assign og_title = collection.title | append: ' - ' | append: shop.name %}
+  {% assign og_url = collection.url | prepend: shop.url %}
+  {% assign og_type = 'website' %}
+  {% assign og_description = collection.description | strip_html | truncatewords: 25 | default: collection.title %}
+  {% if collection.image %}
+    {% assign og_image = collection.image | image_url: width: 1200 %}
+  {% endif %}
+{% else %}
+  {% assign og_title = page_title | append: ' - ' | append: shop.name %}
+  {% assign og_url = canonical_url %}
+  {% assign og_type = 'website' %}
+  {% assign og_description = page_description | default: shop.description %}
+{% endif %}
+
+<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:url" content="{{ og_url }}">
+<meta property="og:title" content="{{ og_title | escape }}">
+<meta property="og:type" content="{{ og_type }}">
+{% if og_description %}<meta property="og:description" content="{{ og_description | escape }}">{% endif %}
+{% if og_image %}<meta property="og:image" content="https:{{ og_image }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">

@@ -1,0 +1,69 @@
+{%- comment -%}
+  Renders a product card.
+  Accepts:
+  - product: {Object} Product Liquid object
+  - lazy_load: {Boolean} Image should be lazy loaded
+{%- endcomment -%}
+
+{%- liquid
+  assign lazy_load = lazy_load | default: true
+  assign first_available_variant = product.first_available_variant
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+-%}
+
+<div class="product-card">
+  <div class="product-card__media">
+    {%- if product.featured_image != blank -%}
+      <a href="{{ product.url }}">
+        {{
+          product.featured_image
+          | image_url: width: 600
+          | image_tag:
+            loading: lazy_load,
+            width: 600,
+            alt: product.title
+        }}
+      </a>
+    {%- else -%}
+      <a href="{{ product.url }}">
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </a>
+    {%- endif -%}
+
+    <div class="product-card__badges">
+      {%- if on_sale -%}
+        <span class="badge badge--sale">Sale</span>
+      {%- endif -%}
+      {%- if product.tags contains 'new' or product.tags contains 'novo' -%}
+        <span class="badge badge--new">Novo</span>
+      {%- endif -%}
+    </div>
+
+    {%- if first_available_variant != blank -%}
+      <button
+        class="product-card__quick-add"
+        data-quick-add="{{ first_available_variant.id }}"
+        aria-label="{{ 'products.product.add_to_cart' | t }}: {{ product.title }}"
+      >
+        Adicionar
+      </button>
+    {%- endif -%}
+  </div>
+
+  <div class="product-card__info">
+    {%- if product.vendor != blank -%}
+      <div class="product-card__vendor">{{ product.vendor }}</div>
+    {%- endif -%}
+
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+
+    <div class="price">
+      {%- render 'price', product: product -%}
+    </div>
+  </div>
+</div>

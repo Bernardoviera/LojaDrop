@@ -1,0 +1,606 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "LojaDrop",
+    "theme_version": "1.0.0",
+    "theme_author": "LojaDrop",
+    "theme_documentation_url": "https://lojadrop.com.br",
+    "theme_support_url": "https://lojadrop.com.br/suporte"
+  },
+  {
+    "name": "Cores",
+    "settings": [
+      {
+        "type": "color",
+        "id": "colors_text",
+        "default": "#1a1a1a",
+        "label": "Texto principal"
+      },
+      {
+        "type": "color",
+        "id": "colors_background_1",
+        "default": "#ffffff",
+        "label": "Fundo principal"
+      },
+      {
+        "type": "color",
+        "id": "colors_background_2",
+        "default": "#f8f5f2",
+        "label": "Fundo secundário"
+      },
+      {
+        "type": "color",
+        "id": "colors_accent_1",
+        "default": "#c9a96e",
+        "label": "Destaque dourado"
+      },
+      {
+        "type": "color",
+        "id": "colors_accent_2",
+        "default": "#1a1a1a",
+        "label": "Destaque 2"
+      },
+      {
+        "type": "color",
+        "id": "colors_solid_button_labels",
+        "default": "#ffffff",
+        "label": "Texto dos botões sólidos"
+      },
+      {
+        "type": "color",
+        "id": "colors_outline_button_labels",
+        "default": "#1a1a1a",
+        "label": "Texto dos botões contorno"
+      },
+      {
+        "type": "color_background",
+        "id": "gradient_background_1",
+        "label": "Gradiente do fundo principal"
+      },
+      {
+        "type": "color_background",
+        "id": "gradient_background_2",
+        "label": "Gradiente do fundo secundário"
+      },
+      {
+        "type": "color_background",
+        "id": "gradient_accent_1",
+        "label": "Gradiente do destaque 1"
+      },
+      {
+        "type": "color_background",
+        "id": "gradient_accent_2",
+        "label": "Gradiente do destaque 2"
+      }
+    ]
+  },
+  {
+    "name": "Tipografia",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "default": "cormorant_garamond_n4",
+        "label": "Fonte dos títulos"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "default": "assistant_n4",
+        "label": "Fonte do corpo"
+      },
+      {
+        "type": "range",
+        "id": "body_scale",
+        "min": 100,
+        "max": 130,
+        "step": 5,
+        "unit": "%",
+        "label": "Tamanho da fonte do corpo",
+        "default": 100
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "min": 100,
+        "max": 150,
+        "step": 5,
+        "unit": "%",
+        "label": "Tamanho da fonte dos títulos",
+        "default": 110
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "select",
+        "id": "page_width",
+        "options": [
+          { "value": "1200", "label": "1200px" },
+          { "value": "1400", "label": "1400px" },
+          { "value": "1600", "label": "1600px" }
+        ],
+        "default": "1280",
+        "label": "Largura máxima da página"
+      },
+      {
+        "type": "range",
+        "id": "spacing_sections",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Espaçamento entre seções",
+        "default": 60
+      },
+      {
+        "type": "range",
+        "id": "spacing_grid_horizontal",
+        "min": 4,
+        "max": 40,
+        "step": 4,
+        "unit": "px",
+        "label": "Espaçamento horizontal da grade",
+        "default": 24
+      },
+      {
+        "type": "range",
+        "id": "spacing_grid_vertical",
+        "min": 4,
+        "max": 60,
+        "step": 4,
+        "unit": "px",
+        "label": "Espaçamento vertical da grade",
+        "default": 36
+      }
+    ]
+  },
+  {
+    "name": "Carrinho",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "options": [
+          { "value": "drawer", "label": "Gaveta lateral" },
+          { "value": "page", "label": "Página do carrinho" }
+        ],
+        "default": "drawer",
+        "label": "Tipo de carrinho"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Imagem 32x32px recomendada"
+      }
+    ]
+  },
+  {
+    "name": "Cards de produto",
+    "settings": [
+      {
+        "type": "range",
+        "id": "card_image_padding",
+        "min": 0,
+        "max": 30,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding da imagem",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "card_corner_radius",
+        "min": 0,
+        "max": 20,
+        "step": 2,
+        "unit": "px",
+        "label": "Arredondamento dos cantos",
+        "default": 4
+      },
+      {
+        "type": "select",
+        "id": "card_text_alignment",
+        "options": [
+          { "value": "left", "label": "Esquerda" },
+          { "value": "center", "label": "Centro" }
+        ],
+        "default": "left",
+        "label": "Alinhamento do texto"
+      },
+      {
+        "type": "range",
+        "id": "card_border_thickness",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Espessura da borda",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "card_border_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacidade da borda",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "card_shadow_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacidade da sombra",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "card_shadow_horizontal_offset",
+        "min": -12,
+        "max": 12,
+        "step": 2,
+        "unit": "px",
+        "label": "Deslocamento horizontal da sombra",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "card_shadow_vertical_offset",
+        "min": -12,
+        "max": 12,
+        "step": 2,
+        "unit": "px",
+        "label": "Deslocamento vertical da sombra",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "card_shadow_blur",
+        "min": 0,
+        "max": 40,
+        "step": 5,
+        "unit": "px",
+        "label": "Blur da sombra",
+        "default": 0
+      }
+    ]
+  },
+  {
+    "name": "Botões",
+    "settings": [
+      {
+        "type": "range",
+        "id": "buttons_radius",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "label": "Arredondamento",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "buttons_border_thickness",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Espessura da borda",
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "buttons_border_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacidade da borda",
+        "default": 100
+      },
+      {
+        "type": "range",
+        "id": "buttons_shadow_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacidade da sombra",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "buttons_shadow_horizontal_offset",
+        "min": -12,
+        "max": 12,
+        "step": 2,
+        "unit": "px",
+        "label": "Deslocamento horizontal",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "buttons_shadow_vertical_offset",
+        "min": -12,
+        "max": 12,
+        "step": 2,
+        "unit": "px",
+        "label": "Deslocamento vertical",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "buttons_shadow_blur",
+        "min": 0,
+        "max": 40,
+        "step": 5,
+        "unit": "px",
+        "label": "Blur da sombra",
+        "default": 0
+      }
+    ]
+  },
+  {
+    "name": "Inputs",
+    "settings": [
+      {
+        "type": "range",
+        "id": "inputs_radius",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "label": "Arredondamento",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "inputs_border_thickness",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Espessura da borda",
+        "default": 1
+      },
+      {
+        "type": "range",
+        "id": "inputs_border_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacidade da borda",
+        "default": 55
+      },
+      {
+        "type": "range",
+        "id": "inputs_shadow_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacidade da sombra",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "inputs_shadow_horizontal_offset",
+        "min": -12,
+        "max": 12,
+        "step": 2,
+        "unit": "px",
+        "label": "Deslocamento horizontal",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "inputs_shadow_vertical_offset",
+        "min": -12,
+        "max": 12,
+        "step": 2,
+        "unit": "px",
+        "label": "Deslocamento vertical",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "inputs_shadow_blur",
+        "min": 0,
+        "max": 40,
+        "step": 5,
+        "unit": "px",
+        "label": "Blur da sombra",
+        "default": 0
+      }
+    ]
+  },
+  {
+    "name": "Caixas de texto",
+    "settings": [
+      {
+        "type": "range",
+        "id": "text_boxes_radius",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "label": "Arredondamento",
+        "default": 8
+      },
+      {
+        "type": "range",
+        "id": "text_boxes_border_thickness",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Espessura da borda",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "text_boxes_border_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacidade da borda",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "text_boxes_shadow_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacidade da sombra",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "text_boxes_shadow_horizontal_offset",
+        "min": -12,
+        "max": 12,
+        "step": 2,
+        "unit": "px",
+        "label": "Deslocamento horizontal",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "text_boxes_shadow_vertical_offset",
+        "min": -12,
+        "max": 12,
+        "step": 2,
+        "unit": "px",
+        "label": "Deslocamento vertical",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "text_boxes_shadow_blur",
+        "min": 0,
+        "max": 40,
+        "step": 5,
+        "unit": "px",
+        "label": "Blur da sombra",
+        "default": 0
+      }
+    ]
+  },
+  {
+    "name": "Media",
+    "settings": [
+      {
+        "type": "range",
+        "id": "media_padding",
+        "min": 0,
+        "max": 30,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "media_radius",
+        "min": 0,
+        "max": 20,
+        "step": 2,
+        "unit": "px",
+        "label": "Arredondamento",
+        "default": 4
+      },
+      {
+        "type": "range",
+        "id": "media_border_thickness",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px",
+        "label": "Espessura da borda",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "media_border_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacidade da borda",
+        "default": 10
+      },
+      {
+        "type": "range",
+        "id": "media_shadow_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacidade da sombra",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "media_shadow_horizontal_offset",
+        "min": -12,
+        "max": 12,
+        "step": 2,
+        "unit": "px",
+        "label": "Deslocamento horizontal",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "media_shadow_vertical_offset",
+        "min": -12,
+        "max": 12,
+        "step": 2,
+        "unit": "px",
+        "label": "Deslocamento vertical",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "media_shadow_blur",
+        "min": 0,
+        "max": 40,
+        "step": 5,
+        "unit": "px",
+        "label": "Blur da sombra",
+        "default": 0
+      }
+    ]
+  },
+  {
+    "name": "Animações",
+    "settings": [
+      {
+        "type": "select",
+        "id": "animations_hover_elements",
+        "options": [
+          { "value": "none", "label": "Nenhum" },
+          { "value": "lift", "label": "Elevar" }
+        ],
+        "default": "lift",
+        "label": "Hover em cards e mídias"
+      }
+    ]
+  }
+]

@@ -1,0 +1,185 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .hero {
+    min-height: {{ section.settings.hero_height }}vh;
+    {%- if section.settings.text_color == 'dark' -%}color: rgb(var(--color-base-text));{%- else -%}color: #fff;{%- endif -%}
+  }
+{%- endstyle -%}
+
+<section class="hero hero--{{ section.settings.height_option }}">
+  {%- if section.settings.image != blank -%}
+    <div class="hero__media">
+      {{
+        section.settings.image
+        | image_url: width: 1920
+        | image_tag:
+          loading: 'eager',
+          fetchpriority: 'high',
+          width: 1920,
+          alt: section.settings.title,
+          class: 'hero__bg'
+      }}
+    </div>
+  {%- else -%}
+    <div class="hero__media" style="background:linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);"></div>
+  {%- endif -%}
+
+  {%- if section.settings.show_overlay -%}
+    <div class="hero__overlay" style="background:linear-gradient(to bottom, rgba(0,0,0,{{ section.settings.overlay_top }}) 0%, rgba(0,0,0,{{ section.settings.overlay_bottom }}) 100%);"></div>
+  {%- endif -%}
+
+  <div class="hero__content" style="text-align:{{ section.settings.content_alignment }}">
+    <div class="page-width">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="hero__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank -%}
+        <h1 class="hero__title">{{ section.settings.title }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.subtitle != blank -%}
+        <p class="hero__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+
+      <div class="hero__cta-group" style="justify-content:{{ section.settings.content_alignment }}">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link }}" class="btn btn--white">
+            {{ section.settings.button_label }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.button2_label != blank -%}
+          <a href="{{ section.settings.button2_link }}" class="btn btn--outline-white">
+            {{ section.settings.button2_label }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner Hero",
+  "tag": "section",
+  "class": "hero-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagem de fundo"
+    },
+    {
+      "type": "select",
+      "id": "height_option",
+      "label": "Altura",
+      "options": [
+        { "value": "full-height", "label": "Tela cheia" },
+        { "value": "medium", "label": "Médio (70vh)" },
+        { "value": "small", "label": "Pequeno (40vh)" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Alinhamento",
+      "options": [
+        { "value": "left", "label": "Esquerda" },
+        { "value": "center", "label": "Centro" },
+        { "value": "right", "label": "Direita" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Texto"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Supertítulo",
+      "default": "Nova Coleção"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Elegância que Transforma",
+      "label": "Título"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "default": "Descubra peças únicas que combinam com o seu estilo",
+      "label": "Subtítulo"
+    },
+    {
+      "type": "select",
+      "id": "text_color",
+      "label": "Cor do texto",
+      "options": [
+        { "value": "light", "label": "Claro (branco)" },
+        { "value": "dark", "label": "Escuro" }
+      ],
+      "default": "light"
+    },
+    {
+      "type": "header",
+      "content": "Botões"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Explorar Coleção",
+      "label": "Texto do botão principal"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link do botão principal"
+    },
+    {
+      "type": "text",
+      "id": "button2_label",
+      "label": "Texto do botão secundário"
+    },
+    {
+      "type": "url",
+      "id": "button2_link",
+      "label": "Link do botão secundário"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "default": true,
+      "label": "Mostrar overlay escuro"
+    },
+    {
+      "type": "range",
+      "id": "overlay_top",
+      "min": 0,
+      "max": 0.8,
+      "step": 0.05,
+      "default": 0.15,
+      "label": "Opacidade topo"
+    },
+    {
+      "type": "range",
+      "id": "overlay_bottom",
+      "min": 0,
+      "max": 0.9,
+      "step": 0.05,
+      "default": 0.5,
+      "label": "Opacidade rodapé"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Hero"
+    }
+  ]
+}
+{% endschema %}

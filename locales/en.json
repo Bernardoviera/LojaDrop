@@ -1,0 +1,66 @@
+{
+  "general": {
+    "search": {
+      "search": "Search",
+      "placeholder": "Search products...",
+      "results": "Results for \"{{ terms }}\"",
+      "no_results": "No results for \"{{ terms }}\""
+    },
+    "share": {
+      "success_message": "Link copied!"
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Skip to main content",
+    "refresh_page": "Page refreshed",
+    "link_messages": {
+      "new_window": "Opens in new window"
+    }
+  },
+  "sections": {
+    "header": {
+      "announcement": "Announcement bar"
+    },
+    "cart": {
+      "title": "Cart",
+      "cart_count": "{{ count }} items in cart",
+      "cart_error": "Could not add to cart.",
+      "cart_quantity_error_html": "We only have <strong>{{ quantity }}</strong> of this item."
+    },
+    "slideshow": {
+      "pause_slideshow": "Pause slideshow",
+      "play_slideshow": "Play slideshow"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "value_unavailable": "{{ option_value }} - unavailable",
+      "media": {
+        "image_available": "Image {{ index }}"
+      }
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Account"
+    }
+  },
+  "newsletter": {
+    "success": "Thank you for subscribing!"
+  },
+  "recipient": {
+    "form": {
+      "expanded": "Form expanded",
+      "collapsed": "Form collapsed"
+    }
+  },
+  "localization": {
+    "country_results_count": "{{ count }} results"
+  },
+  "cart": {
+    "item_quantity": "Quantity"
+  }
+}

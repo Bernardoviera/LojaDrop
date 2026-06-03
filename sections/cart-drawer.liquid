@@ -1,0 +1,55 @@
+<div class="cart-drawer-overlay" aria-hidden="true"></div>
+
+<div class="cart-drawer" id="cart-drawer" role="dialog" aria-label="{{ 'sections.cart.title' | t }}" aria-modal="true">
+  <div class="cart-drawer__header">
+    <h2 class="cart-drawer__title">Carrinho ({{ cart.item_count }})</h2>
+    <button class="cart-drawer__close" aria-label="Fechar carrinho">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="cart-drawer__items">
+    {%- for item in cart.items -%}
+      <div class="cart-item" data-key="{{ item.key }}">
+        <div class="cart-item__media">
+          {{
+            item.image
+            | image_url: width: 120
+            | image_tag: loading: 'lazy', width: 120, alt: item.title
+          }}
+        </div>
+        <div class="cart-item__info">
+          <div class="cart-item__title">{{ item.product.title }}</div>
+          {%- unless item.variant.title == 'Default Title' -%}
+            <div class="cart-item__variant">{{ item.variant.title }}</div>
+          {%- endunless -%}
+          <div class="cart-item__price">{{ item.final_line_price | money }}</div>
+          <div style="display:flex;align-items:center;gap:1.2rem;margin-top:0.8rem">
+            <div class="quantity-selector" style="transform:scale(0.85);transform-origin:left">
+              <button class="quantity-btn" data-action="decrease" data-key="{{ item.key }}">−</button>
+              <input class="quantity-input" type="number" value="{{ item.quantity }}" min="1" data-key="{{ item.key }}" style="width:4rem">
+              <button class="quantity-btn" data-action="increase" data-key="{{ item.key }}">+</button>
+            </div>
+            <button class="cart-item__remove" data-key="{{ item.key }}">Remover</button>
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="cart-drawer__footer">
+    <div class="cart-drawer__subtotal">
+      <span>Subtotal</span>
+      <span class="cart-drawer__subtotal-value">{{ cart.total_price | money }}</span>
+    </div>
+    <p class="cart-drawer__note">Frete e impostos calculados no checkout</p>
+    <a href="/checkout" class="btn btn--primary btn--full">Finalizar Compra</a>
+    <div style="text-align:center;margin-top:1.2rem">
+      <a href="{{ routes.cart_url }}" style="font-size:1.3rem;text-decoration:underline;color:rgba(var(--color-base-text),0.6)">
+        Ver carrinho completo
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<section class="section" style="padding:0">
+  <div class="page-width">
+    <div class="trust-bar">
+      {%- for block in section.blocks -%}
+        <div class="trust-badge" {{ block.shopify_attributes }}>
+          <div class="trust-badge__icon">{{ block.settings.icon }}</div>
+          <div class="trust-badge__title">{{ block.settings.title }}</div>
+          <p class="trust-badge__text">{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Barra de Confiança",
+  "tag": "section",
+  "max_blocks": 4,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Ícone",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "default": "🚚",
+          "label": "Emoji / Ícone"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Frete Grátis",
+          "label": "Título"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Acima de R$ 250",
+          "label": "Texto"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Barra de Confiança",
+      "blocks": [
+        { "type": "badge", "settings": { "icon": "🚚", "title": "Frete Grátis", "text": "Pedidos acima de R$250" } },
+        { "type": "badge", "settings": { "icon": "💳", "title": "Parcele em 12x", "text": "Sem juros no cartão" } },
+        { "type": "badge", "settings": { "icon": "🔄", "title": "Troca Fácil", "text": "30 dias para devolver" } },
+        { "type": "badge", "settings": { "icon": "🔒", "title": "Compra Segura", "text": "Site 100% protegido" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

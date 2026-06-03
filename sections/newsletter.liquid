@@ -1,0 +1,92 @@
+<section class="newsletter section">
+  <div class="page-width--narrow">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="section-header__eyebrow">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+    <h2 class="newsletter__title">{{ section.settings.title }}</h2>
+    {%- if section.settings.subtitle != blank -%}
+      <p class="newsletter__subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+
+    {%- form 'customer', id: 'newsletter-form-' | append: section.id -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <div class="newsletter__form">
+        <input
+          class="newsletter__input"
+          type="email"
+          name="contact[email]"
+          id="newsletter-email-{{ section.id }}"
+          value="{{ customer.email }}"
+          placeholder="{{ section.settings.placeholder }}"
+          required
+          autocorrect="off"
+          autocapitalize="off"
+          autocomplete="email"
+          aria-label="{{ section.settings.placeholder }}"
+        >
+        <button type="submit" class="btn btn--primary">
+          {{ section.settings.button_label }}
+        </button>
+      </div>
+      {%- if form.posted_successfully? -%}
+        <p style="margin-top:1.6rem;color:green;text-align:center">{{ 'newsletter.success' | t }}</p>
+      {%- elsif form.errors -%}
+        <p style="margin-top:1.6rem;color:#c9303f;text-align:center">{{ form.errors.translated_fields.first | capitalize }}: {{ form.errors.messages.first }}</p>
+      {%- endif -%}
+    {%- endform -%}
+
+    {%- if section.settings.disclaimer != blank -%}
+      <p style="font-size:1.2rem;color:rgba(var(--color-base-text),0.5);margin-top:1.2rem">{{ section.settings.disclaimer }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Supertítulo",
+      "default": "Fique por dentro"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Receba Novidades e Ofertas Exclusivas",
+      "label": "Título"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Cadastre-se e ganhe 10% de desconto na primeira compra.",
+      "label": "Subtítulo"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "default": "Seu melhor e-mail",
+      "label": "Placeholder do campo"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Quero desconto",
+      "label": "Texto do botão"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Aviso legal (opcional)",
+      "default": "Ao se inscrever, você concorda com nossa política de privacidade."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

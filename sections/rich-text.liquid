@@ -1,0 +1,59 @@
+<section class="section">
+  <div class="page-width">
+    <div class="rich-text">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="section-header__eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}
+        <h2 class="rich-text__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.content != blank -%}
+        <div class="rich-text__content">{{ section.settings.content }}</div>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link }}" class="btn btn--primary">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Texto Rico",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Supertítulo"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Bem-vinda à Nossa Loja",
+      "label": "Título"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "default": "<p>Aqui você encontra as melhores peças de moda e joias, selecionadas com cuidado para você.</p>",
+      "label": "Conteúdo"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto do botão"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link do botão"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Texto Rico"
+    }
+  ]
+}
+{% endschema %}
