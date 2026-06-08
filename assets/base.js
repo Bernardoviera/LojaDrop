@@ -19,9 +19,20 @@ window.addEventListener('resize', syncHeaderHeight, { passive: true });
 
 // ─── Header scroll effect ──────────────────────────────────────────
 if (siteHeader) {
-  const updateScrolled = () => siteHeader.classList.toggle('scrolled', window.scrollY > 10);
-  updateScrolled();
-  window.addEventListener('scroll', updateScrolled, { passive: true });
+  const heroSection = document.querySelector('.hero-section');
+
+  if (heroSection && document.body.classList.contains('template-index')) {
+    // Na página inicial: cabeçalho fica transparente enquanto o hero estiver visível
+    const observer = new IntersectionObserver(
+      entries => siteHeader.classList.toggle('scrolled', !entries[0].isIntersecting),
+      { threshold: 0.05 }
+    );
+    observer.observe(heroSection);
+  } else {
+    const updateScrolled = () => siteHeader.classList.toggle('scrolled', window.scrollY > 10);
+    updateScrolled();
+    window.addEventListener('scroll', updateScrolled, { passive: true });
+  }
 }
 
 // ─── Mobile nav ────────────────────────────────────────────────────
