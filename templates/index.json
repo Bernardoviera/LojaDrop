@@ -17,10 +17,10 @@
         "height_option": "full-height",
         "content_alignment": "center",
         "eyebrow": "",
-        "title": "Elegância que Transforma",
-        "subtitle": "Descubra peças exclusivas de moda e joias criadas para mulheres com estilo",
+        "title": "Elegancia que Transforma",
+        "subtitle": "Descubre piezas exclusivas de moda y joyas creadas para mujeres con estilo",
         "text_color": "light",
-        "button_label": "Explorar Coleção",
+        "button_label": "Explorar Coleccion",
         "button_link": "",
         "button2_label": "",
         "button2_link": "",
@@ -80,26 +80,24 @@
           "type": "category",
           "settings": {
             "title": "Vestidos",
-            "cta_label": "Ver coleção",
+            "cta_label": "Ver coleccion",
             "link": ""
           }
         },
         "cat-2": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/Sb776922c806249548edf91b42d71a71dk.webp",
-            "title": "Joias",
-            "cta_label": "Ver coleção",
-            "link": "shopify://collections/joias"
+            "title": "Joyas",
+            "cta_label": "Ver coleccion",
+            "link": ""
           }
         },
         "cat-3": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/S09d1c52112b540219e501367ea3f903cO.webp",
-            "title": "Acessórios",
-            "cta_label": "Ver coleção",
-            "link": "shopify://collections/acessorios"
+            "title": "Accesorios",
+            "cta_label": "Ver coleccion",
+            "link": ""
           }
         }
       },
@@ -109,42 +107,42 @@
         "cat-3"
       ],
       "settings": {
-        "title": "Explore as Categorias"
+        "title": "Explora las Categorias"
       }
     },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
         "collection": "",
-        "eyebrow": "Mais Vendidos",
-        "title": "Produtos em Destaque",
-        "subtitle": "Os favoritos das nossas clientes",
+        "eyebrow": "Mas Vendidos",
+        "title": "Productos Destacados",
+        "subtitle": "Los favoritos de nuestras clientas",
         "products_to_show": 8,
         "columns_desktop": 4,
         "show_view_all": true,
-        "view_all_text": "Ver toda a coleção"
+        "view_all_text": "Ver toda la coleccion"
       }
     },
     "image-with-text": {
       "type": "image-with-text",
       "settings": {
         "layout": "image_first",
-        "eyebrow": "Nossa Essência",
-        "title": "Feito com Paixão e Qualidade",
-        "text": "<p>Cada peça da nossa coleção é cuidadosamente selecionada pensando em você. Acreditamos que moda é expressão, e cada detalhe conta na construção do seu estilo único.</p>",
-        "button_label": "Conheça nossa história",
-        "button_link": "/pages/sobre-nos"
+        "eyebrow": "Nuestra Esencia",
+        "title": "Hecho con Pasion y Calidad",
+        "text": "<p>Cada pieza de nuestra coleccion es cuidadosamente seleccionada pensando en ti. Creemos que la moda es expresion, y cada detalle cuenta en la construccion de tu estilo unico.</p>",
+        "button_label": "Conoce nuestra historia",
+        "button_link": "/pages/sobre-nosotros"
       }
     },
     "newsletter": {
       "type": "newsletter",
       "settings": {
-        "eyebrow": "Fique por dentro",
-        "title": "Receba Novidades e Ofertas Exclusivas",
-        "subtitle": "Cadastre-se e ganhe 10% de desconto na primeira compra.",
-        "placeholder": "Seu melhor e-mail",
-        "button_label": "Quero desconto",
-        "disclaimer": "Ao se inscrever, você concorda com nossa política de privacidade."
+        "eyebrow": "Mantente al dia",
+        "title": "Recibe Novedades y Ofertas Exclusivas",
+        "subtitle": "Suscribete y consigue 10% de descuento en tu primera compra.",
+        "placeholder": "Tu mejor e-mail",
+        "button_label": "Quiero descuento",
+        "disclaimer": "Al suscribirte, aceptas nuestra politica de privacidad."
       }
     }
   },

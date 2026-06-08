@@ -14,31 +14,31 @@
 
 {% schema %}
 {
-  "name": "Barra de Confiança",
+  "name": "Barra de Confianza",
   "tag": "section",
   "max_blocks": 4,
   "settings": [],
   "blocks": [
     {
       "type": "badge",
-      "name": "Ícone",
+      "name": "Icono",
       "settings": [
         {
           "type": "text",
           "id": "icon",
           "default": "🚚",
-          "label": "Emoji / Ícone"
+          "label": "Emoji / Icono"
         },
         {
           "type": "text",
           "id": "title",
-          "default": "Frete Grátis",
+          "default": "Envío Gratis",
           "label": "Título"
         },
         {
           "type": "text",
           "id": "text",
-          "default": "Acima de R$ 250",
+          "default": "Pedidos superiores a 50€",
           "label": "Texto"
         }
       ]
@@ -46,12 +46,12 @@
   ],
   "presets": [
     {
-      "name": "Barra de Confiança",
+      "name": "Barra de Confianza",
       "blocks": [
-        { "type": "badge", "settings": { "icon": "🚚", "title": "Frete Grátis", "text": "Pedidos acima de R$250" } },
-        { "type": "badge", "settings": { "icon": "💳", "title": "Parcele em 12x", "text": "Sem juros no cartão" } },
-        { "type": "badge", "settings": { "icon": "🔄", "title": "Troca Fácil", "text": "30 dias para devolver" } },
-        { "type": "badge", "settings": { "icon": "🔒", "title": "Compra Segura", "text": "Site 100% protegido" } }
+        { "type": "badge", "settings": { "icon": "🚚", "title": "Envío Gratis", "text": "Pedidos superiores a 50€" } },
+        { "type": "badge", "settings": { "icon": "💳", "title": "Paga en cuotas", "text": "Sin intereses con tarjeta" } },
+        { "type": "badge", "settings": { "icon": "🔄", "title": "Cambios Fáciles", "text": "30 días para devolver" } },
+        { "type": "badge", "settings": { "icon": "🔒", "title": "Compra Segura", "text": "Web 100% protegida" } }
       ]
     }
   ]

@@ -17,7 +17,7 @@
     </div>
 
     <!-- Desktop Navigation -->
-    <nav class="header__nav" role="navigation" aria-label="Menu principal">
+    <nav class="header__nav" role="navigation" aria-label="Menú principal">
       {%- for link in section.settings.menu.links -%}
         <li class="header__nav-item">
           <a href="{{ link.url }}">{{ link.title }}</a>
@@ -74,7 +74,7 @@
 
 <!-- Mobile Navigation -->
 <nav class="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
-  <button class="mobile-nav__close" aria-label="Fechar menu">
+  <button class="mobile-nav__close" aria-label="Cerrar menú">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
       <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
     </svg>
@@ -90,7 +90,7 @@
 
 {% schema %}
 {
-  "name": "Cabeçalho",
+  "name": "Cabecera",
   "class": "section-header",
   "settings": [
     {
@@ -106,25 +106,25 @@
       "step": 2,
       "default": 40,
       "unit": "px",
-      "label": "Altura do logotipo"
+      "label": "Altura del logotipo"
     },
     {
       "type": "link_list",
       "id": "menu",
       "default": "main-menu",
-      "label": "Menu"
+      "label": "Menú"
     },
     {
       "type": "checkbox",
       "id": "show_search",
       "default": true,
-      "label": "Mostrar busca"
+      "label": "Mostrar búsqueda"
     },
     {
       "type": "checkbox",
       "id": "show_account",
       "default": true,
-      "label": "Mostrar conta"
+      "label": "Mostrar cuenta"
     }
   ]
 }

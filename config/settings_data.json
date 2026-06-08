@@ -86,7 +86,7 @@
         "type": "announcement-bar",
         "settings": {
           "show_announcement": true,
-          "announcement_text": "Frete grátis em compras acima de R$250 • Use o código BEMVINDO10 para 10% off",
+          "announcement_text": "Envio gratis en pedidos superiores a 50EUR • Usa el codigo BIENVENIDO10 para 10% dto",
           "announcement_link": ""
         }
       },
@@ -102,16 +102,16 @@
       "footer": {
         "type": "footer",
         "settings": {
-          "policies_heading": "Políticas",
+          "policies_heading": "Politicas",
           "policies_menu": "footer",
-          "company_name": "BELLA LUNA STORE LTDA",
-          "contact_email": "contato@lojadrop.com.br",
-          "contact_whatsapp": "(21) 97354-3216",
+          "company_name": "BELLA LUNA STORE S.L.",
+          "contact_email": "contacto@bellaluna.es",
+          "contact_whatsapp": "",
           "show_newsletter": true,
-          "newsletter_text": "Cadastre-se e receba nossas ofertas por e-mail",
-          "newsletter_placeholder": "Seu e-mail",
+          "newsletter_text": "Suscribete y recibe nuestras ofertas por email",
+          "newsletter_placeholder": "Tu e-mail",
           "newsletter_button": "Enviar",
-          "social_heading": "Siga-nos",
+          "social_heading": "Siguenos",
           "social_facebook": "",
           "social_instagram": "",
           "social_youtube": "",
@@ -120,9 +120,9 @@
           "seal_google": true,
           "seal_ssl": true,
           "seal_site_blindado": true,
-          "seals_text": "Selos de Garantia - Loja 100% Segura.",
+          "seals_text": "Sellos de Garantia - Tienda 100% Segura.",
           "show_payment": true,
-          "payment_heading": "Nós Aceitamos"
+          "payment_heading": "Aceptamos"
         }
       }
     },
