@@ -87,9 +87,10 @@
         "cat-2": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/Sb776922c806249548edf91b42d71a71dk.webp",
             "title": "Joias",
             "cta_label": "Ver coleção",
-            "link": ""
+            "link": "shopify://collections/joias"
           }
         },
         "cat-3": {
@@ -97,7 +98,7 @@
           "settings": {
             "title": "Acessórios",
             "cta_label": "Ver coleção",
-            "link": ""
+            "link": "shopify://collections"
           }
         }
       },
