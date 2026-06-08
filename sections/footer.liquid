@@ -116,24 +116,24 @@
 
   <!-- Formas de pagamento -->
   {%- if section.settings.show_payment -%}
-    <div class="footer__payment">
-      <div class="page-width">
-        <p class="footer__payment-title">{{ section.settings.payment_heading }}</p>
-        <div class="footer__payment-icons">
-          <img src="{{ 'Visa.svg' | asset_url }}" alt="Visa" class="footer__payment-svg" loading="lazy">
-          <img src="{{ 'mastercard.svg' | asset_url }}" alt="Mastercard" class="footer__payment-svg" loading="lazy">
-          <img src="{{ 'Amex.svg' | asset_url }}" alt="American Express" class="footer__payment-svg" loading="lazy">
-          <img src="{{ 'Diners.svg' | asset_url }}" alt="Diners Club" class="footer__payment-svg" loading="lazy">
-          <img src="{{ 'PayPal.svg' | asset_url }}" alt="PayPal" class="footer__payment-svg" loading="lazy">
-        </div>
+  <div class="footer__payment">
+    <div class="page-width">
+      <p class="footer__payment-title">{{ section.settings.payment_heading }}</p>
+      <div class="footer__payment-icons">
+        <img src="{{ 'Visa.svg' | asset_url }}" alt="Visa" class="footer__payment-svg" loading="lazy">
+        <img src="{{ 'mastercard.svg' | asset_url }}" alt="Mastercard" class="footer__payment-svg" loading="lazy">
+        <img src="{{ 'Amex.svg' | asset_url }}" alt="American Express" class="footer__payment-svg" loading="lazy">
+        <img src="{{ 'Diners.svg' | asset_url }}" alt="Diners Club" class="footer__payment-svg" loading="lazy">
+        <img src="{{ 'PayPal.svg' | asset_url }}" alt="PayPal" class="footer__payment-svg" loading="lazy">
       </div>
     </div>
-  {%- endif -%}
+  </div>
+{%- endif -%}
 
   <!-- Rodapé inferior -->
   <div class="footer__bottom">
     <div class="page-width">
-      <p class="footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos los derechos reservados.</p>
+      <p class="footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos os direitos reservados.</p>
     </div>
   </div>
 
@@ -141,47 +141,47 @@
 
 {% schema %}
 {
-  "name": "Pie de pagina",
+  "name": "Rodapé",
   "class": "footer-section",
   "settings": [
     {
       "type": "header",
-      "content": "Columna de Politicas"
+      "content": "Coluna de Políticas"
     },
     {
       "type": "text",
       "id": "policies_heading",
-      "default": "Politicas",
-      "label": "Titulo de politicas"
+      "default": "Políticas",
+      "label": "Título das políticas"
     },
     {
       "type": "link_list",
       "id": "policies_menu",
       "default": "footer",
-      "label": "Menu de politicas"
+      "label": "Menu de políticas"
     },
     {
       "type": "header",
-      "content": "Informacion de la Empresa"
+      "content": "Informações da Empresa"
     },
     {
       "type": "text",
       "id": "company_name",
-      "label": "Razon social",
-      "default": "BELLA LUNA STORE S.L."
+      "label": "Razão social",
+      "default": "VELUTTO DECOR ONLINE LTDA"
     },
     {
       "type": "text",
       "id": "contact_email",
-      "label": "E-mail de contacto",
-      "default": "contacto@bellaluna.es"
+      "label": "E-mail de contato",
+      "default": "contato@lojadrop.com.br"
     },
     {
       "type": "text",
       "id": "contact_whatsapp",
       "label": "WhatsApp",
-      "default": "",
-      "info": "Incluye prefijo pais. Ej: +34 600 000 000"
+      "default": "(21) 97354-3216",
+      "info": "Inclua DDD. Ex: (21) 97354-3216"
     },
     {
       "type": "header",
@@ -196,30 +196,30 @@
     {
       "type": "text",
       "id": "newsletter_text",
-      "default": "Suscribete y recibe nuestras ofertas por email",
-      "label": "Texto sobre el campo"
+      "default": "Cadastre-se e receba nossas ofertas por e-mail",
+      "label": "Texto acima do campo"
     },
     {
       "type": "text",
       "id": "newsletter_placeholder",
-      "default": "Tu e-mail",
-      "label": "Placeholder del campo"
+      "default": "Seu e-mail",
+      "label": "Placeholder do campo"
     },
     {
       "type": "text",
       "id": "newsletter_button",
       "default": "Enviar",
-      "label": "Texto del boton"
+      "label": "Texto do botão"
     },
     {
       "type": "header",
-      "content": "Redes Sociales"
+      "content": "Redes Sociais"
     },
     {
       "type": "text",
       "id": "social_heading",
-      "default": "Siguenos",
-      "label": "Titulo"
+      "default": "Siga-nos",
+      "label": "Título"
     },
     {
       "type": "url",
@@ -243,53 +243,53 @@
     },
     {
       "type": "header",
-      "content": "Sellos de Seguridad"
+      "content": "Selos de Segurança"
     },
     {
       "type": "checkbox",
       "id": "show_security_seals",
       "default": true,
-      "label": "Mostrar sellos de seguridad"
+      "label": "Mostrar selos de segurança"
     },
     {
       "type": "checkbox",
       "id": "seal_google",
       "default": true,
-      "label": "Sello Google Sitio Seguro"
+      "label": "Selo Google Site Seguro"
     },
     {
       "type": "checkbox",
       "id": "seal_ssl",
       "default": true,
-      "label": "Sello SSL"
+      "label": "Selo SSL"
     },
     {
       "type": "checkbox",
       "id": "seal_site_blindado",
       "default": true,
-      "label": "Sello Sitio Blindado"
+      "label": "Selo Site Blindado"
     },
     {
       "type": "text",
       "id": "seals_text",
-      "default": "Sellos de Garantia - Tienda 100% Segura.",
-      "label": "Texto bajo los sellos"
+      "default": "Selos de Garantia - Loja 100% Segura.",
+      "label": "Texto abaixo dos selos"
     },
     {
       "type": "header",
-      "content": "Formas de Pago"
+      "content": "Formas de Pagamento"
     },
     {
       "type": "checkbox",
       "id": "show_payment",
       "default": true,
-      "label": "Mostrar formas de pago"
+      "label": "Mostrar formas de pagamento"
     },
     {
       "type": "text",
       "id": "payment_heading",
-      "default": "Aceptamos",
-      "label": "Titulo"
+      "default": "Nós Aceitamos",
+      "label": "Título"
     }
   ]
 }
