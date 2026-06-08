@@ -79,17 +79,19 @@
         "cat-1": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/S2f9b7ab8b06d4b699c278e2299ae2961O.webp",
             "title": "Vestidos",
             "cta_label": "Ver coleccion",
-            "link": ""
+            "link": "shopify://collections/vestidos"
           }
         },
         "cat-2": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/Sd847311d2ebe4713a219298464d8df86H.webp",
             "title": "Joyas",
             "cta_label": "Ver coleccion",
-            "link": ""
+            "link": "shopify://collections/joias"
           }
         },
         "cat-3": {
