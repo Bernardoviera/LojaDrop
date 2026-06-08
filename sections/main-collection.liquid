@@ -9,6 +9,7 @@
 
 <section class="section">
   <div class="page-width">
+    {%- paginate collection.products by section.settings.products_per_page -%}
     <div class="collection-toolbar">
       <span class="collection-toolbar__count">
         {{ collection.products_count }}
@@ -17,18 +18,18 @@
       <div class="collection-toolbar__sort">
         <label for="sort-select">Ordenar por:</label>
         <select id="sort-select" name="sort_by" class="sort-select" onchange="window.location.href='?sort_by='+this.value">
-          <option value="manual"{% if collection.sort_by == 'manual' %} selected{% endif %}>Em destaque</option>
-          <option value="best-selling"{% if collection.sort_by == 'best-selling' %} selected{% endif %}>Mais vendidos</option>
-          <option value="price-ascending"{% if collection.sort_by == 'price-ascending' %} selected{% endif %}>Menor preço</option>
-          <option value="price-descending"{% if collection.sort_by == 'price-descending' %} selected{% endif %}>Maior preço</option>
-          <option value="created-descending"{% if collection.sort_by == 'created-descending' %} selected{% endif %}>Mais novos</option>
+          <option value="manual"{% if collection.sort_by == 'manual' %} selected{% endif %}>Destacados</option>
+          <option value="best-selling"{% if collection.sort_by == 'best-selling' %} selected{% endif %}>Más vendidos</option>
+          <option value="price-ascending"{% if collection.sort_by == 'price-ascending' %} selected{% endif %}>Menor precio</option>
+          <option value="price-descending"{% if collection.sort_by == 'price-descending' %} selected{% endif %}>Mayor precio</option>
+          <option value="created-descending"{% if collection.sort_by == 'created-descending' %} selected{% endif %}>Más nuevos</option>
           <option value="title-ascending"{% if collection.sort_by == 'title-ascending' %} selected{% endif %}>A-Z</option>
         </select>
       </div>
     </div>
 
     {%- if collection.products.size > 0 -%}
-      <div class="product-grid" style="--grid-cols:{{ section.settings.columns_desktop }}">
+      <div class="product-grid" style="--grid-cols-desktop:{{ section.settings.columns_desktop }}">
         {%- for product in collection.products -%}
           {%- render 'card-product', product: product -%}
         {%- endfor -%}
@@ -56,6 +57,7 @@
         No se encontraron productos en esta colección.
       </p>
     {%- endif -%}
+    {%- endpaginate -%}
   </div>
 </section>
 
