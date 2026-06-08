@@ -97,9 +97,10 @@
         "cat-3": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/Sf97e723b561744d69b3e9f7b2f20eb70Y.webp",
             "title": "Accesorios",
             "cta_label": "Ver coleccion",
-            "link": ""
+            "link": "shopify://collections/acessorios"
           }
         }
       },
