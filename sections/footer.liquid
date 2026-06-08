@@ -122,12 +122,9 @@
         <div class="footer__payment-icons">
           <img src="{{ 'Visa.svg' | asset_url }}" alt="Visa" class="footer__payment-svg" loading="lazy">
           <img src="{{ 'mastercard.svg' | asset_url }}" alt="Mastercard" class="footer__payment-svg" loading="lazy">
-          <img src="{{ 'Pix.svg' | asset_url }}" alt="Pix" class="footer__payment-svg" loading="lazy">
-          <img src="{{ 'Boleto.svg' | asset_url }}" alt="Boleto" class="footer__payment-svg" loading="lazy">
-          <img src="{{ 'Elo.svg' | asset_url }}" alt="Elo" class="footer__payment-svg" loading="lazy">
           <img src="{{ 'Amex.svg' | asset_url }}" alt="American Express" class="footer__payment-svg" loading="lazy">
-          <img src="{{ 'hipercard.svg' | asset_url }}" alt="Hipercard" class="footer__payment-svg" loading="lazy">
-          <img src="{{ 'Diners.svg' | asset_url }}" alt="Diners" class="footer__payment-svg" loading="lazy">
+          <img src="{{ 'Diners.svg' | asset_url }}" alt="Diners Club" class="footer__payment-svg" loading="lazy">
+          <img src="{{ 'PayPal.svg' | asset_url }}" alt="PayPal" class="footer__payment-svg" loading="lazy">
         </div>
       </div>
     </div>
@@ -136,7 +133,7 @@
   <!-- Rodapé inferior -->
   <div class="footer__bottom">
     <div class="page-width">
-      <p class="footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos os direitos reservados.</p>
+      <p class="footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos los derechos reservados.</p>
     </div>
   </div>
 
@@ -144,47 +141,47 @@
 
 {% schema %}
 {
-  "name": "Rodapé",
+  "name": "Pie de pagina",
   "class": "footer-section",
   "settings": [
     {
       "type": "header",
-      "content": "Coluna de Políticas"
+      "content": "Columna de Politicas"
     },
     {
       "type": "text",
       "id": "policies_heading",
-      "default": "Políticas",
-      "label": "Título das políticas"
+      "default": "Politicas",
+      "label": "Titulo de politicas"
     },
     {
       "type": "link_list",
       "id": "policies_menu",
       "default": "footer",
-      "label": "Menu de políticas"
+      "label": "Menu de politicas"
     },
     {
       "type": "header",
-      "content": "Informações da Empresa"
+      "content": "Informacion de la Empresa"
     },
     {
       "type": "text",
       "id": "company_name",
-      "label": "Razão social",
-      "default": "VELUTTO DECOR ONLINE LTDA"
+      "label": "Razon social",
+      "default": "BELLA LUNA STORE S.L."
     },
     {
       "type": "text",
       "id": "contact_email",
-      "label": "E-mail de contato",
-      "default": "contato@lojadrop.com.br"
+      "label": "E-mail de contacto",
+      "default": "contacto@bellaluna.es"
     },
     {
       "type": "text",
       "id": "contact_whatsapp",
       "label": "WhatsApp",
-      "default": "(21) 97354-3216",
-      "info": "Inclua DDD. Ex: (21) 97354-3216"
+      "default": "",
+      "info": "Incluye prefijo pais. Ej: +34 600 000 000"
     },
     {
       "type": "header",
@@ -199,30 +196,30 @@
     {
       "type": "text",
       "id": "newsletter_text",
-      "default": "Cadastre-se e receba nossas ofertas por e-mail",
-      "label": "Texto acima do campo"
+      "default": "Suscribete y recibe nuestras ofertas por email",
+      "label": "Texto sobre el campo"
     },
     {
       "type": "text",
       "id": "newsletter_placeholder",
-      "default": "Seu e-mail",
-      "label": "Placeholder do campo"
+      "default": "Tu e-mail",
+      "label": "Placeholder del campo"
     },
     {
       "type": "text",
       "id": "newsletter_button",
       "default": "Enviar",
-      "label": "Texto do botão"
+      "label": "Texto del boton"
     },
     {
       "type": "header",
-      "content": "Redes Sociais"
+      "content": "Redes Sociales"
     },
     {
       "type": "text",
       "id": "social_heading",
-      "default": "Siga-nos",
-      "label": "Título"
+      "default": "Siguenos",
+      "label": "Titulo"
     },
     {
       "type": "url",
@@ -246,53 +243,53 @@
     },
     {
       "type": "header",
-      "content": "Selos de Segurança"
+      "content": "Sellos de Seguridad"
     },
     {
       "type": "checkbox",
       "id": "show_security_seals",
       "default": true,
-      "label": "Mostrar selos de segurança"
+      "label": "Mostrar sellos de seguridad"
     },
     {
       "type": "checkbox",
       "id": "seal_google",
       "default": true,
-      "label": "Selo Google Site Seguro"
+      "label": "Sello Google Sitio Seguro"
     },
     {
       "type": "checkbox",
       "id": "seal_ssl",
       "default": true,
-      "label": "Selo SSL"
+      "label": "Sello SSL"
     },
     {
       "type": "checkbox",
       "id": "seal_site_blindado",
       "default": true,
-      "label": "Selo Site Blindado"
+      "label": "Sello Sitio Blindado"
     },
     {
       "type": "text",
       "id": "seals_text",
-      "default": "Selos de Garantia - Loja 100% Segura.",
-      "label": "Texto abaixo dos selos"
+      "default": "Sellos de Garantia - Tienda 100% Segura.",
+      "label": "Texto bajo los sellos"
     },
     {
       "type": "header",
-      "content": "Formas de Pagamento"
+      "content": "Formas de Pago"
     },
     {
       "type": "checkbox",
       "id": "show_payment",
       "default": true,
-      "label": "Mostrar formas de pagamento"
+      "label": "Mostrar formas de pago"
     },
     {
       "type": "text",
       "id": "payment_heading",
-      "default": "Nós Aceitamos",
-      "label": "Título"
+      "default": "Aceptamos",
+      "label": "Titulo"
     }
   ]
 }
