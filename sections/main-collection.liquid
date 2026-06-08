@@ -12,7 +12,7 @@
     <div class="collection-toolbar">
       <span class="collection-toolbar__count">
         {{ collection.products_count }}
-        {%- if collection.products_count == 1 -%} produto{%- else -%} produtos{%- endif -%}
+        {%- if collection.products_count == 1 -%} producto{%- else -%} productos{%- endif -%}
       </span>
       <div class="collection-toolbar__sort">
         <label for="sort-select">Ordenar por:</label>
@@ -47,13 +47,13 @@
             {%- endif -%}
           {%- endfor -%}
           {%- if paginate.next -%}
-            <a href="{{ paginate.next.url }}" class="btn btn--secondary">Próximo &rsaquo;</a>
+            <a href="{{ paginate.next.url }}" class="btn btn--secondary">Siguiente &rsaquo;</a>
           {%- endif -%}
         </nav>
       {%- endif -%}
     {%- else -%}
       <p style="text-align:center;padding:6rem 0;color:rgba(var(--color-base-text),0.6)">
-        Nenhum produto encontrado nesta coleção.
+        No se encontraron productos en esta colección.
       </p>
     {%- endif -%}
   </div>
@@ -61,7 +61,7 @@
 
 {% schema %}
 {
-  "name": "Coleção Principal",
+  "name": "Coleccion Principal",
   "tag": "section",
   "templates": ["collection"],
   "settings": [
@@ -72,7 +72,7 @@
       "max": 5,
       "step": 1,
       "default": 4,
-      "label": "Colunas no desktop"
+      "label": "Columnas en escritorio"
     },
     {
       "type": "range",
@@ -81,7 +81,7 @@
       "max": 48,
       "step": 4,
       "default": 24,
-      "label": "Produtos por página"
+      "label": "Productos por pagina"
     }
   ]
 }

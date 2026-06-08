@@ -44,7 +44,7 @@
                     >
                     <button type="button" class="quantity-btn" data-action="increase">+</button>
                   </div>
-                  <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="cart-item__remove">Remover</a>
+                  <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="cart-item__remove">Eliminar</a>
                 </div>
               </div>
             {%- endfor -%}
@@ -72,7 +72,7 @@
             </p>
 
             <a href="/checkout" class="btn btn--primary btn--full">
-              Finalizar Compra
+              Tramitar pedido
             </a>
 
             <div style="text-align:center;margin-top:1.6rem">
@@ -85,9 +85,9 @@
       {%- endform -%}
     {%- else -%}
       <div class="cart-empty">
-        <h2 class="cart-empty__title">Seu carrinho está vazio</h2>
-        <p class="cart-empty__text">Adicione alguns produtos incríveis ao seu carrinho!</p>
-        <a href="{{ routes.root_url }}" class="btn btn--primary">Explorar produtos</a>
+        <h2 class="cart-empty__title">Tu carrito está vacío</h2>
+        <p class="cart-empty__text">¡Añade algunos productos increíbles a tu carrito!</p>
+        <a href="{{ routes.root_url }}" class="btn btn--primary">Explorar productos</a>
       </div>
     {%- endif -%}
   </div>
