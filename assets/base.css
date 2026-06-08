@@ -296,6 +296,15 @@ img, svg { display: block; max-width: 100%; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+.hero__bg--mobile { display: none; }
+
+@media (max-width: 749px) {
+  .hero__bg--desktop { display: none; }
+  .hero__bg--mobile { display: block; }
 }
 
 .hero__overlay {
@@ -446,7 +455,8 @@ img, svg { display: block; max-width: 100%; }
 /* ---------- Product Grid ---------- */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(var(--grid-cols, 4), 1fr);
+  --grid-cols: var(--grid-cols-desktop, 4);
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
   gap: var(--grid-desktop-vertical-spacing) var(--grid-desktop-horizontal-spacing);
 }
 
@@ -1348,6 +1358,15 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* ---------- Responsive ---------- */
+/* Shopify placeholder SVG — fundo claro quando não há imagem */
+.placeholder-svg {
+  width: 100%;
+  height: 100%;
+  min-height: 20rem;
+  background-color: rgb(var(--color-base-background-2));
+  display: block;
+}
+
 @media (max-width: 990px) {
   .header__nav { display: none; }
   .header__hamburger { display: block; }

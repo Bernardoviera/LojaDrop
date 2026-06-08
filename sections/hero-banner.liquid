@@ -5,18 +5,42 @@
 {%- endstyle -%}
 
 <section class="hero hero--{{ section.settings.height_option }}">
-  {%- if section.settings.image != blank -%}
+  {%- if section.settings.image != blank or section.settings.image_mobile != blank -%}
     <div class="hero__media">
-      {{
-        section.settings.image
-        | image_url: width: 1920
-        | image_tag:
-          loading: 'eager',
-          fetchpriority: 'high',
-          width: 1920,
-          alt: section.settings.title,
-          class: 'hero__bg'
-      }}
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1920
+          | image_tag:
+            loading: 'eager',
+            fetchpriority: 'high',
+            width: 1920,
+            alt: section.settings.title,
+            class: 'hero__bg hero__bg--desktop'
+        }}
+      {%- endif -%}
+      {%- if section.settings.image_mobile != blank -%}
+        {{
+          section.settings.image_mobile
+          | image_url: width: 800
+          | image_tag:
+            loading: 'eager',
+            fetchpriority: 'high',
+            width: 800,
+            alt: section.settings.title,
+            class: 'hero__bg hero__bg--mobile'
+        }}
+      {%- elsif section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 800
+          | image_tag:
+            loading: 'eager',
+            width: 800,
+            alt: section.settings.title,
+            class: 'hero__bg hero__bg--mobile'
+        }}
+      {%- endif -%}
     </div>
   {%- else -%}
     <div class="hero__media" style="background:linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);"></div>
@@ -67,7 +91,12 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Imagem de fundo"
+      "label": "Imagem — Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Imagem — Mobile (opcional)"
     },
     {
       "type": "select",

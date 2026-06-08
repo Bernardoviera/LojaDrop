@@ -14,7 +14,7 @@
       {%- endif -%}
     </div>
 
-    <div class="product-grid" style="--grid-cols:{{ section.settings.columns_desktop }}">
+    <div class="product-grid" style="--grid-cols-desktop:{{ section.settings.columns_desktop }}">
       {%- if featured_collection != blank -%}
         {%- for product in featured_collection.products limit: section.settings.products_to_show -%}
           {%- render 'card-product', product: product -%}
