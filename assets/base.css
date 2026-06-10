@@ -100,6 +100,25 @@ img, svg { display: block; max-width: 100%; }
   text-decoration: underline;
 }
 
+@media (max-width: 749px) {
+  .announcement-bar {
+    overflow: hidden;
+    padding: 1rem 0;
+  }
+  .announcement-bar p,
+  .announcement-bar a {
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 6rem;
+    animation: announcement-ticker 18s linear infinite;
+  }
+}
+
+@keyframes announcement-ticker {
+  0%   { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
 /* ---------- Header ---------- */
 .site-header {
   position: sticky;
