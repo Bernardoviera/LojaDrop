@@ -603,6 +603,29 @@ img, svg { display: block; max-width: 100%; }
 .featured-collection { }
 
 /* ---------- Image with Text ---------- */
+.image-with-text-section {
+  padding-top: var(--spacing-sections-desktop);
+  padding-bottom: var(--spacing-sections-desktop);
+}
+
+.iwt-logo {
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+.iwt-logo__text {
+  font-family: var(--font-heading-family);
+  font-size: 2.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #c9a96e;
+}
+
+.iwt-logo__img {
+  max-width: 160px;
+  height: auto;
+}
+
 .image-with-text {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -627,21 +650,32 @@ img, svg { display: block; max-width: 100%; }
 
 .image-with-text__content { padding: 2rem 0; }
 
+.image-with-text__content--centered {
+  max-width: 72rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .image-with-text__eyebrow {
   display: block;
   font-size: 1.2rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgb(var(--color-base-accent-1));
+  color: #c9a96e;
   margin-bottom: 1.6rem;
 }
 
 .image-with-text__title { margin-bottom: 2rem; }
 
+.image-with-text-section[style*="background-color: #1a1a1a"] .image-with-text__title,
+.image-with-text-section[style*="background-color: #1a1a2e"] .image-with-text__title {
+  color: #fff;
+}
+
 .image-with-text__text {
   font-size: 1.6rem;
   line-height: 1.8;
-  color: rgba(var(--color-base-text), 0.8);
+  opacity: 0.85;
   margin-bottom: 3.2rem;
 }
 

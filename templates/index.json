@@ -129,10 +129,13 @@
     "image-with-text": {
       "type": "image-with-text",
       "settings": {
+        "bg_color": "#1a1a1a",
+        "text_color_val": "#ffffff",
+        "show_logo": true,
         "layout": "image_first",
         "eyebrow": "Nuestra Historia",
         "title": "Nacimos para hacer brillar a la mujer moderna",
-        "text": "<p>En Bella Luna creemos que cada mujer merece sentirse única. Por eso seleccionamos cuidadosamente cada pieza — joyas, accesorios y moda — pensando en la mujer que sabe lo que quiere: elegancia, calidad y estilo propio.</p>",
+        "text": "<p>En Bella Luna cada pieza nace de una misma convicción: la mujer de hoy merece joyas y moda que estén a la altura de su fuerza, su elegancia y su personalidad única.</p><p>Seleccionamos cada accesorio, cada vestido y cada joya con el máximo cuidado, eligiendo materiales de calidad y diseños que resisten el paso del tiempo. Porque creemos que la verdadera elegancia no grita — simplemente brilla.</p><p>Bienvenida a Bella Luna. Aquí empieza tu historia.</p>",
         "button_label": "",
         "button_link": ""
       }

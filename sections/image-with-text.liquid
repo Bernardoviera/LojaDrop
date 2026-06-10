@@ -1,42 +1,61 @@
-<section class="section image-with-text-section">
+<section class="section image-with-text-section" style="background-color: {{ section.settings.bg_color }}; color: {{ section.settings.text_color_val }};">
   <div class="page-width">
-    <div class="image-with-text{% if section.settings.layout == 'image_second' %} image-with-text--reverse{% endif %}">
 
-      <div class="image-with-text__media">
-        {%- if section.settings.image != blank -%}
+    {%- if section.settings.show_logo -%}
+      <div class="iwt-logo">
+        {%- if section.settings.logo != blank -%}
+          {{
+            section.settings.logo
+            | image_url: width: 240
+            | image_tag: width: 160, alt: shop.name, class: 'iwt-logo__img'
+          }}
+        {%- else -%}
+          <span class="iwt-logo__text">{{ shop.name }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.image != blank -%}
+      <div class="image-with-text{% if section.settings.layout == 'image_second' %} image-with-text--reverse{% endif %}">
+        <div class="image-with-text__media">
           {{
             section.settings.image
             | image_url: width: 900
-            | image_tag:
-              loading: 'lazy',
-              width: 900,
-              alt: section.settings.title
+            | image_tag: loading: 'lazy', width: 900, alt: section.settings.title
           }}
-        {%- else -%}
-          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-        {%- endif -%}
+        </div>
+        <div class="image-with-text__content">
+          {%- if section.settings.eyebrow != blank -%}
+            <span class="image-with-text__eyebrow">{{ section.settings.eyebrow }}</span>
+          {%- endif -%}
+          {%- if section.settings.title != blank -%}
+            <h2 class="image-with-text__title">{{ section.settings.title }}</h2>
+          {%- endif -%}
+          {%- if section.settings.text != blank -%}
+            <div class="image-with-text__text">{{ section.settings.text }}</div>
+          {%- endif -%}
+          {%- if section.settings.button_label != blank -%}
+            <a href="{{ section.settings.button_link }}" class="btn btn--primary">{{ section.settings.button_label }}</a>
+          {%- endif -%}
+        </div>
       </div>
-
-      <div class="image-with-text__content">
+    {%- else -%}
+      <div class="image-with-text__content image-with-text__content--centered">
         {%- if section.settings.eyebrow != blank -%}
           <span class="image-with-text__eyebrow">{{ section.settings.eyebrow }}</span>
         {%- endif -%}
-
         {%- if section.settings.title != blank -%}
           <h2 class="image-with-text__title">{{ section.settings.title }}</h2>
         {%- endif -%}
-
         {%- if section.settings.text != blank -%}
           <div class="image-with-text__text">{{ section.settings.text }}</div>
         {%- endif -%}
-
         {%- if section.settings.button_label != blank -%}
-          <a href="{{ section.settings.button_link }}" class="btn btn--primary">
-            {{ section.settings.button_label }}
-          </a>
+          <a href="{{ section.settings.button_link }}" class="btn btn--primary">{{ section.settings.button_label }}</a>
         {%- endif -%}
       </div>
-    </div>
+    {%- endif -%}
+
   </div>
 </section>
 
@@ -46,9 +65,55 @@
   "tag": "section",
   "settings": [
     {
+      "type": "header",
+      "content": "Fondo y color"
+    },
+    {
+      "type": "select",
+      "id": "bg_color",
+      "label": "Color de fondo",
+      "options": [
+        { "value": "#ffffff", "label": "Blanco" },
+        { "value": "#f8f5f2", "label": "Crema (suave)" },
+        { "value": "#1a1a1a", "label": "Negro elegante" },
+        { "value": "#1a1a2e", "label": "Azul oscuro" },
+        { "value": "#c9a96e", "label": "Dorado" }
+      ],
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "select",
+      "id": "text_color_val",
+      "label": "Color del texto",
+      "options": [
+        { "value": "#ffffff", "label": "Blanco" },
+        { "value": "#1a1a1a", "label": "Negro" }
+      ],
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_logo",
+      "label": "Mostrar logo",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo (opcional, si no se sube usa el nombre de la tienda)"
+    },
+    {
+      "type": "header",
+      "content": "Contenido"
+    },
+    {
       "type": "select",
       "id": "layout",
-      "label": "Diseño",
+      "label": "Diseño (con imagen)",
       "options": [
         { "value": "image_first", "label": "Imagen a la izquierda" },
         { "value": "image_second", "label": "Imagen a la derecha" }
@@ -58,7 +123,7 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Imagen"
+      "label": "Imagen (opcional)"
     },
     {
       "type": "text",
@@ -68,19 +133,17 @@
     {
       "type": "text",
       "id": "title",
-      "default": "Sobre Nuestra Marca",
+      "default": "Nacimos para hacer brillar a la mujer moderna",
       "label": "Título"
     },
     {
       "type": "richtext",
       "id": "text",
-      "default": "<p>Creamos piezas de la más alta calidad, pensadas para mujeres que valoran la elegancia y la exclusividad en el día a día.</p>",
       "label": "Texto"
     },
     {
       "type": "text",
       "id": "button_label",
-      "default": "Saber más",
       "label": "Texto del botón"
     },
     {
