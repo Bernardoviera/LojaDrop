@@ -9,6 +9,21 @@
         <div class="footer__col">
           <h3 class="footer__col-title">{{ section.settings.policies_heading }}</h3>
           <ul class="footer__links">
+            {%- if shop.policies.refund_policy.body != blank -%}
+              <li><a href="{{ shop.policies.refund_policy.url }}">{{ shop.policies.refund_policy.title }}</a></li>
+            {%- endif -%}
+            {%- if shop.policies.privacy_policy.body != blank -%}
+              <li><a href="{{ shop.policies.privacy_policy.url }}">{{ shop.policies.privacy_policy.title }}</a></li>
+            {%- endif -%}
+            {%- if shop.policies.terms_of_service.body != blank -%}
+              <li><a href="{{ shop.policies.terms_of_service.url }}">{{ shop.policies.terms_of_service.title }}</a></li>
+            {%- endif -%}
+            {%- if shop.policies.shipping_policy.body != blank -%}
+              <li><a href="{{ shop.policies.shipping_policy.url }}">{{ shop.policies.shipping_policy.title }}</a></li>
+            {%- endif -%}
+            {%- if shop.policies.legal_notice.body != blank -%}
+              <li><a href="{{ shop.policies.legal_notice.url }}">{{ shop.policies.legal_notice.title }}</a></li>
+            {%- endif -%}
             {%- for link in section.settings.policies_menu.links -%}
               <li><a href="{{ link.url }}">{{ link.title }}</a></li>
             {%- endfor -%}
@@ -25,8 +40,11 @@
             {%- if section.settings.contact_email != blank -%}
               <p>E-mail: <a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></p>
             {%- endif -%}
+            {%- if section.settings.contact_phone != blank -%}
+              <p>Teléfono: <a href="tel:{{ section.settings.contact_phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' }}">{{ section.settings.contact_phone }}</a></p>
+            {%- endif -%}
             {%- if section.settings.contact_whatsapp != blank -%}
-              <p>Whatsapp: <a href="https://wa.me/55{{ section.settings.contact_whatsapp | remove: ' ' | remove: '-' | remove: '(' | remove: ')' }}">{{ section.settings.contact_whatsapp }}</a></p>
+              <p>WhatsApp: <a href="https://wa.me/{{ section.settings.contact_whatsapp | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '+' }}">{{ section.settings.contact_whatsapp }}</a></p>
             {%- endif -%}
           </div>
 
@@ -133,7 +151,7 @@
   <!-- Rodapé inferior -->
   <div class="footer__bottom">
     <div class="page-width">
-      <p class="footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos os direitos reservados.</p>
+      <p class="footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos los derechos reservados.</p>
     </div>
   </div>
 
@@ -178,10 +196,15 @@
     },
     {
       "type": "text",
+      "id": "contact_phone",
+      "label": "Teléfono de contacto",
+      "info": "Ej: +34 600 000 000"
+    },
+    {
+      "type": "text",
       "id": "contact_whatsapp",
-      "label": "WhatsApp",
-      "default": "(21) 97354-3216",
-      "info": "Inclua DDD. Ex: (21) 97354-3216"
+      "label": "WhatsApp (con prefijo de país)",
+      "info": "Ej: +34600000000"
     },
     {
       "type": "header",
