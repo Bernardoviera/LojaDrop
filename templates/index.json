@@ -130,10 +130,10 @@
       "type": "image-with-text",
       "settings": {
         "layout": "image_first",
-        "eyebrow": "Nuestra Esencia",
-        "title": "Hecho con Pasion y Calidad",
-        "text": "<p>Cada pieza de nuestra coleccion es cuidadosamente seleccionada pensando en ti. Creemos que la moda es expresion, y cada detalle cuenta en la construccion de tu estilo unico.</p>",
-        "button_label": "Conoce nuestra historia",
+        "eyebrow": "Nuestra Historia",
+        "title": "Nacimos para hacer brillar a la mujer moderna",
+        "text": "<p>En Bella Luna creemos que cada mujer merece sentirse única. Por eso seleccionamos cuidadosamente cada pieza — joyas, accesorios y moda — pensando en la mujer que sabe lo que quiere: elegancia, calidad y estilo propio.</p>",
+        "button_label": "Conoce más sobre nosotros",
         "button_link": "/pages/sobre-nosotros"
       }
     },
