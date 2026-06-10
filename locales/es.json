@@ -1,0 +1,70 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "header": {
+      "announcement": "Barra de notificaciones"
+    },
+    "cart": {
+      "title": "Carrito",
+      "cart_count": "{{ count }} artículos en el carrito",
+      "cart_error": "No se pudo añadir al carrito.",
+      "cart_quantity_error_html": "Solo nos queda <strong>{{ quantity }}</strong> de este artículo."
+    },
+    "slideshow": {
+      "pause_slideshow": "Pausar pase de diapositivas",
+      "play_slideshow": "Reproducir presentación"
+    }
+  },
+  "general": {
+    "search": {
+      "placeholder": "Buscar productos...",
+      "no_results": "No se encontraron resultados para \"{{ terms }}\""
+    },
+    "share": {
+      "success_message": "¡Enlace copiado!"
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Saltar al contenido principal",
+    "refresh_page": "Página actualizada",
+    "link_messages": {
+      "new_window": "Abrir en una ventana nueva"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Añadir al carrito",
+      "sold_out": "Agotado",
+      "unavailable": "No disponible",
+      "value_unavailable": "{{ option_value }} - no disponible",
+      "media": {
+        "image_available": "Imagen {{ index }}"
+      }
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Cuenta"
+    }
+  },
+  "newsletter": {
+    "success": "¡Gracias por registrarte!"
+  },
+  "recipient": {
+    "form": {
+      "expanded": "Formulario ampliado",
+      "collapsed": "Formulario recogido"
+    }
+  },
+  "cart": {
+    "item_quantity": "Cantidad"
+  }
+}
