@@ -36,24 +36,24 @@
           "type": "badge",
           "settings": {
             "icon": "🚚",
-            "title": "Frete Grátis",
-            "text": "Pedidos acima de R$250"
+            "title": "Envío Gratis",
+            "text": "Pedidos superiores a 50€"
           }
         },
         "badge-2": {
           "type": "badge",
           "settings": {
             "icon": "💳",
-            "title": "Parcele em 12x",
-            "text": "Sem juros no cartão"
+            "title": "Paga en Cuotas",
+            "text": "Sin intereses"
           }
         },
         "badge-3": {
           "type": "badge",
           "settings": {
             "icon": "🔄",
-            "title": "Troca Fácil",
-            "text": "30 dias para devolver"
+            "title": "Devolución Fácil",
+            "text": "30 días para devolver"
           }
         },
         "badge-4": {
@@ -61,7 +61,7 @@
           "settings": {
             "icon": "🔒",
             "title": "Compra Segura",
-            "text": "Site 100% protegido"
+            "text": "Web 100% protegida"
           }
         }
       },
