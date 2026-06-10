@@ -86,7 +86,7 @@
         "type": "announcement-bar",
         "settings": {
           "show_announcement": true,
-          "announcement_text": "Envio gratis en pedidos superiores a 50EUR • Usa el codigo BIENVENIDO10 para 10% dto",
+          "announcement_text": "Envío gratis en pedidos superiores a 50€ • Usa el código BIENVENIDO10 para 10% dto",
           "announcement_link": ""
         }
       },
