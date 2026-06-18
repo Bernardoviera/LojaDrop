@@ -105,12 +105,19 @@ img, svg { display: block; max-width: 100%; }
     overflow: hidden;
     padding: 1rem 0;
   }
+}
+
+@media (max-width: 749px) and (prefers-reduced-motion: no-preference) {
   .announcement-bar p,
   .announcement-bar a {
     display: inline-block;
     white-space: nowrap;
     padding-right: 6rem;
     animation: announcement-ticker 18s linear infinite;
+  }
+  .announcement-bar:hover p,
+  .announcement-bar:hover a {
+    animation-play-state: paused;
   }
 }
 
@@ -188,6 +195,11 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .header__nav {
+  display: flex;
+  align-items: center;
+}
+
+.header__nav-list {
   display: flex;
   align-items: center;
   gap: 3rem;
@@ -299,6 +311,7 @@ img, svg { display: block; max-width: 100%; }
   min-height: 60vh;
   display: flex;
   align-items: center;
+  color: #fff;
 }
 
 .hero--full-height { min-height: 100vh; }
@@ -345,20 +358,22 @@ img, svg { display: block; max-width: 100%; }
   font-size: 1.2rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.8);
+  color: inherit;
+  opacity: 0.8;
   margin-bottom: 1.6rem;
 }
 
 .hero__title {
   font-size: clamp(3.2rem, 6vw, 7rem);
-  color: #fff;
+  color: inherit;
   margin-bottom: 2rem;
   text-shadow: 0 2px 20px rgba(0,0,0,0.2);
 }
 
 .hero__subtitle {
   font-size: 1.7rem;
-  color: rgba(255,255,255,0.9);
+  color: inherit;
+  opacity: 0.9;
   max-width: 56rem;
   margin: 0 auto 3.2rem;
 }
