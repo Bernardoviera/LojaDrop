@@ -87,6 +87,7 @@
         "cat-2": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_18_de_jun._de_2026_16_35_43.png",
             "title": "",
             "cta_label": "Ver coleção",
             "link": "shopify://collections/diversos"
