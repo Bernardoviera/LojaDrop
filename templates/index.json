@@ -115,7 +115,7 @@
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
-        "collection": "acessorios",
+        "collection": "diversos",
         "eyebrow": "Mais Vendidos",
         "title": "Produtos em Destaque",
         "subtitle": "Os favoritos dos nossos clientes",
