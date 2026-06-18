@@ -12,15 +12,14 @@
     "hero-banner": {
       "type": "hero-banner",
       "settings": {
-        "image": "shopify://shop_images/lucid-realism_a_cinematic_photo_of_Elegant_Brazilian_woman_from_waist_up_wearing_layered_gold_-1.jpg",
-        "image_mobile": "shopify://shop_images/WhatsApp_Image_2026-06-08_at_09.36.04.jpg",
+        "image": "shopify://shop_images/ChatGPT_Image_18_de_jun._de_2026_14_29_17.png",
         "height_option": "full-height",
         "content_alignment": "center",
         "eyebrow": "",
-        "title": "Elegance That Transforms",
-        "subtitle": "Discover exclusive fashion pieces and jewelry created for women with style",
+        "title": "",
+        "subtitle": "",
         "text_color": "light",
-        "button_label": "Explore Collection",
+        "button_label": "",
         "button_link": "",
         "button2_label": "",
         "button2_link": "",
@@ -79,7 +78,6 @@
         "cat-1": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/S2f9b7ab8b06d4b699c278e2299ae2961O.webp",
             "title": "Dresses",
             "cta_label": "View collection",
             "link": "shopify://collections/vestidos"
@@ -88,7 +86,6 @@
         "cat-2": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/Sd847311d2ebe4713a219298464d8df86H.webp",
             "title": "Jewelry",
             "cta_label": "View collection",
             "link": "shopify://collections/joias"
@@ -97,7 +94,6 @@
         "cat-3": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/Sf97e723b561744d69b3e9f7b2f20eb70Y.webp",
             "title": "Accessories",
             "cta_label": "View collection",
             "link": "shopify://collections/acessorios"
