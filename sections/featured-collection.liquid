@@ -21,9 +21,10 @@
         {%- endfor -%}
       {%- else -%}
         {%- for i in (1..section.settings.products_to_show) -%}
+          {%- assign placeholder_idx = i | minus: 1 | modulo: 6 | plus: 1 -%}
           <div class="product-card">
             <div class="product-card__media">
-              {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+              {{ 'product-' | append: placeholder_idx | placeholder_svg_tag: 'placeholder-svg' }}
             </div>
             <div class="product-card__info">
               <div class="product-card__title">Produto de exemplo {{ i }}</div>
