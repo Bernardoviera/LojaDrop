@@ -18,7 +18,7 @@
         {%- if product.images.size > 1 -%}
           <div class="product-media__thumbnails">
             {%- for image in product.images limit: 8 -%}
-              <div class="product-media__thumb{% if forloop.first %} is-active{% endif %}">
+              <div class="product-media__thumb{% if forloop.first %} is-active{% endif %}" data-full="{{ image | image_url: width: 900 }}">
                 {{
                   image
                   | image_url: width: 200
@@ -50,9 +50,9 @@
 
         {%- form 'product', product,
           id: 'product-form',
-          class: 'product-form',
-          data-variants: product.variants_json
+          class: 'product-form'
         -%}
+          <script type="application/json" data-product-variants>{{ product.variants | json }}</script>
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
           <!-- Variant options -->

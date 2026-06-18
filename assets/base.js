@@ -16,13 +16,16 @@ function syncHeaderHeight() {
 }
 syncHeaderHeight();
 window.addEventListener('resize', syncHeaderHeight, { passive: true });
+// item 3: re-measure after fonts/images settle
+window.addEventListener('load', syncHeaderHeight);
+document.fonts.ready.then(syncHeaderHeight);
+if (siteHeader) new ResizeObserver(syncHeaderHeight).observe(siteHeader);
 
 // ─── Header scroll effect ──────────────────────────────────────────
 if (siteHeader) {
   const heroSection = document.querySelector('.hero-section');
 
   if (heroSection && document.body.classList.contains('template-index')) {
-    // Na página inicial: cabeçalho fica transparente enquanto o hero estiver visível
     const observer = new IntersectionObserver(
       entries => siteHeader.classList.toggle('scrolled', !entries[0].isIntersecting),
       { threshold: 0.05 }
@@ -36,23 +39,34 @@ if (siteHeader) {
 }
 
 // ─── Mobile nav ────────────────────────────────────────────────────
-const hamburger = document.querySelector('.header__hamburger');
-const mobileNav = document.querySelector('.mobile-nav');
-const mobileClose = document.querySelector('.mobile-nav__close');
+// item 2 + 14: encapsulated so it can be re-run on shopify:section:load,
+// with ARIA updates and Escape-key support.
+function initMobileNav() {
+  const hamburger = document.querySelector('.header__hamburger');
+  const mobileNav  = document.querySelector('.mobile-nav');
+  const mobileClose = document.querySelector('.mobile-nav__close');
+  if (!hamburger || !mobileNav || hamburger._navInit) return;
+  hamburger._navInit = true;
 
-if (hamburger && mobileNav) {
-  hamburger.addEventListener('click', () => {
+  const openNav = () => {
     mobileNav.classList.add('is-open');
     document.body.style.overflow = 'hidden';
-  });
-}
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileNav.setAttribute('aria-hidden', 'false');
+  };
 
-if (mobileClose && mobileNav) {
-  mobileClose.addEventListener('click', () => {
+  const closeNav = () => {
     mobileNav.classList.remove('is-open');
     document.body.style.overflow = '';
-  });
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileNav.setAttribute('aria-hidden', 'true');
+  };
+
+  hamburger.addEventListener('click', openNav);
+  if (mobileClose) mobileClose.addEventListener('click', closeNav);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
 }
+initMobileNav();
 
 // ─── Cart Drawer ───────────────────────────────────────────────────
 class CartDrawer {
@@ -60,14 +74,17 @@ class CartDrawer {
     this.drawer = document.querySelector('.cart-drawer');
     this.overlay = document.querySelector('.cart-drawer-overlay');
     this.closeBtn = document.querySelector('.cart-drawer__close');
-    this.cartButtons = document.querySelectorAll('[data-open-cart]');
 
     if (!this.drawer) return;
     this.bindEvents();
+    this.bindCartItemEvents(); // item 5: bind once here, not on every render
   }
 
   bindEvents() {
-    this.cartButtons.forEach(btn => btn.addEventListener('click', () => this.open()));
+    // item 6 / item 2: use document delegation so re-created sections still work
+    document.addEventListener('click', e => {
+      if (e.target.closest('[data-open-cart]')) this.open();
+    });
     if (this.overlay) this.overlay.addEventListener('click', () => this.close());
     if (this.closeBtn) this.closeBtn.addEventListener('click', () => this.close());
     document.addEventListener('keydown', e => { if (e.key === 'Escape') this.close(); });
@@ -75,14 +92,14 @@ class CartDrawer {
 
   open() {
     this.drawer.classList.add('is-open');
-    this.overlay.classList.add('is-open');
+    if (this.overlay) this.overlay.classList.add('is-open');
     document.body.style.overflow = 'hidden';
     this.fetchCart();
   }
 
   close() {
     this.drawer.classList.remove('is-open');
-    this.overlay.classList.remove('is-open');
+    if (this.overlay) this.overlay.classList.remove('is-open');
     document.body.style.overflow = '';
   }
 
@@ -127,8 +144,7 @@ class CartDrawer {
     }
 
     if (subtotalEl) subtotalEl.textContent = this.formatMoney(cart.total_price);
-
-    this.bindCartItemEvents();
+    // item 5: do NOT call bindCartItemEvents here — already bound in constructor
   }
 
   bindCartItemEvents() {
@@ -142,6 +158,7 @@ class CartDrawer {
       if (btn) {
         const key = btn.dataset.key;
         const input = itemsContainer.querySelector(`.quantity-input[data-key="${key}"]`);
+        if (!input) return;
         let qty = parseInt(input.value);
         qty = btn.dataset.action === 'increase' ? qty + 1 : Math.max(0, qty - 1);
         await this.updateItem(key, qty);
@@ -192,21 +209,17 @@ async function addToCart(variantId, quantity = 1) {
 
     if (!res.ok) throw new Error('Error al añadir al carrito');
 
-    const item = await res.json();
+    await res.json();
 
-    // Refresh cart count
     const cartRes = await fetch('/cart.js');
     const cart = await cartRes.json();
     updateCartCount(cart.item_count);
 
-    // Open drawer or redirect
-    const cartDrawer = document.querySelector('.cart-drawer');
-    if (cartDrawer) {
+    if (document.querySelector('.cart-drawer')) {
       window.cartDrawer?.open();
     }
 
     showToast('¡Artículo añadido al carrito!');
-    return item;
   } catch (e) {
     showToast('Error al añadir al carrito.', 'error');
     throw e;
@@ -230,7 +243,11 @@ function showToast(message) {
 class VariantPicker {
   constructor(form) {
     this.form = form;
-    this.variants = JSON.parse(form.dataset.variants || '[]');
+    // item 11: prefer <script type="application/json" data-product-variants>
+    const jsonEl = form.querySelector('[data-product-variants]');
+    this.variants = JSON.parse(
+      jsonEl ? jsonEl.textContent : (form.dataset.variants || '[]')
+    );
     this.currentVariant = this.variants[0] || null;
     this.bindEvents();
     this.updateUI();
@@ -240,7 +257,6 @@ class VariantPicker {
     this.form.querySelectorAll('.variant-opt').forEach(btn => {
       btn.addEventListener('click', () => {
         const option = btn.dataset.option;
-        const value = btn.dataset.value;
         this.form.querySelectorAll(`.variant-opt[data-option="${option}"]`).forEach(b => b.classList.remove('is-selected'));
         btn.classList.add('is-selected');
         this.updateVariant();
@@ -280,8 +296,8 @@ class VariantPicker {
 
   updateUI() {
     const priceEl = this.form.closest('.product-info')?.querySelector('.product-info__price');
-    const addBtn = this.form.querySelector('[data-add-to-cart]');
-    const stockEl = this.form.closest('.product-info')?.querySelector('.product-info__stock');
+    const addBtn  = this.form.querySelector('[data-add-to-cart]');
+    // item 20: .product-info__stock is never rendered — references removed
 
     if (!this.currentVariant) {
       if (addBtn) { addBtn.disabled = true; addBtn.textContent = 'No disponible'; }
@@ -304,11 +320,6 @@ class VariantPicker {
       addBtn.textContent = this.currentVariant.available ? 'Añadir al carrito' : 'Agotado';
     }
 
-    if (stockEl) {
-      stockEl.textContent = this.currentVariant.available ? 'En stock' : 'Agotado';
-    }
-
-    // Update URL
     const url = new URL(window.location.href);
     url.searchParams.set('variant', this.currentVariant.id);
     window.history.replaceState({}, '', url.toString());
@@ -318,7 +329,7 @@ class VariantPicker {
 // ─── Product media gallery ─────────────────────────────────────────
 class ProductGallery {
   constructor(gallery) {
-    this.main = gallery.querySelector('.product-media__main img');
+    this.main   = gallery.querySelector('.product-media__main img');
     this.thumbs = gallery.querySelectorAll('.product-media__thumb');
     this.bindEvents();
   }
@@ -326,8 +337,9 @@ class ProductGallery {
   bindEvents() {
     this.thumbs.forEach(thumb => {
       thumb.addEventListener('click', () => {
-        const src = thumb.querySelector('img').src;
-        if (this.main) this.main.src = src;
+        // item 10: use data-full for full-resolution src
+        const fullSrc = thumb.dataset.full || thumb.querySelector('img').src;
+        if (this.main) this.main.src = fullSrc;
         this.thumbs.forEach(t => t.classList.remove('is-active'));
         thumb.classList.add('is-active');
       });
@@ -335,49 +347,79 @@ class ProductGallery {
   }
 }
 
-// ─── Quantity selectors ────────────────────────────────────────────
-document.querySelectorAll('.quantity-selector').forEach(selector => {
-  selector.addEventListener('click', e => {
-    const btn = e.target.closest('.quantity-btn');
-    if (!btn) return;
-    const input = selector.querySelector('.quantity-input');
-    let val = parseInt(input.value) || 1;
-    if (btn.textContent.trim() === '+' || btn.dataset.action === 'increase') {
-      val += 1;
-    } else {
-      val = Math.max(1, val - 1);
-    }
-    input.value = val;
+// ─── Quantity selectors (outside cart drawer) ──────────────────────
+// item 5: skip drawer selectors to avoid double-updating with the drawer handler
+function initQuantitySelectors(root = document) {
+  root.querySelectorAll('.quantity-selector').forEach(selector => {
+    if (selector.closest('.cart-drawer') || selector._qtyInit) return;
+    selector._qtyInit = true;
+    selector.addEventListener('click', e => {
+      const btn = e.target.closest('.quantity-btn');
+      if (!btn) return;
+      const input = selector.querySelector('.quantity-input');
+      let val = parseInt(input.value) || 1;
+      val = (btn.textContent.trim() === '+' || btn.dataset.action === 'increase') ? val + 1 : Math.max(1, val - 1);
+      input.value = val;
+    });
   });
-});
+}
 
 // ─── Init ──────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   window.cartDrawer = new CartDrawer();
 
-  // Variant pickers
-  document.querySelectorAll('.product-form[data-variants]').forEach(form => {
-    new VariantPicker(form);
+  document.querySelectorAll('.product-form').forEach(form => {
+    if (form.querySelector('[data-product-variants]') || form.dataset.variants) {
+      new VariantPicker(form);
+    }
   });
 
-  // Product galleries
   document.querySelectorAll('.product-media-gallery').forEach(gallery => {
     new ProductGallery(gallery);
   });
 
-  // Quick add buttons
-  document.querySelectorAll('[data-quick-add]').forEach(btn => {
-    btn.addEventListener('click', async (e) => {
-      e.preventDefault();
-      const variantId = btn.dataset.quickAdd;
-      btn.textContent = '...';
-      try {
-        await addToCart(variantId);
-        btn.textContent = '¡Añadido!';
-        setTimeout(() => { btn.textContent = 'Añadir'; }, 2000);
-      } catch {
-        btn.textContent = 'Error';
-      }
-    });
+  initQuantitySelectors();
+
+  // item 2: use document delegation for quick-add — survives section re-renders
+  document.addEventListener('click', async (e) => {
+    const btn = e.target.closest('[data-quick-add]');
+    if (!btn || btn._qaRunning) return;
+    e.preventDefault();
+    btn._qaRunning = true;
+    const variantId = btn.dataset.quickAdd;
+    const orig = btn.textContent;
+    btn.textContent = '...';
+    try {
+      await addToCart(variantId);
+      btn.textContent = '¡Añadido!';
+      setTimeout(() => { btn.textContent = orig; btn._qaRunning = false; }, 2000);
+    } catch {
+      btn.textContent = 'Error';
+      setTimeout(() => { btn.textContent = orig; btn._qaRunning = false; }, 2000);
+    }
   });
+});
+
+// ─── Shopify Theme Editor re-init ──────────────────────────────────
+// item 2: re-run initializers when a section is reloaded in the editor
+document.addEventListener('shopify:section:load', (event) => {
+  syncHeaderHeight();
+  initMobileNav();
+
+  const section = event.target;
+
+  if (section.querySelector('.cart-drawer')) {
+    window.cartDrawer = new CartDrawer();
+  }
+
+  section.querySelectorAll?.('.product-form').forEach(form => {
+    const hasV = form.querySelector('[data-product-variants]') || form.dataset.variants;
+    if (hasV && !form._picker) form._picker = new VariantPicker(form);
+  });
+
+  section.querySelectorAll?.('.product-media-gallery').forEach(gallery => {
+    if (!gallery._gallery) gallery._gallery = new ProductGallery(gallery);
+  });
+
+  initQuantitySelectors(section);
 });
