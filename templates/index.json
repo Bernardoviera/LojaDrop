@@ -78,7 +78,7 @@
         "cat-1": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_18_de_jun._de_2026_16_24_19.png",
+            "image": "shopify://shop_images/ChatGPT_Image_18_de_jun._de_2026_16_50_16.png",
             "title": "",
             "cta_label": "Ver coleção",
             "link": "shopify://collections/bolsas"
@@ -87,7 +87,7 @@
         "cat-2": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_18_de_jun._de_2026_16_35_43.png",
+            "image": "shopify://shop_images/ChatGPT_Image_18_de_jun._de_2026_16_50_16_12575923-4411-472e-8af2-1780be949bd3.png",
             "title": "",
             "cta_label": "Ver coleção",
             "link": "shopify://collections/diversos"
@@ -96,9 +96,10 @@
         "cat-3": {
           "type": "category",
           "settings": {
-            "title": "Acessórios",
+            "image": "shopify://shop_images/ChatGPT_Image_18_de_jun._de_2026_16_50_16_9f362bfc-3626-4e54-9444-8860c71f85de.png",
+            "title": "",
             "cta_label": "Ver coleção",
-            "link": "shopify://collections/acessorios"
+            "link": "shopify://collections/decoracao"
           }
         }
       },
