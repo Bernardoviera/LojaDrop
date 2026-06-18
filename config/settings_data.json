@@ -86,7 +86,7 @@
         "type": "announcement-bar",
         "settings": {
           "show_announcement": true,
-          "announcement_text": "Free shipping on orders over €50 • Use code WELCOME10 for 10% off",
+          "announcement_text": "Frete grátis em pedidos acima de R$250 • Use o cupom BEM-VINDO10 e ganhe 10% de desconto",
           "announcement_link": ""
         }
       },
@@ -103,17 +103,17 @@
       "footer": {
         "type": "footer",
         "settings": {
-          "policies_heading": "Policies",
+          "policies_heading": "Políticas",
           "policies_menu": "footer",
-          "company_name": "BELLA LUNA STORE S.L.",
+          "company_name": "BELLA LUNA STORE LTDA",
           "contact_email": "bellalunastoreespana@gmail.com",
           "contact_phone": "+55 31999146713",
           "contact_whatsapp": "",
           "show_newsletter": true,
-          "newsletter_text": "Subscribe and receive our offers by email",
-          "newsletter_placeholder": "Your email",
-          "newsletter_button": "Subscribe",
-          "social_heading": "Follow us",
+          "newsletter_text": "Cadastre-se e receba nossas ofertas por e-mail",
+          "newsletter_placeholder": "Seu e-mail",
+          "newsletter_button": "Enviar",
+          "social_heading": "Siga-nos",
           "social_facebook": "",
           "social_instagram": "",
           "social_youtube": "",
@@ -122,9 +122,9 @@
           "seal_google": true,
           "seal_ssl": true,
           "seal_site_blindado": true,
-          "seals_text": "Security Seals — 100% Secure Store.",
+          "seals_text": "Selos de Garantia — Loja 100% Segura.",
           "show_payment": true,
-          "payment_heading": "We Accept"
+          "payment_heading": "Aceitamos"
         }
       }
     },

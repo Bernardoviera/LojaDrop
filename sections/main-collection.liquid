@@ -13,16 +13,16 @@
     <div class="collection-toolbar">
       <span class="collection-toolbar__count">
         {{ collection.products_count }}
-        {%- if collection.products_count == 1 -%} product{%- else -%} products{%- endif -%}
+        {%- if collection.products_count == 1 -%} produto{%- else -%} produtos{%- endif -%}
       </span>
       <div class="collection-toolbar__sort">
-        <label for="sort-select">Sort by:</label>
+        <label for="sort-select">Ordenar por:</label>
         <select id="sort-select" name="sort_by" class="sort-select" onchange="(function(v){var u=new URL(window.location.href);u.searchParams.set('sort_by',v);u.searchParams.delete('page');window.location.href=u.toString();})(this.value)">
-          <option value="manual"{% if collection.sort_by == 'manual' %} selected{% endif %}>Featured</option>
-          <option value="best-selling"{% if collection.sort_by == 'best-selling' %} selected{% endif %}>Best selling</option>
-          <option value="price-ascending"{% if collection.sort_by == 'price-ascending' %} selected{% endif %}>Price: low to high</option>
-          <option value="price-descending"{% if collection.sort_by == 'price-descending' %} selected{% endif %}>Price: high to low</option>
-          <option value="created-descending"{% if collection.sort_by == 'created-descending' %} selected{% endif %}>Newest</option>
+          <option value="manual"{% if collection.sort_by == 'manual' %} selected{% endif %}>Destaques</option>
+          <option value="best-selling"{% if collection.sort_by == 'best-selling' %} selected{% endif %}>Mais vendidos</option>
+          <option value="price-ascending"{% if collection.sort_by == 'price-ascending' %} selected{% endif %}>Menor preço</option>
+          <option value="price-descending"{% if collection.sort_by == 'price-descending' %} selected{% endif %}>Maior preço</option>
+          <option value="created-descending"{% if collection.sort_by == 'created-descending' %} selected{% endif %}>Mais novos</option>
           <option value="title-ascending"{% if collection.sort_by == 'title-ascending' %} selected{% endif %}>A-Z</option>
         </select>
       </div>
@@ -38,7 +38,7 @@
       {%- if paginate.pages > 1 -%}
         <nav class="pagination" style="display:flex;justify-content:center;gap:1rem;margin-top:5rem">
           {%- if paginate.previous -%}
-            <a href="{{ paginate.previous.url }}" class="btn btn--secondary">&lsaquo; Previous</a>
+            <a href="{{ paginate.previous.url }}" class="btn btn--secondary">&lsaquo; Anterior</a>
           {%- endif -%}
           {%- for part in paginate.parts -%}
             {%- if part.is_link -%}
@@ -48,13 +48,13 @@
             {%- endif -%}
           {%- endfor -%}
           {%- if paginate.next -%}
-            <a href="{{ paginate.next.url }}" class="btn btn--secondary">Next &rsaquo;</a>
+            <a href="{{ paginate.next.url }}" class="btn btn--secondary">Próximo &rsaquo;</a>
           {%- endif -%}
         </nav>
       {%- endif -%}
     {%- else -%}
       <p style="text-align:center;padding:6rem 0;color:rgba(var(--color-base-text),0.6)">
-        No products found in this collection.
+        Nenhum produto encontrado nesta coleção.
       </p>
     {%- endif -%}
     {%- endpaginate -%}

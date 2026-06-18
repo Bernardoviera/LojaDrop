@@ -14,31 +14,31 @@
 
 {% schema %}
 {
-  "name": "Barra de Confianza",
+  "name": "Barra de Confiança",
   "tag": "section",
   "max_blocks": 4,
   "settings": [],
   "blocks": [
     {
       "type": "badge",
-      "name": "Icono",
+      "name": "Ícone",
       "settings": [
         {
           "type": "text",
           "id": "icon",
           "default": "🚚",
-          "label": "Emoji / Icono"
+          "label": "Emoji / Ícone"
         },
         {
           "type": "text",
           "id": "title",
-          "default": "Free Shipping",
+          "default": "Frete Grátis",
           "label": "Título"
         },
         {
           "type": "text",
           "id": "text",
-          "default": "Orders over €50",
+          "default": "Pedidos acima de R$250",
           "label": "Texto"
         }
       ]
@@ -46,12 +46,12 @@
   ],
   "presets": [
     {
-      "name": "Barra de Confianza",
+      "name": "Barra de Confiança",
       "blocks": [
-        { "type": "badge", "settings": { "icon": "🚚", "title": "Free Shipping", "text": "Orders over €50" } },
-        { "type": "badge", "settings": { "icon": "💳", "title": "Pay in Installments", "text": "Interest-free" } },
-        { "type": "badge", "settings": { "icon": "🔄", "title": "Easy Returns", "text": "30 days to return" } },
-        { "type": "badge", "settings": { "icon": "🔒", "title": "Secure Shopping", "text": "100% protected website" } }
+        { "type": "badge", "settings": { "icon": "🚚", "title": "Frete Grátis", "text": "Pedidos acima de R$250" } },
+        { "type": "badge", "settings": { "icon": "💳", "title": "Parcelamento", "text": "Sem juros" } },
+        { "type": "badge", "settings": { "icon": "🔄", "title": "Troca Fácil", "text": "30 dias para trocar" } },
+        { "type": "badge", "settings": { "icon": "🔒", "title": "Compra Segura", "text": "Site 100% protegido" } }
       ]
     }
   ]

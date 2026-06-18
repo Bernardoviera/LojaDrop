@@ -28,7 +28,7 @@
             </div>
             <div class="product-card__info">
               <div class="product-card__title">Sample product {{ i }}</div>
-              <div class="price"><span class="price__regular">€ 129,00</span></div>
+              <div class="price"><span class="price__regular">R$ 129,00</span></div>
             </div>
           </div>
         {%- endfor -%}
@@ -47,24 +47,24 @@
 
 {% schema %}
 {
-  "name": "Colección Destacada",
+  "name": "Coleção em Destaque",
   "tag": "section",
   "settings": [
     {
       "type": "collection",
       "id": "collection",
-      "label": "Colección"
+      "label": "Coleção"
     },
     {
       "type": "text",
       "id": "eyebrow",
       "label": "Supertítulo",
-      "default": "Destacados"
+      "default": "Destaques"
     },
     {
       "type": "text",
       "id": "title",
-      "default": "Nueva Colección",
+      "default": "Nova Coleção",
       "label": "Título"
     },
     {
@@ -79,7 +79,7 @@
       "max": 12,
       "step": 1,
       "default": 8,
-      "label": "Número de productos"
+      "label": "Número de produtos"
     },
     {
       "type": "range",
@@ -88,24 +88,24 @@
       "max": 5,
       "step": 1,
       "default": 4,
-      "label": "Columnas en escritorio"
+      "label": "Colunas no desktop"
     },
     {
       "type": "checkbox",
       "id": "show_view_all",
       "default": true,
-      "label": "Mostrar botón 'Ver todos'"
+      "label": "Mostrar botão 'Ver todos'"
     },
     {
       "type": "text",
       "id": "view_all_text",
-      "default": "View full collection",
-      "label": "Texto del botón"
+      "default": "Ver coleção completa",
+      "label": "Texto do botão"
     }
   ],
   "presets": [
     {
-      "name": "Colección Destacada"
+      "name": "Coleção em Destaque"
     }
   ]
 }

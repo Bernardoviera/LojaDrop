@@ -1,9 +1,9 @@
 <div class="cart-drawer-overlay" aria-hidden="true"></div>
 
-<div class="cart-drawer" id="cart-drawer" role="dialog" aria-label="Cart" aria-modal="true">
+<div class="cart-drawer" id="cart-drawer" role="dialog" aria-label="Carrinho" aria-modal="true">
   <div class="cart-drawer__header">
-    <h2 class="cart-drawer__title">Cart ({{ cart.item_count }})</h2>
-    <button class="cart-drawer__close" aria-label="Close cart">
+    <h2 class="cart-drawer__title">Carrinho ({{ cart.item_count }})</h2>
+    <button class="cart-drawer__close" aria-label="Fechar carrinho">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
         <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
       </svg>
@@ -32,7 +32,7 @@
               <input class="quantity-input" type="number" value="{{ item.quantity }}" min="1" data-key="{{ item.key }}" style="width:4rem">
               <button class="quantity-btn" data-action="increase" data-key="{{ item.key }}">+</button>
             </div>
-            <button class="cart-item__remove" data-key="{{ item.key }}">Remove</button>
+            <button class="cart-item__remove" data-key="{{ item.key }}">Remover</button>
           </div>
         </div>
       </div>
@@ -44,11 +44,11 @@
       <span>Subtotal</span>
       <span class="cart-drawer__subtotal-value">{{ cart.total_price | money }}</span>
     </div>
-    <p class="cart-drawer__note">Shipping and taxes calculated at checkout</p>
-    <a href="/checkout" class="btn btn--primary btn--full">Checkout</a>
+    <p class="cart-drawer__note">Frete e impostos calculados no checkout</p>
+    <a href="/checkout" class="btn btn--primary btn--full">Finalizar pedido</a>
     <div style="text-align:center;margin-top:1.2rem">
       <a href="{{ routes.cart_url }}" style="font-size:1.3rem;text-decoration:underline;color:rgba(var(--color-base-text),0.6)">
-        View full cart
+        Ver carrinho completo
       </a>
     </div>
   </div>
@@ -56,6 +56,6 @@
 
 {% schema %}
 {
-  "name": "Cart Drawer"
+  "name": "Carrinho"
 }
 {% endschema %}

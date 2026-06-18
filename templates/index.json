@@ -35,32 +35,32 @@
           "type": "badge",
           "settings": {
             "icon": "🚚",
-            "title": "Free Shipping",
-            "text": "Orders over €50"
+            "title": "Frete Grátis",
+            "text": "Pedidos acima de R$250"
           }
         },
         "badge-2": {
           "type": "badge",
           "settings": {
             "icon": "💳",
-            "title": "Pay in Installments",
-            "text": "Interest-free"
+            "title": "Parcelamento",
+            "text": "Sem juros"
           }
         },
         "badge-3": {
           "type": "badge",
           "settings": {
             "icon": "🔄",
-            "title": "Easy Returns",
-            "text": "30 days to return"
+            "title": "Troca Fácil",
+            "text": "30 dias para trocar"
           }
         },
         "badge-4": {
           "type": "badge",
           "settings": {
             "icon": "🔒",
-            "title": "Secure Shopping",
-            "text": "100% protected website"
+            "title": "Compra Segura",
+            "text": "Site 100% protegido"
           }
         }
       },
@@ -78,24 +78,24 @@
         "cat-1": {
           "type": "category",
           "settings": {
-            "title": "Dresses",
-            "cta_label": "View collection",
+            "title": "Vestidos",
+            "cta_label": "Ver coleção",
             "link": "shopify://collections/vestidos"
           }
         },
         "cat-2": {
           "type": "category",
           "settings": {
-            "title": "Jewelry",
-            "cta_label": "View collection",
+            "title": "Joias",
+            "cta_label": "Ver coleção",
             "link": "shopify://collections/joias"
           }
         },
         "cat-3": {
           "type": "category",
           "settings": {
-            "title": "Accessories",
-            "cta_label": "View collection",
+            "title": "Acessórios",
+            "cta_label": "Ver coleção",
             "link": "shopify://collections/acessorios"
           }
         }
@@ -106,20 +106,20 @@
         "cat-3"
       ],
       "settings": {
-        "title": "Explore Our Categories"
+        "title": "Explore Nossas Categorias"
       }
     },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
         "collection": "acessorios",
-        "eyebrow": "Best Sellers",
-        "title": "Featured Products",
-        "subtitle": "Our customers' favourites",
+        "eyebrow": "Mais Vendidos",
+        "title": "Produtos em Destaque",
+        "subtitle": "Os favoritos dos nossos clientes",
         "products_to_show": 8,
         "columns_desktop": 4,
         "show_view_all": true,
-        "view_all_text": "View full collection"
+        "view_all_text": "Ver coleção completa"
       }
     },
     "image-with-text": {
@@ -129,9 +129,9 @@
         "text_color_val": "#ffffff",
         "show_logo": true,
         "layout": "image_first",
-        "eyebrow": "Our Story",
-        "title": "Born to make the modern woman shine",
-        "text": "<p>At Bella Luna every piece is born from the same conviction: today's woman deserves jewellery and fashion that match her strength, her elegance and her unique personality.</p><p>We carefully select every accessory, every dress and every piece of jewellery, choosing quality materials and timeless designs. Because we believe that true elegance doesn't shout — it simply shines.</p><p>Welcome to Bella Luna. Your story starts here.</p>",
+        "eyebrow": "Nossa História",
+        "title": "Feita para fazer a mulher moderna brilhar",
+        "text": "<p>Na Bella Luna cada peça nasce da mesma convicção: a mulher de hoje merece joias e moda que reflitam sua força, sua elegância e sua personalidade única.</p><p>Selecionamos cuidadosamente cada acessório, cada vestido e cada joia, escolhendo materiais de qualidade e designs atemporais. Porque acreditamos que a verdadeira elegância não grita — ela simplesmente brilha.</p><p>Bem-vinda à Bella Luna. Sua história começa aqui.</p>",
         "button_label": "",
         "button_link": ""
       }
@@ -139,12 +139,12 @@
     "newsletter": {
       "type": "newsletter",
       "settings": {
-        "eyebrow": "Stay updated",
-        "title": "Get News and Exclusive Offers",
-        "subtitle": "Subscribe and get 10% off your first order.",
-        "placeholder": "Your best email",
-        "button_label": "I want my discount",
-        "disclaimer": "By subscribing, you accept our privacy policy."
+        "eyebrow": "Fique por dentro",
+        "title": "Novidades e Ofertas Exclusivas",
+        "subtitle": "Cadastre-se e ganhe 10% de desconto no primeiro pedido.",
+        "placeholder": "Seu melhor e-mail",
+        "button_label": "Quero meu desconto",
+        "disclaimer": "Ao se cadastrar, você aceita nossa política de privacidade."
       }
     }
   },

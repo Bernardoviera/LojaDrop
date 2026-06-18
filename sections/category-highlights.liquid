@@ -35,26 +35,26 @@
 
 {% schema %}
 {
-  "name": "Categorías Destacadas",
+  "name": "Categorias em Destaque",
   "tag": "section",
   "max_blocks": 4,
   "settings": [
     {
       "type": "text",
       "id": "title",
-      "default": "Explore Our Categories",
-      "label": "Título de la sección"
+      "default": "Explore Nossas Categorias",
+      "label": "Título da seção"
     }
   ],
   "blocks": [
     {
       "type": "category",
-      "name": "Categoría",
+      "name": "Categoria",
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Imagen"
+          "label": "Imagem"
         },
         {
           "type": "text",
@@ -65,24 +65,24 @@
         {
           "type": "text",
           "id": "cta_label",
-          "default": "View collection",
-          "label": "Texto del enlace"
+          "default": "Ver coleção",
+          "label": "Texto do link"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "Enlace"
+          "label": "Link"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Categorías Destacadas",
+      "name": "Categorias em Destaque",
       "blocks": [
-        { "type": "category", "settings": { "title": "Dresses" } },
-        { "type": "category", "settings": { "title": "Jewelry" } },
-        { "type": "category", "settings": { "title": "Accessories" } }
+        { "type": "category", "settings": { "title": "Vestidos", "cta_label": "Ver coleção" } },
+        { "type": "category", "settings": { "title": "Joias", "cta_label": "Ver coleção" } },
+        { "type": "category", "settings": { "title": "Acessórios", "cta_label": "Ver coleção" } }
       ]
     }
   ]

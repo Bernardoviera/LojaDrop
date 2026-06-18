@@ -6,7 +6,7 @@
 
     {{ 'parcelamento.css' | asset_url | stylesheet_tag }}
 
-    <a onclick="toggleModal()" href="#" id="modal-open-button" style="display: inline;margin-bottom: 20px;margin-top:-6px;position: relative;color:var(--color-quint-parcelamento);padding: 4px 7px;background:var(--color-quart-parcelamento);border-radius: var(--borda-atv-parcelamento);font-size: 14px;border: solid 1px var(--borda-atv-parcelamento2)">+ Payment Methods</a>
+    <a onclick="toggleModal()" href="#" id="modal-open-button" style="display: inline;margin-bottom: 20px;margin-top:-6px;position: relative;color:var(--color-quint-parcelamento);padding: 4px 7px;background:var(--color-quart-parcelamento);border-radius: var(--borda-atv-parcelamento);font-size: 14px;border: solid 1px var(--borda-atv-parcelamento2)">+ Formas de Pagamento</a>
 
     <div class="backdrop-modal-parcel" id="backdrop-modal-parcel" >
         <div class="modal-parcel" id="modal-parcel">
@@ -27,7 +27,7 @@
                 </div>
    
                 <div class="modal-parcel-title">
-                    Payment methods
+                    Formas de pagamento
                 </div>
 
                 <input name="payment" type="radio" id="payment-type-1" checked>
@@ -50,7 +50,7 @@
                             </svg>
                         </div>
                         <div>
-                            Credit card
+                            Cartão de crédito
                         </div>
                     </label>
  {% if settings.show_pix_parcelamento %}
@@ -103,7 +103,7 @@
 
                     <ul class="modal-parcel-list">
                         <li class="modal-parcel-list-item">
-                            <span>Full payment</span>
+                            <span>À vista</span>
                             <span>Total: <span id="total-a-vista">{{ price | money }}</span></span>
                         </li>
                         <li class="modal-parcel-list-item">
@@ -111,7 +111,7 @@
                                 assign taxas_segunda_parcela = settings.taxa_segunda_parcela | divided_by: 100 | plus: 1
                             %}
                             <p id="juros2" style="display:none"> {{ taxas_segunda_parcela }} </p>
-                            <span>2x{% if taxas_segunda_parcela == 1 %} interest-free{%endif%} de <span id="taxa-segunda-parcela">{{ price | times: taxas_segunda_parcela | divided_by: 2 | money }}</span></span>
+                            <span>2x{% if taxas_segunda_parcela == 1 %} sem juros{%endif%} de <span id="taxa-segunda-parcela">{{ price | times: taxas_segunda_parcela | divided_by: 2 | money }}</span></span>
                             <span>Total: <span id="total-segunda-parcela">{{ price | times: taxas_segunda_parcela | money}}</span></span>
                         </li>
                         <li class="modal-parcel-list-item">
@@ -119,7 +119,7 @@
                                 assign taxa_terceira_parcela = settings.taxa_terceira_parcela | divided_by: 100 | plus: 1
                             %}
                             <p id="juros3" style="display:none"> {{ taxa_terceira_parcela }} </p>
-                            <span>3x{% if taxa_terceira_parcela == 1 %} interest-free{%endif%} de <span id="taxa-terceira-parcela">{{ price | times: taxa_terceira_parcela | divided_by: 3 | money }}</span></span>
+                            <span>3x{% if taxa_terceira_parcela == 1 %} sem juros{%endif%} de <span id="taxa-terceira-parcela">{{ price | times: taxa_terceira_parcela | divided_by: 3 | money }}</span></span>
                             <span>Total: <span id="total-terceira-parcela">{{ price | times: taxa_terceira_parcela | money}}</span></span>
                         </li>
                         <li class="modal-parcel-list-item">
@@ -127,7 +127,7 @@
                                 assign taxa_quarta_parcela = settings.taxa_quarta_parcela | divided_by: 100 | plus: 1
                             %}
                                   <p id="juros4" style="display:none"> {{ taxa_quarta_parcela }} </p>
-                            <span>4x{% if taxa_quarta_parcela == 1 %} interest-free{%endif%} de <span id="taxa-quarta-parcela">{{ price | times: taxa_quarta_parcela | divided_by: 4 | money }}</span></span>
+                            <span>4x{% if taxa_quarta_parcela == 1 %} sem juros{%endif%} de <span id="taxa-quarta-parcela">{{ price | times: taxa_quarta_parcela | divided_by: 4 | money }}</span></span>
                             <span>Total: <span id="total-quarta-parcela">{{ price | times: taxa_quarta_parcela | money}}</span></span>
                         </li>
                         <li class="modal-parcel-list-item">
@@ -135,7 +135,7 @@
                                 assign taxa_quinta_parcela = settings.taxa_quinta_parcela | divided_by: 100 | plus: 1
                             %}
                                  <p id="juros5" style="display:none"> {{ taxa_quinta_parcela }} </p>
-                            <span>5x{% if taxa_quinta_parcela == 1 %} interest-free{%endif%} de <span id="taxa-quinta-parcela">{{ price | times: taxa_quinta_parcela | divided_by: 5 | money }}</span></span>
+                            <span>5x{% if taxa_quinta_parcela == 1 %} sem juros{%endif%} de <span id="taxa-quinta-parcela">{{ price | times: taxa_quinta_parcela | divided_by: 5 | money }}</span></span>
                             <span>Total: <span id="total-quinta-parcela">{{ price | times: taxa_quinta_parcela | money}}</span></span>
                         </li>
                         <li class="modal-parcel-list-item">
@@ -143,7 +143,7 @@
                                 assign taxa_sexta_parcela = settings.taxa_sexta_parcela | divided_by: 100 | plus: 1
                             %}
                                  <p id="juros6" style="display:none"> {{ taxa_sexta_parcela }} </p>
-                            <span>6x{% if taxa_sexta_parcela == 1 %} interest-free{%endif%} de <span id="taxa-sexta-parcela">{{ price | times: taxa_sexta_parcela | divided_by: 6 | money }}</span></span>
+                            <span>6x{% if taxa_sexta_parcela == 1 %} sem juros{%endif%} de <span id="taxa-sexta-parcela">{{ price | times: taxa_sexta_parcela | divided_by: 6 | money }}</span></span>
                             <span>Total: <span id="total-sexta-parcela">{{ price | times: taxa_sexta_parcela | money}}</span></span>
                         </li>
                         <li class="modal-parcel-list-item">
@@ -151,7 +151,7 @@
                                 assign taxa_setima_parcela = settings.taxa_setima_parcela | divided_by: 100 | plus: 1
                             %}
                                  <p id="juros7" style="display:none"> {{ taxa_setima_parcela }} </p>
-                            <span>7x{% if taxa_setima_parcela == 1 %} interest-free{%endif%} de <span id="taxa-setima-parcela">{{ price | times: taxa_setima_parcela | divided_by: 7 | money }}</span></span>
+                            <span>7x{% if taxa_setima_parcela == 1 %} sem juros{%endif%} de <span id="taxa-setima-parcela">{{ price | times: taxa_setima_parcela | divided_by: 7 | money }}</span></span>
                             <span>Total: <span id="total-setima-parcela">{{ price | times: taxa_setima_parcela | money}}</span></span>
                         </li>
                         <li class="modal-parcel-list-item">
@@ -159,7 +159,7 @@
                                 assign taxa_oitava_parcela = settings.taxa_oitava_parcela | divided_by: 100 | plus: 1
                             %}
                                  <p id="juros8" style="display:none"> {{ taxa_oitava_parcela }} </p>
-                            <span>8x{% if taxa_oitava_parcela == 1 %} interest-free{%endif%} de <span id="taxa-oitava-parcela">{{ price | times: taxa_oitava_parcela | divided_by: 8 | money }}</span></span>
+                            <span>8x{% if taxa_oitava_parcela == 1 %} sem juros{%endif%} de <span id="taxa-oitava-parcela">{{ price | times: taxa_oitava_parcela | divided_by: 8 | money }}</span></span>
                             <span>Total: <span id="total-oitava-parcela">{{ price | times: taxa_oitava_parcela | money}}</span></span>
                         </li>
                         <li class="modal-parcel-list-item">
@@ -167,7 +167,7 @@
                                 assign taxa_nona_parcela = settings.taxa_nona_parcela | divided_by: 100 | plus: 1
                             %}
                                  <p id="juros9" style="display:none"> {{ taxa_nona_parcela }} </p>
-                            <span>9x{% if taxa_nona_parcela == 1 %} interest-free{%endif%} de <span id="taxa-nona-parcela">{{ price | times: taxa_nona_parcela | divided_by: 9 | money }}</span></span>
+                            <span>9x{% if taxa_nona_parcela == 1 %} sem juros{%endif%} de <span id="taxa-nona-parcela">{{ price | times: taxa_nona_parcela | divided_by: 9 | money }}</span></span>
                             <span>Total: <span id="total-nona-parcela">{{ price | times: taxa_nona_parcela | money}}</span></span>
                         </li>
                         <li class="modal-parcel-list-item">
@@ -175,7 +175,7 @@
                                 assign taxa_decima_parcela = settings.taxa_decima_parcela | divided_by: 100 | plus: 1
                             %}
                                  <p id="juros10" style="display:none"> {{ taxa_decima_parcela }} </p>
-                            <span>10x{% if taxa_decima_parcela == 1 %} interest-free{%endif%} de <span id="taxa-decima-parcela">{{ price | times: taxa_decima_parcela | divided_by: 10 | money }}</span></span>
+                            <span>10x{% if taxa_decima_parcela == 1 %} sem juros{%endif%} de <span id="taxa-decima-parcela">{{ price | times: taxa_decima_parcela | divided_by: 10 | money }}</span></span>
                             <span>Total: <span id="total-decima-parcela">{{ price | times: taxa_decima_parcela | money}}</span></span>
                         </li>
                         <li class="modal-parcel-list-item">
@@ -183,7 +183,7 @@
                                 assign taxa_decima_primeira_parcela = settings.taxa_decima_primeira_parcela | divided_by: 100 | plus: 1
                             %}
                                  <p id="juros11" style="display:none"> {{ taxa_decima_primeira_parcela }} </p>
-                            <span>11x{% if taxa_decima_primeira_parcela == 1 %} interest-free{%endif%} de <span id="taxa-decima-primeira-parcela">{{ price | times: taxa_decima_primeira_parcela | divided_by: 11 | money }}</span></span>
+                            <span>11x{% if taxa_decima_primeira_parcela == 1 %} sem juros{%endif%} de <span id="taxa-decima-primeira-parcela">{{ price | times: taxa_decima_primeira_parcela | divided_by: 11 | money }}</span></span>
                             <span>Total: <span id="total-decima-primeira-parcela">{{ price | times: taxa_decima_primeira_parcela | money}}</span></span>
                         </li>
                         <li class="modal-parcel-list-item">
@@ -191,14 +191,14 @@
                                 assign taxa_decima_segunda_parcela = settings.taxa_decima_segunda_parcela | divided_by: 100 | plus: 1
                             %}
                                  <p id="juros12" style="display:none"> {{ taxa_decima_segunda_parcela }} </p>
-                            <span>12x{% if taxa_decima_segunda_parcela == 1 %} interest-free{%endif%} de <span id="taxa-decima-segunda-parcela">{{ price | times: taxa_decima_segunda_parcela | divided_by: 12 | money }}</span></span>
+                            <span>12x{% if taxa_decima_segunda_parcela == 1 %} sem juros{%endif%} de <span id="taxa-decima-segunda-parcela">{{ price | times: taxa_decima_segunda_parcela | divided_by: 12 | money }}</span></span>
                             <span>Total: <span id="total-decima-segunda-parcela">{{ price | times: taxa_decima_segunda_parcela | money}}</span></span>
                         </li>
                     </ul>
 
                     <div class="modal-parcel-cards-wrapper">
                         <div>
-                            We accept:
+                            Aceitamos:
                         </div>
                          <div style="padding: 8px;">
           <center style="margin-top: -20px;">                   
@@ -228,7 +228,7 @@
                                 <span id="total-pix">R$ {{ price | times: desconto_pix | money_without_currency }}</span>
                             </div>
                             <div class="modal-parcel-price-description">
-                                Cash via PIX {% if desconto_pix != 1 %}with <strong>{{settings.desconto_pix | round }}% OFF{% endif %}</strong>
+                                À vista no PIX {% if desconto_pix != 1 %}com <strong>{{settings.desconto_pix | round }}% OFF{% endif %}</strong>
                             </div>
                         </div>
 
@@ -307,7 +307,7 @@
                                 <span id="total-boleto">R$ {{ price | times: desconto_boleto | money_without_currency }}</span>
                             </div>
                             <div class="modal-parcel-price-description">
-                                Cash via Boleto {% if desconto_boleto != 1 %}with <strong>{{settings.desconto_boleto | round }}% OFF</strong>{% endif %}
+                                À vista no Boleto {% if desconto_boleto != 1 %}com <strong>{{settings.desconto_boleto | round }}% OFF</strong>{% endif %}
                             </div>
                         </div>
 
