@@ -89,7 +89,7 @@
           <div class="product-form__quantity">
             <div class="quantity-selector">
               <button type="button" class="quantity-btn" data-action="decrease">−</button>
-              <input class="quantity-input" type="number" name="quantity" value="1" min="1" aria-label="Quantidade">
+              <input class="quantity-input" type="number" name="quantity" value="1" min="1" aria-label="Quantity">
               <button type="button" class="quantity-btn" data-action="increase">+</button>
             </div>
           </div>
@@ -104,9 +104,9 @@
               {%- unless product.selected_or_first_available_variant.available -%}disabled{%- endunless -%}
             >
               {%- if product.selected_or_first_available_variant.available -%}
-                Añadir al carrito
+                Add to cart
               {%- else -%}
-                Agotado
+                Sold out
               {%- endif -%}
             </button>
           </div>
@@ -118,7 +118,7 @@
             <p>SKU: <span>{{ product.selected_or_first_available_variant.sku }}</span></p>
           {%- endif -%}
           {%- if product.type != blank -%}
-            <p>Categoria: <span>{{ product.type }}</span></p>
+            <p>Category: <span>{{ product.type }}</span></p>
           {%- endif -%}
         </div>
       </div>

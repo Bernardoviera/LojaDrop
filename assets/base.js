@@ -119,7 +119,7 @@ class CartDrawer {
     if (!itemsContainer) return;
 
     if (cart.item_count === 0) {
-      itemsContainer.innerHTML = '<p style="padding:2rem 0;text-align:center;color:rgba(var(--color-base-text),0.6)">Tu carrito está vacío.</p>';
+      itemsContainer.innerHTML = '<p style="padding:2rem 0;text-align:center;color:rgba(var(--color-base-text),0.6)">Your cart is empty.</p>';
     } else {
       itemsContainer.innerHTML = cart.items.map(item => `
         <div class="cart-item">
@@ -136,7 +136,7 @@ class CartDrawer {
                 <input class="quantity-input" type="number" value="${item.quantity}" min="1" data-key="${item.key}" style="width:4rem">
                 <button class="quantity-btn" data-action="increase" data-key="${item.key}">+</button>
               </div>
-              <button class="cart-item__remove" data-key="${item.key}">Eliminar</button>
+              <button class="cart-item__remove" data-key="${item.key}">Remove</button>
             </div>
           </div>
         </div>
@@ -207,7 +207,7 @@ async function addToCart(variantId, quantity = 1) {
       body: JSON.stringify({ id: variantId, quantity })
     });
 
-    if (!res.ok) throw new Error('Error al añadir al carrito');
+    if (!res.ok) throw new Error('Error adding to cart');
 
     await res.json();
 
@@ -219,9 +219,9 @@ async function addToCart(variantId, quantity = 1) {
       window.cartDrawer?.open();
     }
 
-    showToast('¡Artículo añadido al carrito!');
+    showToast('Item added to cart!');
   } catch (e) {
-    showToast('Error al añadir al carrito.', 'error');
+    showToast('Error adding to cart.', 'error');
     throw e;
   }
 }
@@ -270,12 +270,12 @@ class VariantPicker {
         if (!this.currentVariant || !this.currentVariant.available) return;
         const qty = parseInt(this.form.querySelector('.quantity-input')?.value || 1);
         addBtn.disabled = true;
-        addBtn.textContent = 'Añadiendo...';
+        addBtn.textContent = 'Adding...';
         try {
           await addToCart(this.currentVariant.id, qty);
         } finally {
           addBtn.disabled = false;
-          addBtn.textContent = 'Añadir al carrito';
+          addBtn.textContent = 'Add to cart';
         }
       });
     }
@@ -300,7 +300,7 @@ class VariantPicker {
     // item 20: .product-info__stock is never rendered — references removed
 
     if (!this.currentVariant) {
-      if (addBtn) { addBtn.disabled = true; addBtn.textContent = 'No disponible'; }
+      if (addBtn) { addBtn.disabled = true; addBtn.textContent = 'Unavailable'; }
       return;
     }
 
@@ -317,7 +317,7 @@ class VariantPicker {
 
     if (addBtn) {
       addBtn.disabled = !this.currentVariant.available;
-      addBtn.textContent = this.currentVariant.available ? 'Añadir al carrito' : 'Agotado';
+      addBtn.textContent = this.currentVariant.available ? 'Add to cart' : 'Sold out';
     }
 
     const url = new URL(window.location.href);
@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.textContent = '...';
     try {
       await addToCart(variantId);
-      btn.textContent = '¡Añadido!';
+      btn.textContent = 'Added!';
       setTimeout(() => { btn.textContent = orig; btn._qaRunning = false; }, 2000);
     } catch {
       btn.textContent = 'Error';

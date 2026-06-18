@@ -17,10 +17,10 @@
         "height_option": "full-height",
         "content_alignment": "center",
         "eyebrow": "",
-        "title": "Elegancia que Transforma",
-        "subtitle": "Descubre piezas exclusivas de moda y joyas creadas para mujeres con estilo",
+        "title": "Elegance That Transforms",
+        "subtitle": "Discover exclusive fashion pieces and jewelry created for women with style",
         "text_color": "light",
-        "button_label": "Explorar Coleccion",
+        "button_label": "Explore Collection",
         "button_link": "",
         "button2_label": "",
         "button2_link": "",
@@ -36,32 +36,32 @@
           "type": "badge",
           "settings": {
             "icon": "🚚",
-            "title": "Envío Gratis",
-            "text": "Pedidos superiores a 50€"
+            "title": "Free Shipping",
+            "text": "Orders over €50"
           }
         },
         "badge-2": {
           "type": "badge",
           "settings": {
             "icon": "💳",
-            "title": "Paga en Cuotas",
-            "text": "Sin intereses"
+            "title": "Pay in Installments",
+            "text": "Interest-free"
           }
         },
         "badge-3": {
           "type": "badge",
           "settings": {
             "icon": "🔄",
-            "title": "Devolución Fácil",
-            "text": "30 días para devolver"
+            "title": "Easy Returns",
+            "text": "30 days to return"
           }
         },
         "badge-4": {
           "type": "badge",
           "settings": {
             "icon": "🔒",
-            "title": "Compra Segura",
-            "text": "Web 100% protegida"
+            "title": "Secure Shopping",
+            "text": "100% protected website"
           }
         }
       },
@@ -80,8 +80,8 @@
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/S2f9b7ab8b06d4b699c278e2299ae2961O.webp",
-            "title": "Vestidos",
-            "cta_label": "Ver coleccion",
+            "title": "Dresses",
+            "cta_label": "View collection",
             "link": "shopify://collections/vestidos"
           }
         },
@@ -89,8 +89,8 @@
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/Sd847311d2ebe4713a219298464d8df86H.webp",
-            "title": "Joyas",
-            "cta_label": "Ver coleccion",
+            "title": "Jewelry",
+            "cta_label": "View collection",
             "link": "shopify://collections/joias"
           }
         },
@@ -98,8 +98,8 @@
           "type": "category",
           "settings": {
             "image": "shopify://shop_images/Sf97e723b561744d69b3e9f7b2f20eb70Y.webp",
-            "title": "Accesorios",
-            "cta_label": "Ver coleccion",
+            "title": "Accessories",
+            "cta_label": "View collection",
             "link": "shopify://collections/acessorios"
           }
         }
@@ -110,20 +110,20 @@
         "cat-3"
       ],
       "settings": {
-        "title": "Explora las Categorias"
+        "title": "Explore Our Categories"
       }
     },
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
         "collection": "acessorios",
-        "eyebrow": "Mas Vendidos",
-        "title": "Productos Destacados",
-        "subtitle": "Los favoritos de nuestras clientas",
+        "eyebrow": "Best Sellers",
+        "title": "Featured Products",
+        "subtitle": "Our customers' favourites",
         "products_to_show": 8,
         "columns_desktop": 4,
         "show_view_all": true,
-        "view_all_text": "Ver toda la coleccion"
+        "view_all_text": "View full collection"
       }
     },
     "image-with-text": {
@@ -133,9 +133,9 @@
         "text_color_val": "#ffffff",
         "show_logo": true,
         "layout": "image_first",
-        "eyebrow": "Nuestra Historia",
-        "title": "Nacimos para hacer brillar a la mujer moderna",
-        "text": "<p>En Bella Luna cada pieza nace de una misma convicción: la mujer de hoy merece joyas y moda que estén a la altura de su fuerza, su elegancia y su personalidad única.</p><p>Seleccionamos cada accesorio, cada vestido y cada joya con el máximo cuidado, eligiendo materiales de calidad y diseños que resisten el paso del tiempo. Porque creemos que la verdadera elegancia no grita — simplemente brilla.</p><p>Bienvenida a Bella Luna. Aquí empieza tu historia.</p>",
+        "eyebrow": "Our Story",
+        "title": "Born to make the modern woman shine",
+        "text": "<p>At Bella Luna every piece is born from the same conviction: today's woman deserves jewellery and fashion that match her strength, her elegance and her unique personality.</p><p>We carefully select every accessory, every dress and every piece of jewellery, choosing quality materials and timeless designs. Because we believe that true elegance doesn't shout — it simply shines.</p><p>Welcome to Bella Luna. Your story starts here.</p>",
         "button_label": "",
         "button_link": ""
       }
@@ -143,12 +143,12 @@
     "newsletter": {
       "type": "newsletter",
       "settings": {
-        "eyebrow": "Mantente al dia",
-        "title": "Recibe Novedades y Ofertas Exclusivas",
-        "subtitle": "Suscribete y consigue 10% de descuento en tu primera compra.",
-        "placeholder": "Tu mejor e-mail",
-        "button_label": "Quiero descuento",
-        "disclaimer": "Al suscribirte, aceptas nuestra politica de privacidad."
+        "eyebrow": "Stay updated",
+        "title": "Get News and Exclusive Offers",
+        "subtitle": "Subscribe and get 10% off your first order.",
+        "placeholder": "Your best email",
+        "button_label": "I want my discount",
+        "disclaimer": "By subscribing, you accept our privacy policy."
       }
     }
   },

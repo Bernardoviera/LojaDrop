@@ -1,14 +1,14 @@
 <section class="section">
   <div class="page-width">
-    <h1 style="margin-bottom:4rem">Carrinho</h1>
+    <h1 style="margin-bottom:4rem">Cart</h1>
 
     {%- if cart.item_count > 0 -%}
       {%- form 'cart', cart, id: 'cart-form' -%}
         <div class="cart-page">
           <div class="cart-items">
             <div class="cart-items-header">
-              <span>Produto</span>
-              <span>Qtd.</span>
+              <span>Product</span>
+              <span>Qty.</span>
               <span>Total</span>
             </div>
 
@@ -56,16 +56,16 @@
 
           <!-- Summary -->
           <div class="cart-summary">
-            <button type="submit" class="btn btn--secondary btn--full" style="margin-bottom:2rem">Actualizar carrito</button>
-            <h2 class="cart-summary__title">Resumo do Pedido</h2>
+            <button type="submit" class="btn btn--secondary btn--full" style="margin-bottom:2rem">Update cart</button>
+            <h2 class="cart-summary__title">Order Summary</h2>
 
             <div class="cart-summary__row">
               <span>Subtotal</span>
               <span>{{ cart.total_price | money }}</span>
             </div>
             <div class="cart-summary__row">
-              <span>Frete</span>
-              <span>Calculado no checkout</span>
+              <span>Shipping</span>
+              <span>Calculated at checkout</span>
             </div>
             <div class="cart-summary__row cart-summary__row--total">
               <span>Total</span>
@@ -73,16 +73,16 @@
             </div>
 
             <p class="cart-summary__note">
-              Impostos e frete calculados no checkout
+              Taxes and shipping calculated at checkout
             </p>
 
             <a href="/checkout" class="btn btn--primary btn--full">
-              Tramitar pedido
+              Checkout
             </a>
 
             <div style="text-align:center;margin-top:1.6rem">
               <a href="{{ routes.root_url }}" style="font-size:1.4rem;text-decoration:underline;color:rgba(var(--color-base-text),0.6)">
-                Continuar comprando
+                Continue shopping
               </a>
             </div>
           </div>
@@ -90,9 +90,9 @@
       {%- endform -%}
     {%- else -%}
       <div class="cart-empty">
-        <h2 class="cart-empty__title">Tu carrito está vacío</h2>
-        <p class="cart-empty__text">¡Añade algunos productos increíbles a tu carrito!</p>
-        <a href="{{ routes.root_url }}" class="btn btn--primary">Explorar productos</a>
+        <h2 class="cart-empty__title">Your cart is empty</h2>
+        <p class="cart-empty__text">Add some amazing products to your cart!</p>
+        <a href="{{ routes.root_url }}" class="btn btn--primary">Explore products</a>
       </div>
     {%- endif -%}
   </div>

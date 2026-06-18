@@ -41,7 +41,7 @@
               <p>E-mail: <a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></p>
             {%- endif -%}
             {%- if section.settings.contact_phone != blank -%}
-              <p>Teléfono: <a href="tel:{{ section.settings.contact_phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' }}">{{ section.settings.contact_phone }}</a></p>
+              <p>Phone: <a href="tel:{{ section.settings.contact_phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' }}">{{ section.settings.contact_phone }}</a></p>
             {%- endif -%}
             {%- if section.settings.contact_whatsapp != blank -%}
               <p>WhatsApp: <a href="https://wa.me/{{ section.settings.contact_whatsapp | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '+' }}">{{ section.settings.contact_whatsapp }}</a></p>
@@ -117,13 +117,13 @@
       <div class="page-width">
         <div class="footer__seals-inner">
           {%- if section.settings.seal_google -%}
-            <img src="{{ 'seal-google.png' | asset_url }}" alt="Google Site Seguro" class="footer__seal-img" loading="lazy" onerror="this.style.display='none'">
+            <img src="{{ 'seal-google.png' | asset_url }}" alt="Google Safe Site" class="footer__seal-img" loading="lazy" onerror="this.style.display='none'">
           {%- endif -%}
           {%- if section.settings.seal_ssl -%}
-            <img src="{{ 'seal-ssl.png' | asset_url }}" alt="SSL Blindado" class="footer__seal-img" loading="lazy" onerror="this.style.display='none'">
+            <img src="{{ 'seal-ssl.png' | asset_url }}" alt="SSL Secured" class="footer__seal-img" loading="lazy" onerror="this.style.display='none'">
           {%- endif -%}
           {%- if section.settings.seal_site_blindado -%}
-            <img src="{{ 'seal-site-blindado.png' | asset_url }}" alt="Site Blindado" class="footer__seal-img" loading="lazy" onerror="this.style.display='none'">
+            <img src="{{ 'seal-site-blindado.png' | asset_url }}" alt="Secure Site" class="footer__seal-img" loading="lazy" onerror="this.style.display='none'">
           {%- endif -%}
           {%- if section.settings.seals_text != blank -%}
             <p class="footer__seals-text">{{ section.settings.seals_text }}</p>
@@ -152,7 +152,7 @@
   <!-- Rodapé inferior -->
   <div class="footer__bottom">
     <div class="page-width">
-      <p class="footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos los derechos reservados.</p>
+      <p class="footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
     </div>
   </div>
 
@@ -170,8 +170,8 @@
     {
       "type": "text",
       "id": "policies_heading",
-      "default": "Políticas",
-      "label": "Título das políticas"
+      "default": "Policies",
+      "label": "Policies heading"
     },
     {
       "type": "link_list",
@@ -220,20 +220,20 @@
     {
       "type": "text",
       "id": "newsletter_text",
-      "default": "Cadastre-se e receba nossas ofertas por e-mail",
-      "label": "Texto acima do campo"
+      "default": "Subscribe and receive our offers by email",
+      "label": "Text above the field"
     },
     {
       "type": "text",
       "id": "newsletter_placeholder",
-      "default": "Seu e-mail",
-      "label": "Placeholder do campo"
+      "default": "Your email",
+      "label": "Field placeholder"
     },
     {
       "type": "text",
       "id": "newsletter_button",
-      "default": "Enviar",
-      "label": "Texto do botão"
+      "default": "Subscribe",
+      "label": "Button text"
     },
     {
       "type": "header",
@@ -242,8 +242,8 @@
     {
       "type": "text",
       "id": "social_heading",
-      "default": "Siga-nos",
-      "label": "Título"
+      "default": "Follow us",
+      "label": "Heading"
     },
     {
       "type": "url",
@@ -296,8 +296,8 @@
     {
       "type": "text",
       "id": "seals_text",
-      "default": "Selos de Garantia - Loja 100% Segura.",
-      "label": "Texto abaixo dos selos"
+      "default": "Security Seals — 100% Secure Store.",
+      "label": "Text below seals"
     },
     {
       "type": "header",
@@ -312,8 +312,8 @@
     {
       "type": "text",
       "id": "payment_heading",
-      "default": "Nós Aceitamos",
-      "label": "Título"
+      "default": "We Accept",
+      "label": "Heading"
     }
   ]
 }

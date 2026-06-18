@@ -39,7 +39,7 @@
         <span class="badge badge--sale">Sale</span>
       {%- endif -%}
       {%- if product.tags contains 'new' or product.tags contains 'novo' -%}
-        <span class="badge badge--new">Novo</span>
+        <span class="badge badge--new">New</span>
       {%- endif -%}
     </div>
 
@@ -49,11 +49,11 @@
         data-quick-add="{{ first_available_variant.id }}"
         aria-label="{{ 'products.product.add_to_cart' | t }}: {{ product.title }}"
       >
-        Añadir
+        Add
       </button>
     {%- elsif product.variants.size > 1 -%}
       <a href="{{ product.url }}" class="product-card__quick-add">
-        Ver opciones
+        View options
       </a>
     {%- endif -%}
   </div>
