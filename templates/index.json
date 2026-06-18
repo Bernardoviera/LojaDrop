@@ -78,17 +78,18 @@
         "cat-1": {
           "type": "category",
           "settings": {
-            "title": "Vestidos",
+            "image": "shopify://shop_images/ChatGPT_Image_18_de_jun._de_2026_16_24_19.png",
+            "title": "",
             "cta_label": "Ver coleção",
-            "link": "shopify://collections/vestidos"
+            "link": "shopify://collections/bolsas"
           }
         },
         "cat-2": {
           "type": "category",
           "settings": {
-            "title": "Joias",
+            "title": "",
             "cta_label": "Ver coleção",
-            "link": "shopify://collections/joias"
+            "link": "shopify://collections/diversos"
           }
         },
         "cat-3": {
