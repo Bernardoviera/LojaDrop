@@ -17,7 +17,7 @@
       </span>
       <div class="collection-toolbar__sort">
         <label for="sort-select">Ordenar por:</label>
-        <select id="sort-select" name="sort_by" class="sort-select" onchange="window.location.href='?sort_by='+this.value">
+        <select id="sort-select" name="sort_by" class="sort-select" onchange="(function(v){var u=new URL(window.location.href);u.searchParams.set('sort_by',v);u.searchParams.delete('page');window.location.href=u.toString();})(this.value)">
           <option value="manual"{% if collection.sort_by == 'manual' %} selected{% endif %}>Destacados</option>
           <option value="best-selling"{% if collection.sort_by == 'best-selling' %} selected{% endif %}>Más vendidos</option>
           <option value="price-ascending"{% if collection.sort_by == 'price-ascending' %} selected{% endif %}>Menor precio</option>

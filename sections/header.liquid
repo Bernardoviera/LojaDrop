@@ -18,18 +18,20 @@
 
     <!-- Desktop Navigation -->
     <nav class="header__nav" role="navigation" aria-label="Menú principal">
-      {%- for link in section.settings.menu.links -%}
-        <li class="header__nav-item">
-          <a href="{{ link.url }}">{{ link.title }}</a>
-          {%- if link.links.size > 0 -%}
-            <ul class="dropdown-menu">
-              {%- for child_link in link.links -%}
-                <li><a href="{{ child_link.url }}">{{ child_link.title }}</a></li>
-              {%- endfor -%}
-            </ul>
-          {%- endif -%}
-        </li>
-      {%- endfor -%}
+      <ul class="header__nav-list">
+        {%- for link in section.settings.menu.links -%}
+          <li class="header__nav-item">
+            <a href="{{ link.url }}">{{ link.title }}</a>
+            {%- if link.links.size > 0 -%}
+              <ul class="dropdown-menu">
+                {%- for child_link in link.links -%}
+                  <li><a href="{{ child_link.url }}">{{ child_link.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
     </nav>
 
     <!-- Actions -->
@@ -50,7 +52,11 @@
         </a>
       {%- endif -%}
 
-      <button class="header__icon-btn" data-open-cart aria-label="{{ 'sections.cart.title' | t }}" style="position:relative">
+      {%- if settings.cart_type == 'drawer' -%}
+        <button class="header__icon-btn" data-open-cart aria-label="{{ 'sections.cart.title' | t }}" style="position:relative">
+      {%- else -%}
+        <a href="{{ routes.cart_url }}" class="header__icon-btn" aria-label="{{ 'sections.cart.title' | t }}" style="position:relative">
+      {%- endif -%}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
         </svg>
@@ -61,7 +67,11 @@
         {%- else -%}
           <span class="cart-count-bubble" style="display:none" aria-hidden="true">0</span>
         {%- endif -%}
-      </button>
+      {%- if settings.cart_type == 'drawer' -%}
+        </button>
+      {%- else -%}
+        </a>
+      {%- endif -%}
 
       <button class="header__hamburger" aria-label="Menu" aria-expanded="false">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">

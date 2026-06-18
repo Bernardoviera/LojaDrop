@@ -42,14 +42,18 @@
       {%- endif -%}
     </div>
 
-    {%- if first_available_variant != blank -%}
+    {%- if product.variants.size == 1 and first_available_variant != blank -%}
       <button
         class="product-card__quick-add"
         data-quick-add="{{ first_available_variant.id }}"
         aria-label="{{ 'products.product.add_to_cart' | t }}: {{ product.title }}"
       >
-        Adicionar
+        Añadir
       </button>
+    {%- elsif product.variants.size > 1 -%}
+      <a href="{{ product.url }}" class="product-card__quick-add">
+        Ver opciones
+      </a>
     {%- endif -%}
   </div>
 

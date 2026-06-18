@@ -36,7 +36,7 @@
                     <input
                       class="quantity-input"
                       type="number"
-                      name="updates[]"
+                      name="updates[{{ item.key }}]"
                       id="updates_{{ item.key }}"
                       value="{{ item.quantity }}"
                       min="0"
@@ -44,7 +44,11 @@
                     >
                     <button type="button" class="quantity-btn" data-action="increase">+</button>
                   </div>
-                  <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="cart-item__remove">Eliminar</a>
+                  <button
+                    type="button"
+                    class="cart-item__remove"
+                    onclick="fetch('{{ routes.cart_change_url }}',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:'{{ item.key }}',quantity:0})}).then(function(r){return r.json()}).then(function(){location.reload()})"
+                  >Eliminar</button>
                 </div>
               </div>
             {%- endfor -%}
@@ -52,6 +56,7 @@
 
           <!-- Summary -->
           <div class="cart-summary">
+            <button type="submit" class="btn btn--secondary btn--full" style="margin-bottom:2rem">Actualizar carrito</button>
             <h2 class="cart-summary__title">Resumo do Pedido</h2>
 
             <div class="cart-summary__row">
