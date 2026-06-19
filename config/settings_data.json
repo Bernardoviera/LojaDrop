@@ -123,7 +123,7 @@
           "seal_ssl": true,
           "seal_site_blindado": true,
           "seals_text": "Selos de Garantia — Loja 100% Segura.",
-          "show_payment": true,
+          "show_payment": false,
           "payment_heading": "Aceitamos"
         }
       }
