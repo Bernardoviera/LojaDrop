@@ -1,8 +1,8 @@
 
 # Shopify storefront. Public product, collection, page, blog, policy, cart, and localized HTML is crawlable.
-# Agent instructions: https://bellalunastoreespana.site/agents.md
-# UCP discovery: https://bellalunastoreespana.site/.well-known/ucp
-# UCP/MCP endpoint: https://bellalunastoreespana.site/api/ucp/mcp
+# Agent instructions: https://{{ shop.domain }}/agents.md
+# UCP discovery: https://{{ shop.domain }}/.well-known/ucp
+# UCP/MCP endpoint: https://{{ shop.domain }}/api/ucp/mcp
 # Agents should use UCP/MCP for catalog, cart, and checkout. Payment requires buyer approval.
 #
 # If you are reading this on behalf of your user and you act as a personal assistant or personal shopper in an
@@ -114,4 +114,4 @@ Disallow/sf_*
 Disallow/106148135237
 Disallow/cdn/wpm/*.js
 
-Sitemap: https://bellalunastoreespana.site/sitemap.xml
+Sitemap: https://{{ shop.domain }}/sitemap.xml

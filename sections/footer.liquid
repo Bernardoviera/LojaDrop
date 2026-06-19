@@ -135,19 +135,19 @@
 
   <!-- Formas de pagamento -->
   {%- if section.settings.show_payment -%}
-  <div class="footer__payment">
-    <div class="page-width">
-      <p class="footer__payment-title">{{ section.settings.payment_heading }}</p>
-      <div class="footer__payment-icons">
-        <img src="{{ 'Visa.svg' | asset_url }}" alt="Visa" class="footer__payment-svg" loading="lazy">
-        <img src="{{ 'mastercard.svg' | asset_url }}" alt="Mastercard" class="footer__payment-svg" loading="lazy">
-        <img src="{{ 'Amex.svg' | asset_url }}" alt="American Express" class="footer__payment-svg" loading="lazy">
-        <img src="{{ 'Diners.svg' | asset_url }}" alt="Diners Club" class="footer__payment-svg" loading="lazy">
-        <img src="{{ 'PayPal.svg' | asset_url }}" alt="PayPal" class="footer__payment-svg" loading="lazy">
+    {%- unless shop.enabled_payment_types == empty -%}
+      <div class="footer__payment">
+        <div class="page-width">
+          <p class="footer__payment-title">{{ section.settings.payment_heading }}</p>
+          <div class="footer__payment-icons">
+            {%- for type in shop.enabled_payment_types -%}
+              {{ type | payment_type_svg_tag: class: 'footer__payment-svg' }}
+            {%- endfor -%}
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-{%- endif -%}
+    {%- endunless -%}
+  {%- endif -%}
 
   <!-- Rodapé inferior -->
   <div class="footer__bottom">
@@ -187,13 +187,13 @@
       "type": "text",
       "id": "company_name",
       "label": "Razão social",
-      "default": "VELUTTO DECOR ONLINE LTDA"
+      "default": ""
     },
     {
       "type": "text",
       "id": "contact_email",
       "label": "E-mail de contato",
-      "default": "contato@lojadrop.com.br"
+      "default": ""
     },
     {
       "type": "text",
