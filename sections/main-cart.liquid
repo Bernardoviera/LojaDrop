@@ -106,13 +106,11 @@
 
 <script>
 function cartUpdate(key, qty) {
-  fetch('{{ routes.cart_change_url }}', {
+  fetch('/cart/change.js', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify({ id: key, quantity: qty < 0 ? 0 : qty })
-  })
-  .then(function(r) { return r.json(); })
-  .then(function() { location.reload(); });
+  }).finally(function() { location.reload(); });
 }
 </script>
 

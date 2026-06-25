@@ -172,9 +172,9 @@ class CartDrawer {
 
   async updateItem(key, quantity) {
     try {
-      const res = await fetch(window.routes.cart_change_url, {
+      const res = await fetch('/cart/change.js', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({ id: key, quantity })
       });
       const cart = await res.json();
