@@ -31,32 +31,11 @@
                   {%- render 'price', product: item.product, variant: item.variant -%}
                 </div>
                 <div class="quantity-selector" style="margin-top:0.8rem">
-                  <button
-                    type="button"
-                    class="quantity-btn"
-                    onclick="cartUpdate('{{ item.key }}', {{ item.quantity | minus: 1 }})"
-                    aria-label="Diminuir quantidade"
-                  >−</button>
-                  <input
-                    class="quantity-input"
-                    type="number"
-                    value="{{ item.quantity }}"
-                    min="1"
-                    aria-label="Quantidade"
-                    onchange="cartUpdate('{{ item.key }}', parseInt(this.value) || 1)"
-                  >
-                  <button
-                    type="button"
-                    class="quantity-btn"
-                    onclick="cartUpdate('{{ item.key }}', {{ item.quantity | plus: 1 }})"
-                    aria-label="Aumentar quantidade"
-                  >+</button>
+                  <button type="button" class="quantity-btn" data-cart-action="decrease" data-cart-key="{{ item.key }}" aria-label="Diminuir quantidade">−</button>
+                  <input class="quantity-input" type="number" value="{{ item.quantity }}" min="1" aria-label="Quantidade">
+                  <button type="button" class="quantity-btn" data-cart-action="increase" data-cart-key="{{ item.key }}" aria-label="Aumentar quantidade">+</button>
                 </div>
-                <button
-                  type="button"
-                  class="cart-item__remove"
-                  onclick="cartUpdate('{{ item.key }}', 0)"
-                >Remover</button>
+                <button type="button" class="cart-item__remove" data-cart-remove="{{ item.key }}">Remover</button>
               </div>
             </div>
           {%- endfor -%}
@@ -68,7 +47,7 @@
 
           <div class="cart-summary__row">
             <span>Subtotal</span>
-            <span>{{ cart.total_price | money }}</span>
+            <span data-cart-total>{{ cart.total_price | money }}</span>
           </div>
           <div class="cart-summary__row">
             <span>Frete</span>
@@ -76,7 +55,7 @@
           </div>
           <div class="cart-summary__row cart-summary__row--total">
             <span>Total</span>
-            <span>{{ cart.total_price | money }}</span>
+            <span data-cart-total>{{ cart.total_price | money }}</span>
           </div>
 
           <p class="cart-summary__note">
@@ -105,13 +84,63 @@
 </section>
 
 <script>
-function cartUpdate(key, qty) {
-  fetch('/cart/change.js', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ id: key, quantity: qty < 0 ? 0 : qty })
-  }).finally(function() { location.reload(); });
-}
+(function () {
+  var cartItemsEl = document.querySelector('.cart-items');
+  if (!cartItemsEl) return;
+
+  cartItemsEl.addEventListener('click', function (e) {
+    var actionBtn = e.target.closest('[data-cart-action]');
+    var removeBtn = e.target.closest('[data-cart-remove]');
+
+    if (actionBtn) {
+      var itemEl = actionBtn.closest('.cart-item');
+      var input  = itemEl && itemEl.querySelector('.quantity-input');
+      var qty    = input ? (parseInt(input.value) || 1) : 1;
+      var newQty = actionBtn.dataset.cartAction === 'increase' ? qty + 1 : Math.max(0, qty - 1);
+      cartPageUpdate(actionBtn.dataset.cartKey, newQty, itemEl);
+    }
+
+    if (removeBtn) {
+      cartPageUpdate(removeBtn.dataset.cartRemove, 0, removeBtn.closest('.cart-item'));
+    }
+  });
+
+  function formatMoney(cents) {
+    return 'R$ ' + (cents / 100).toFixed(2).replace('.', ',');
+  }
+
+  function cartPageUpdate(key, qty, itemEl) {
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ id: key, quantity: qty < 0 ? 0 : qty })
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (cart) {
+      if (cart.item_count === 0) { location.reload(); return; }
+
+      var updatedItem = cart.items.find(function (i) { return i.key === key; });
+
+      if (!updatedItem) {
+        if (itemEl) itemEl.remove();
+      } else {
+        var input = itemEl && itemEl.querySelector('.quantity-input');
+        if (input) input.value = updatedItem.quantity;
+      }
+
+      var formatted = formatMoney(cart.total_price);
+      document.querySelectorAll('[data-cart-total]').forEach(function (el) {
+        el.textContent = formatted;
+      });
+
+      document.querySelectorAll('.cart-count-bubble').forEach(function (el) {
+        el.textContent = cart.item_count;
+        el.style.display = cart.item_count > 0 ? 'flex' : 'none';
+      });
+    })
+    .catch(function () { location.reload(); });
+  }
+})();
 </script>
 
 {% schema %}
