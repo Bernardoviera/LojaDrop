@@ -142,7 +142,7 @@
     "featured-collection-2": {
       "type": "featured-collection",
       "settings": {
-        "collection": "",
+        "collection": "decoracao",
         "eyebrow": "",
         "title": "Mais Produtos",
         "subtitle": "",
