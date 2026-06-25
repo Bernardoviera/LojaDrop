@@ -3,91 +3,97 @@
     <h1 style="margin-bottom:4rem">Carrinho</h1>
 
     {%- if cart.item_count > 0 -%}
-      {%- form 'cart', cart, id: 'cart-form' -%}
-        <div class="cart-page">
-          <div class="cart-items">
-            <div class="cart-items-header">
-              <span>Produto</span>
-              <span>Qtd.</span>
-              <span>Total</span>
-            </div>
+      <div class="cart-page">
+        <div class="cart-items">
+          <div class="cart-items-header">
+            <span>Produto</span>
+            <span>Qtd.</span>
+            <span>Total</span>
+          </div>
 
-            {%- for item in cart.items -%}
-              <div class="cart-item">
-                <div class="cart-item__media">
-                  <a href="{{ item.url }}">
-                    {{
-                      item.image
-                      | image_url: width: 200
-                      | image_tag: loading: 'lazy', width: 200, alt: item.title
-                    }}
-                  </a>
+          {%- for item in cart.items -%}
+            <div class="cart-item" id="cart-item-{{ item.key | replace: ':', '-' }}">
+              <div class="cart-item__media">
+                <a href="{{ item.url }}">
+                  {{
+                    item.image
+                    | image_url: width: 200
+                    | image_tag: loading: 'lazy', width: 200, alt: item.title
+                  }}
+                </a>
+              </div>
+              <div class="cart-item__info">
+                <a href="{{ item.url }}" class="cart-item__title">{{ item.product.title }}</a>
+                {%- unless item.variant.title == 'Default Title' -%}
+                  <span class="cart-item__variant">{{ item.variant.title }}</span>
+                {%- endunless -%}
+                <div class="cart-item__price">
+                  {%- render 'price', product: item.product, variant: item.variant -%}
                 </div>
-                <div class="cart-item__info">
-                  <a href="{{ item.url }}" class="cart-item__title">{{ item.product.title }}</a>
-                  {%- unless item.variant.title == 'Default Title' -%}
-                    <span class="cart-item__variant">{{ item.variant.title }}</span>
-                  {%- endunless -%}
-                  <div class="cart-item__price">
-                    {%- render 'price', product: item.product, variant: item.variant -%}
-                  </div>
-                  <div class="quantity-selector" style="margin-top:0.8rem">
-                    <button type="button" class="quantity-btn" data-action="decrease">−</button>
-                    <input
-                      class="quantity-input"
-                      type="number"
-                      name="updates[{{ item.key }}]"
-                      id="updates_{{ item.key }}"
-                      value="{{ item.quantity }}"
-                      min="0"
-                      aria-label="{{ 'cart.item_quantity' | t }}"
-                    >
-                    <button type="button" class="quantity-btn" data-action="increase">+</button>
-                  </div>
+                <div class="quantity-selector" style="margin-top:0.8rem">
                   <button
                     type="button"
-                    class="cart-item__remove"
-                    onclick="fetch('{{ routes.cart_change_url }}',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:'{{ item.key }}',quantity:0})}).then(function(r){return r.json()}).then(function(){location.reload()})"
-                  >Eliminar</button>
+                    class="quantity-btn"
+                    onclick="cartUpdate('{{ item.key }}', {{ item.quantity | minus: 1 }})"
+                    aria-label="Diminuir quantidade"
+                  >−</button>
+                  <input
+                    class="quantity-input"
+                    type="number"
+                    value="{{ item.quantity }}"
+                    min="1"
+                    aria-label="Quantidade"
+                    onchange="cartUpdate('{{ item.key }}', parseInt(this.value) || 1)"
+                  >
+                  <button
+                    type="button"
+                    class="quantity-btn"
+                    onclick="cartUpdate('{{ item.key }}', {{ item.quantity | plus: 1 }})"
+                    aria-label="Aumentar quantidade"
+                  >+</button>
                 </div>
+                <button
+                  type="button"
+                  class="cart-item__remove"
+                  onclick="cartUpdate('{{ item.key }}', 0)"
+                >Remover</button>
               </div>
-            {%- endfor -%}
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <!-- Summary -->
+        <div class="cart-summary">
+          <h2 class="cart-summary__title">Resumo do Pedido</h2>
+
+          <div class="cart-summary__row">
+            <span>Subtotal</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+          <div class="cart-summary__row">
+            <span>Frete</span>
+            <span>Calculado no checkout</span>
+          </div>
+          <div class="cart-summary__row cart-summary__row--total">
+            <span>Total</span>
+            <span>{{ cart.total_price | money }}</span>
           </div>
 
-          <!-- Summary -->
-          <div class="cart-summary">
-            <button type="submit" class="btn btn--secondary btn--full" style="margin-bottom:2rem">Atualizar carrinho</button>
-            <h2 class="cart-summary__title">Resumo do Pedido</h2>
+          <p class="cart-summary__note">
+            Impostos e frete calculados no checkout
+          </p>
 
-            <div class="cart-summary__row">
-              <span>Subtotal</span>
-              <span>{{ cart.total_price | money }}</span>
-            </div>
-            <div class="cart-summary__row">
-              <span>Frete</span>
-              <span>Calculado no checkout</span>
-            </div>
-            <div class="cart-summary__row cart-summary__row--total">
-              <span>Total</span>
-              <span>{{ cart.total_price | money }}</span>
-            </div>
+          <a href="/checkout" class="btn btn--primary btn--full">
+            Finalizar pedido
+          </a>
 
-            <p class="cart-summary__note">
-              Impostos e frete calculados no checkout
-            </p>
-
-            <a href="/checkout" class="btn btn--primary btn--full">
-              Finalizar pedido
+          <div style="text-align:center;margin-top:1.6rem">
+            <a href="{{ routes.root_url }}" style="font-size:1.4rem;text-decoration:underline;color:rgba(var(--color-base-text),0.6)">
+              Continuar comprando
             </a>
-
-            <div style="text-align:center;margin-top:1.6rem">
-              <a href="{{ routes.root_url }}" style="font-size:1.4rem;text-decoration:underline;color:rgba(var(--color-base-text),0.6)">
-                Continuar comprando
-              </a>
-            </div>
           </div>
         </div>
-      {%- endform -%}
+      </div>
     {%- else -%}
       <div class="cart-empty">
         <h2 class="cart-empty__title">Seu carrinho está vazio</h2>
@@ -97,6 +103,18 @@
     {%- endif -%}
   </div>
 </section>
+
+<script>
+function cartUpdate(key, qty) {
+  fetch('{{ routes.cart_change_url }}', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id: key, quantity: qty < 0 ? 0 : qty })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function() { location.reload(); });
+}
+</script>
 
 {% schema %}
 {

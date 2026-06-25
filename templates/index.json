@@ -139,6 +139,19 @@
         "button_link": ""
       }
     },
+    "featured-collection-2": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "",
+        "eyebrow": "",
+        "title": "Mais Produtos",
+        "subtitle": "",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "show_view_all": true,
+        "view_all_text": "Ver coleção completa"
+      }
+    },
     "newsletter": {
       "type": "newsletter",
       "settings": {
@@ -157,6 +170,7 @@
     "category-highlights",
     "featured-collection",
     "image-with-text",
+    "featured-collection-2",
     "newsletter"
   ]
 }
