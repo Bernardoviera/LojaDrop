@@ -12,7 +12,8 @@
     "hero-banner": {
       "type": "hero-banner",
       "settings": {
-        "image": "shopify://shop_images/ChatGPT_Image_18_de_jun._de_2026_14_44_28.png",
+        "image": "shopify://shop_images/lucid-realism_a_cinematic_photo_of_Elegant_Brazilian_woman_from_waist_up_wearing_layered_gold_-1.jpg",
+        "image_mobile": "shopify://shop_images/WhatsApp_Image_2026-06-08_at_09.36.04.jpg",
         "height_option": "full-height",
         "content_alignment": "center",
         "eyebrow": "",
@@ -78,7 +79,6 @@
         "cat-1": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_18_de_jun._de_2026_16_50_16.png",
             "title": "",
             "cta_label": "Ver coleção",
             "link": "shopify://collections/bolsas"
@@ -87,7 +87,6 @@
         "cat-2": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_18_de_jun._de_2026_16_50_16_12575923-4411-472e-8af2-1780be949bd3.png",
             "title": "",
             "cta_label": "Ver coleção",
             "link": "shopify://collections/diversos"
@@ -96,7 +95,6 @@
         "cat-3": {
           "type": "category",
           "settings": {
-            "image": "shopify://shop_images/ChatGPT_Image_18_de_jun._de_2026_16_50_16_9f362bfc-3626-4e54-9444-8860c71f85de.png",
             "title": "",
             "cta_label": "Ver coleção",
             "link": "shopify://collections/decoracao"
