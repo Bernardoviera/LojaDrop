@@ -134,19 +134,17 @@
   {%- endif -%}
 
   <!-- Formas de pagamento -->
-  {%- if section.settings.show_payment -%}
-    {%- unless shop.enabled_payment_types == empty -%}
-      <div class="footer__payment">
-        <div class="page-width">
-          <p class="footer__payment-title">{{ section.settings.payment_heading }}</p>
-          <div class="footer__payment-icons">
-            {%- for type in shop.enabled_payment_types -%}
-              {{ type | payment_type_svg_tag: class: 'footer__payment-svg' }}
-            {%- endfor -%}
-          </div>
+  {%- if section.settings.show_payment and shop.enabled_payment_types.size > 0 -%}
+    <div class="footer__payment">
+      <div class="page-width">
+        <p class="footer__payment-title">{{ section.settings.payment_heading }}</p>
+        <div class="footer__payment-icons">
+          {%- for type in shop.enabled_payment_types -%}
+            {{ type | payment_type_svg_tag: class: 'footer__payment-svg' }}
+          {%- endfor -%}
         </div>
       </div>
-    {%- endunless -%}
+    </div>
   {%- endif -%}
 
   <!-- Rodapé inferior -->
