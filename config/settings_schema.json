@@ -97,4 +97,70 @@
       { "type": "range", "id": "card_border_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Opacidade da borda", "default": 10 },
       { "type": "range", "id": "card_shadow_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Opacidade da sombra", "default": 0 },
       { "type": "range", "id": "card_shadow_horizontal_offset", "min": -12, "max": 12, "step": 2, "unit": "px", "label": "Deslocamento horizontal da sombra", "default": 0 },
-      { "type": "range", "id": "card_shadow_vertical_offset", "min": -12, "max": 12, "step": 2, "unit": "px", "label": "Deslocamento vertical da sombra", "default": 0 }
+      { "type": "range", "id": "card_shadow_vertical_offset", "min": -12, "max": 12, "step": 2, "unit": "px", "label": "Deslocamento vertical da sombra", "default": 0 },
+      { "type": "range", "id": "card_shadow_blur", "min": 0, "max": 40, "step": 5, "unit": "px", "label": "Desfoque da sombra", "default": 0 }
+    ]
+  },
+  {
+    "name": "Botões",
+    "settings": [
+      { "type": "range", "id": "buttons_radius", "min": 0, "max": 40, "step": 2, "unit": "px", "label": "Raio das esquinas", "default": 0 },
+      { "type": "range", "id": "buttons_border_thickness", "min": 0, "max": 10, "step": 1, "unit": "px", "label": "Espessura da borda", "default": 2 },
+      { "type": "range", "id": "buttons_border_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Opacidade da borda", "default": 100 },
+      { "type": "range", "id": "buttons_shadow_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Opacidade da sombra", "default": 0 },
+      { "type": "range", "id": "buttons_shadow_horizontal_offset", "min": -12, "max": 12, "step": 2, "unit": "px", "label": "Deslocamento horizontal", "default": 0 },
+      { "type": "range", "id": "buttons_shadow_vertical_offset", "min": -12, "max": 12, "step": 2, "unit": "px", "label": "Deslocamento vertical", "default": 0 },
+      { "type": "range", "id": "buttons_shadow_blur", "min": 0, "max": 40, "step": 5, "unit": "px", "label": "Desfoque da sombra", "default": 0 }
+    ]
+  },
+  {
+    "name": "Campos de entrada",
+    "settings": [
+      { "type": "range", "id": "inputs_radius", "min": 0, "max": 40, "step": 2, "unit": "px", "label": "Raio das esquinas", "default": 0 },
+      { "type": "range", "id": "inputs_border_thickness", "min": 0, "max": 10, "step": 1, "unit": "px", "label": "Espessura da borda", "default": 1 },
+      { "type": "range", "id": "inputs_border_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Opacidade da borda", "default": 55 },
+      { "type": "range", "id": "inputs_shadow_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Opacidade da sombra", "default": 0 },
+      { "type": "range", "id": "inputs_shadow_horizontal_offset", "min": -12, "max": 12, "step": 2, "unit": "px", "label": "Deslocamento horizontal", "default": 0 },
+      { "type": "range", "id": "inputs_shadow_vertical_offset", "min": -12, "max": 12, "step": 2, "unit": "px", "label": "Deslocamento vertical", "default": 0 },
+      { "type": "range", "id": "inputs_shadow_blur", "min": 0, "max": 40, "step": 5, "unit": "px", "label": "Desfoque da sombra", "default": 0 }
+    ]
+  },
+  {
+    "name": "Caixas de texto",
+    "settings": [
+      { "type": "range", "id": "text_boxes_radius", "min": 0, "max": 40, "step": 2, "unit": "px", "label": "Raio das esquinas", "default": 8 },
+      { "type": "range", "id": "text_boxes_border_thickness", "min": 0, "max": 10, "step": 1, "unit": "px", "label": "Espessura da borda", "default": 0 },
+      { "type": "range", "id": "text_boxes_border_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Opacidade da borda", "default": 10 },
+      { "type": "range", "id": "text_boxes_shadow_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Opacidade da sombra", "default": 0 },
+      { "type": "range", "id": "text_boxes_shadow_horizontal_offset", "min": -12, "max": 12, "step": 2, "unit": "px", "label": "Deslocamento horizontal", "default": 0 },
+      { "type": "range", "id": "text_boxes_shadow_vertical_offset", "min": -12, "max": 12, "step": 2, "unit": "px", "label": "Deslocamento vertical", "default": 0 },
+      { "type": "range", "id": "text_boxes_shadow_blur", "min": 0, "max": 40, "step": 5, "unit": "px", "label": "Desfoque da sombra", "default": 0 }
+    ]
+  },
+  {
+    "name": "Mídia",
+    "settings": [
+      { "type": "range", "id": "media_padding", "min": 0, "max": 30, "step": 2, "unit": "px", "label": "Padding", "default": 0 },
+      { "type": "range", "id": "media_radius", "min": 0, "max": 20, "step": 2, "unit": "px", "label": "Raio das esquinas", "default": 4 },
+      { "type": "range", "id": "media_border_thickness", "min": 0, "max": 10, "step": 1, "unit": "px", "label": "Espessura da borda", "default": 0 },
+      { "type": "range", "id": "media_border_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Opacidade da borda", "default": 10 },
+      { "type": "range", "id": "media_shadow_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Opacidade da sombra", "default": 0 },
+      { "type": "range", "id": "media_shadow_horizontal_offset", "min": -12, "max": 12, "step": 2, "unit": "px", "label": "Deslocamento horizontal", "default": 0 },
+      { "type": "range", "id": "media_shadow_vertical_offset", "min": -12, "max": 12, "step": 2, "unit": "px", "label": "Deslocamento vertical", "default": 0 },
+      { "type": "range", "id": "media_shadow_blur", "min": 0, "max": 40, "step": 5, "unit": "px", "label": "Desfoque da sombra", "default": 0 }
+    ]
+  },
+  {
+    "name": "Animações",
+    "settings": [
+      {
+        "type": "select", "id": "animations_hover_elements",
+        "options": [
+          { "value": "none", "label": "Nenhum" },
+          { "value": "lift", "label": "Elevar" }
+        ],
+        "default": "lift", "label": "Hover nos cartões"
+      }
+    ]
+  }
+]
