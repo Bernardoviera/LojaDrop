@@ -12,7 +12,7 @@
     "hero-banner": {
       "type": "hero-banner",
       "settings": {
-        "image": "shopify://shop_images/ChatGPT_Image_4_de_ago._de_2026_09_50_37.png",
+        "image": "shopify://shop_images/ChatGPT_Image_11_de_ago._de_2026_14_23_10.png",
         "image_mobile": "shopify://shop_images/ChatGPT_Image_4_de_ago._de_2026_09_52_43.png",
         "height_option": "full-height",
         "content_alignment": "center",
@@ -113,7 +113,7 @@
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
-        "collection": "diversos",
+        "collection": "produtos-variados",
         "eyebrow": "Mais Vendidos",
         "title": "Produtos em Destaque",
         "subtitle": "Os favoritos dos nossos clientes",
@@ -140,7 +140,7 @@
     "featured-collection-2": {
       "type": "featured-collection",
       "settings": {
-        "collection": "decoracao",
+        "collection": "produto-diversos",
         "eyebrow": "",
         "title": "mais vendidos",
         "subtitle": "",
