@@ -79,6 +79,7 @@
         "cat-1": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_4_de_ago._de_2026_10_07_50.png",
             "title": "",
             "cta_label": "Ver coleção",
             "link": "shopify://collections/acessorios"
@@ -87,6 +88,7 @@
         "cat-2": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_4_de_ago._de_2026_10_12_13.png",
             "title": "",
             "cta_label": "Ver coleção",
             "link": "shopify://collections/diversos"
@@ -95,6 +97,7 @@
         "cat-3": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_4_de_ago._de_2026_10_56_26.png",
             "title": "",
             "cta_label": "Ver coleção",
             "link": "shopify://collections/decoracao"
