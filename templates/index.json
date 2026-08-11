@@ -79,25 +79,28 @@
         "cat-1": {
           "type": "category",
           "settings": {
-            "title": "",
+            "image": "shopify://shop_images/9789e772-f381-4b36-9846-0dda9e6f0e50.png",
+            "title": "Pulseiras & braceletes",
             "cta_label": "Ver coleção",
-            "link": "shopify://collections/acessorios"
+            "link": "shopify://collections/pulseiras-braceletes"
           }
         },
         "cat-2": {
           "type": "category",
           "settings": {
-            "title": "",
+            "image": "shopify://shop_images/f08c2261-eb97-4c58-b1c9-6939ae037e1c.png",
+            "title": "Brincos",
             "cta_label": "Ver coleção",
-            "link": "shopify://collections/diversos"
+            "link": "shopify://collections/brinco"
           }
         },
         "cat-3": {
           "type": "category",
           "settings": {
-            "title": "",
+            "image": "shopify://shop_images/39c36228-fc4d-48bf-ae4f-7633765ff3ce.png",
+            "title": "Colares & chokers",
             "cta_label": "Ver coleção",
-            "link": "shopify://collections/decoracao"
+            "link": "shopify://collections/colares-chokers"
           }
         }
       },
