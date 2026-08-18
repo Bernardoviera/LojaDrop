@@ -339,7 +339,11 @@ class ProductGallery {
       thumb.addEventListener('click', () => {
         // item 10: use data-full for full-resolution src
         const fullSrc = thumb.dataset.full || thumb.querySelector('img').src;
-        if (this.main) this.main.src = fullSrc;
+        if (this.main) {
+          this.main.removeAttribute('srcset');
+          this.main.removeAttribute('sizes');
+          this.main.src = fullSrc;
+        }
         this.thumbs.forEach(t => t.classList.remove('is-active'));
         thumb.classList.add('is-active');
       });
