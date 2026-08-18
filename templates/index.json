@@ -143,7 +143,7 @@
     "featured-collection-2": {
       "type": "featured-collection",
       "settings": {
-        "collection": "decoracao",
+        "collection": "mais-vendidos",
         "eyebrow": "",
         "title": "mais vendidos",
         "subtitle": "",
