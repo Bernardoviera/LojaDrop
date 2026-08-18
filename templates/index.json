@@ -97,9 +97,10 @@
         "cat-3": {
           "type": "category",
           "settings": {
-            "title": "",
+            "image": "shopify://shop_images/ChatGPT_Image_18_de_ago._de_2026_09_29_15.png",
+            "title": "Blusas De Frio",
             "cta_label": "Ver coleção",
-            "link": "shopify://collections/decoracao"
+            "link": "shopify://collections/acessorios"
           }
         }
       },
