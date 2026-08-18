@@ -26,7 +26,9 @@
   "general": {
     "search": {
       "placeholder": "Buscar productos...",
-      "no_results": "No se encontraron resultados para \"{{ terms }}\""
+      "no_results": "No se encontraron resultados para \"{{ terms }}\"",
+      "search": "Buscar",
+      "results": "Resultados para \"{{ terms }}\""
     },
     "share": {
       "success_message": "¡Enlace copiado!"
@@ -66,5 +68,8 @@
   },
   "cart": {
     "item_quantity": "Cantidad"
+  },
+  "localization": {
+    "country_results_count": "{{ count }} resultados"
   }
 }
