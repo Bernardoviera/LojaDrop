@@ -12,8 +12,8 @@
     "settings": [
       { "type": "color", "id": "colors_text", "default": "#1a1a1a", "label": "Texto principal" },
       { "type": "color", "id": "colors_background_1", "default": "#ffffff", "label": "Fundo principal" },
-      { "type": "color", "id": "colors_background_2", "default": "#fdf0f4", "label": "Fundo secundário" },
-      { "type": "color", "id": "colors_accent_1", "default": "#c4688a", "label": "Acento rosa" },
+      { "type": "color", "id": "colors_background_2", "default": "#f8f5f2", "label": "Fundo secundário" },
+      { "type": "color", "id": "colors_accent_1", "default": "#c9a96e", "label": "Acento 1" },
       { "type": "color", "id": "colors_accent_2", "default": "#1a1a1a", "label": "Acento 2" },
       { "type": "color", "id": "colors_solid_button_labels", "default": "#ffffff", "label": "Texto de botões sólidos" },
       { "type": "color", "id": "colors_outline_button_labels", "default": "#1a1a1a", "label": "Texto de botões contorno" },
