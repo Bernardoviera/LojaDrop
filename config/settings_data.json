@@ -86,7 +86,7 @@
         "type": "announcement-bar",
         "settings": {
           "show_announcement": true,
-          "announcement_text": "Frete grátis em pedidos acima de R$250 • Use o cupom BEM-VINDO10 e ganhe 10% de desconto",
+          "announcement_text": "Frete grátis em pedidos acima de €99 • Use o cupom BEM-VINDO10 e ganhe 10% de desconto",
           "announcement_link": ""
         }
       },
