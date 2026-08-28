@@ -93,6 +93,7 @@
       "header": {
         "type": "header",
         "settings": {
+          "logo": "shopify://shop_images/text-1781806873515.png",
           "logo_height": 30,
           "menu": "main-menu",
           "show_search": true,
@@ -104,9 +105,9 @@
         "settings": {
           "policies_heading": "Políticas",
           "policies_menu": "footer",
-          "company_name": "VASTERNOR STORE",
-          "contact_email": "ljinterroupas@gmail.com",
-          "contact_phone": "+55 45 9972-3221",
+          "company_name": "LUME STORE LTDA",
+          "contact_email": "luizgonzagamff@gmail.com",
+          "contact_phone": "+55 99 98120-5035",
           "contact_whatsapp": "",
           "show_newsletter": true,
           "newsletter_text": "Cadastre-se e receba nossas ofertas por e-mail",
