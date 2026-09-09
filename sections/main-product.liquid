@@ -18,7 +18,7 @@
         {%- if product.images.size > 1 -%}
           <div class="product-media__thumbnails">
             {%- for image in product.images limit: 8 -%}
-              <div class="product-media__thumb{% if forloop.first %} is-active{% endif %}" data-full="{{ image | image_url: width: 900 }}">
+              <div class="product-media__thumb{% if forloop.first %} is-active{% endif %}" data-full="{{ image | image_url: width: 900 }}" data-image-id="{{ image.id }}">
                 {{
                   image
                   | image_url: width: 200

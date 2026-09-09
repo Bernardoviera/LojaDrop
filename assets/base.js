@@ -320,6 +320,16 @@ class VariantPicker {
       addBtn.textContent = this.currentVariant.available ? 'Adicionar ao carrinho' : 'Esgotado';
     }
 
+    // Variant image: find the thumbnail matching this variant's featured_image and activate it
+    if (this.currentVariant.featured_image) {
+      const gallery = this.form.closest('.product')?.querySelector('.product-media-gallery');
+      if (gallery) {
+        const imgId = this.currentVariant.featured_image.id;
+        const thumb = gallery.querySelector(`.product-media__thumb[data-image-id="${imgId}"]`);
+        if (thumb) thumb.click();
+      }
+    }
+
     const url = new URL(window.location.href);
     url.searchParams.set('variant', this.currentVariant.id);
     window.history.replaceState({}, '', url.toString());
