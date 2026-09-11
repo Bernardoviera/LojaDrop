@@ -1,0 +1,105 @@
+<section class="section contact-section">
+  <div class="page-width">
+    <div class="contact-form-wrapper">
+      <h1 class="contact-form__title">{{ 'sections.contact.title' | t }}</h1>
+
+      {%- if page.content != blank -%}
+        <div class="contact-form__description rte">{{ page.content }}</div>
+      {%- endif -%}
+
+      {%- form 'contact', id: 'ContactForm', class: 'contact-form' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="contact-form__success" role="status">
+            {{ 'sections.contact.success' | t }}
+          </div>
+        {%- endif -%}
+
+        {%- if form.errors -%}
+          <div class="contact-form__errors" role="alert">
+            <ul>
+              {%- for error in form.errors -%}
+                <li>{{ error | capitalize }}: {{ form.errors.messages[error] }}</li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        <div class="contact-form__fields">
+          <div class="contact-form__field">
+            <label class="contact-form__label" for="ContactForm-name">
+              {{ 'sections.contact.name_label' | t }}
+            </label>
+            <input
+              class="contact-form__input"
+              type="text"
+              id="ContactForm-name"
+              name="contact[name]"
+              value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+              autocomplete="name"
+              required
+            >
+          </div>
+
+          <div class="contact-form__field">
+            <label class="contact-form__label" for="ContactForm-email">
+              {{ 'sections.contact.email_label' | t }}
+            </label>
+            <input
+              class="contact-form__input"
+              type="email"
+              id="ContactForm-email"
+              name="contact[email]"
+              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+              autocomplete="email"
+              autocorrect="off"
+              autocapitalize="off"
+              required
+            >
+          </div>
+
+          <div class="contact-form__field">
+            <label class="contact-form__label" for="ContactForm-phone">
+              {{ 'sections.contact.phone_label' | t }}
+            </label>
+            <input
+              class="contact-form__input"
+              type="tel"
+              id="ContactForm-phone"
+              name="contact[phone]"
+              value="{% if form.phone %}{{ form.phone }}{% endif %}"
+              autocomplete="tel"
+            >
+          </div>
+
+          <div class="contact-form__field contact-form__field--full">
+            <label class="contact-form__label" for="ContactForm-body">
+              {{ 'sections.contact.message_label' | t }}
+            </label>
+            <textarea
+              class="contact-form__textarea"
+              id="ContactForm-body"
+              name="contact[body]"
+              rows="8"
+              required
+            >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+          </div>
+        </div>
+
+        <div class="contact-form__submit">
+          <button type="submit" class="btn btn--primary">
+            {{ 'sections.contact.submit' | t }}
+          </button>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Formulário de Contato",
+  "tag": "section",
+  "templates": ["page"],
+  "settings": []
+}
+{% endschema %}

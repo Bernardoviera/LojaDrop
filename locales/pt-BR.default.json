@@ -8,7 +8,9 @@
     },
     "share": {
       "success_message": "Link copiado!"
-    }
+    },
+    "remove": "Remover",
+    "copyright": "Todos os direitos reservados"
   },
   "accessibility": {
     "skip_to_text": "Pular para o conteúdo principal",
@@ -25,11 +27,25 @@
       "title": "Carrinho",
       "cart_count": "{{ count }} items no carrinho",
       "cart_error": "Não foi possível adicionar ao carrinho.",
-      "cart_quantity_error_html": "Só temos <strong>{{ quantity }}</strong> deste item."
+      "cart_quantity_error_html": "Só temos <strong>{{ quantity }}</strong> deste item.",
+      "taxes": "Frete e impostos calculados no checkout",
+      "checkout": "Finalizar pedido",
+      "view_cart": "Ver carrinho completo",
+      "added": "Produto adicionado ao carrinho!",
+      "empty": "Seu carrinho está vazio."
     },
     "slideshow": {
       "pause_slideshow": "Pausar slideshow",
       "play_slideshow": "Reproduzir slideshow"
+    },
+    "contact": {
+      "title": "Fale Conosco",
+      "name_label": "Nome",
+      "email_label": "E-mail",
+      "phone_label": "Telefone (opcional)",
+      "message_label": "Mensagem",
+      "submit": "Enviar mensagem",
+      "success": "Mensagem enviada com sucesso! Entraremos em contato em breve."
     }
   },
   "products": {
@@ -37,7 +53,13 @@
       "add_to_cart": "Adicionar ao carrinho",
       "sold_out": "Esgotado",
       "unavailable": "Indisponível",
+      "adding": "Adicionando...",
       "value_unavailable": "{{ option_value }} - indisponível",
+      "quantity": {
+        "label": "Quantidade"
+      },
+      "category": "Categoria",
+      "sku": "SKU",
       "media": {
         "image_available": "Imagem {{ index }}"
       }

@@ -20,8 +20,8 @@
         "title": "",
         "subtitle": "",
         "text_color": "light",
-        "button_label": "",
-        "button_link": "",
+        "button_label": "Explorar Coleção",
+        "button_link": "/collections/all",
         "button2_label": "",
         "button2_link": "",
         "show_overlay": true,
@@ -82,7 +82,7 @@
             "image": "shopify://shop_images/ChatGPT_Image_18_de_ago._de_2026_09_20_39.png",
             "title": "Bermudas",
             "cta_label": "Ver coleção",
-            "link": "shopify://collections/bermudas-1"
+            "link": "shopify://collections/bermudas"
           }
         },
         "cat-2": {

@@ -44,10 +44,6 @@
 
         {%- render 'parcelamento', product: product -%}
 
-        {%- if product.description != blank -%}
-          <div class="product-info__description">{{ product.description }}</div>
-        {%- endif -%}
-
         {%- form 'product', product,
           id: 'product-form',
           class: 'product-form'
@@ -89,7 +85,7 @@
           <div class="product-form__quantity">
             <div class="quantity-selector">
               <button type="button" class="quantity-btn" data-action="decrease">−</button>
-              <input class="quantity-input" type="number" name="quantity" value="1" min="1" aria-label="Quantidade">
+              <input class="quantity-input" type="number" name="quantity" value="1" min="1" aria-label="{{ 'products.product.quantity.label' | t }}">
               <button type="button" class="quantity-btn" data-action="increase">+</button>
             </div>
           </div>
@@ -104,21 +100,26 @@
               {%- unless product.selected_or_first_available_variant.available -%}disabled{%- endunless -%}
             >
               {%- if product.selected_or_first_available_variant.available -%}
-                Adicionar ao carrinho
+                {{ 'products.product.add_to_cart' | t }}
               {%- else -%}
-                Esgotado
+                {{ 'products.product.sold_out' | t }}
               {%- endif -%}
             </button>
           </div>
         {%- endform -%}
 
+        <!-- Description (after buy button) -->
+        {%- if product.description != blank -%}
+          <div class="product-info__description">{{ product.description }}</div>
+        {%- endif -%}
+
         <!-- Meta info -->
         <div class="product-info__meta">
-          {%- if product.sku != blank -%}
-            <p>SKU: <span>{{ product.selected_or_first_available_variant.sku }}</span></p>
+          {%- if product.selected_or_first_available_variant.sku != blank -%}
+            <p>{{ 'products.product.sku' | t }}: <span>{{ product.selected_or_first_available_variant.sku }}</span></p>
           {%- endif -%}
           {%- if product.type != blank -%}
-            <p>Categoria: <span>{{ product.type }}</span></p>
+            <p>{{ 'products.product.category' | t }}: <span>{{ product.type }}</span></p>
           {%- endif -%}
         </div>
       </div>
