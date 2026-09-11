@@ -32,7 +32,8 @@
       "checkout": "Finalizar pedido",
       "view_cart": "Ver carrinho completo",
       "added": "Produto adicionado ao carrinho!",
-      "empty": "Seu carrinho está vazio."
+      "empty": "Seu carrinho está vazio.",
+      "subtotal": "Subtotal"
     },
     "slideshow": {
       "pause_slideshow": "Pausar slideshow",

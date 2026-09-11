@@ -72,7 +72,12 @@
           {%- endif -%}
         </div>
 
-        <!-- Coluna 3: Redes Sociais -->
+        <!-- Coluna 3: Redes Sociais (shown only when at least one link is set) -->
+        {%- assign has_social = false -%}
+        {%- if section.settings.social_facebook != blank or section.settings.social_instagram != blank or section.settings.social_youtube != blank or section.settings.social_tiktok != blank -%}
+          {%- assign has_social = true -%}
+        {%- endif -%}
+        {%- if has_social -%}
         <div class="footer__col footer__col--social">
           <h3 class="footer__col-title">{{ section.settings.social_heading }}</h3>
           <div class="footer__social-icons">
@@ -106,6 +111,7 @@
             {%- endif -%}
           </div>
         </div>
+        {%- endif -%}
 
       </div>
     </div>
@@ -150,7 +156,7 @@
   <!-- Rodapé inferior -->
   <div class="footer__bottom">
     <div class="page-width">
-      <p class="footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos os direitos reservados.</p>
+      <p class="footer__copyright">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ 'general.copyright' | t }}</p>
     </div>
   </div>
 

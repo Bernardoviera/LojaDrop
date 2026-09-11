@@ -21,7 +21,8 @@
       "checkout": "Finalizar pedido",
       "view_cart": "Ver carrito completo",
       "added": "¡Producto añadido al carrito!",
-      "empty": "Tu carrito está vacío."
+      "empty": "Tu carrito está vacío.",
+      "subtotal": "Subtotal"
     },
     "slideshow": {
       "pause_slideshow": "Pausar pase de diapositivas",
