@@ -18,8 +18,8 @@
       "cart_error": "No se pudo añadir al carrito.",
       "cart_quantity_error_html": "Solo nos queda <strong>{{ quantity }}</strong> de este artículo.",
       "taxes": "Gastos de envío e impuestos calculados al finalizar la compra",
-      "checkout": "Finalizar pedido",
-      "view_cart": "Ver carrito completo",
+      "checkout": "Finalizar compra",
+      "view_cart": "Ver carrito",
       "added": "¡Producto añadido al carrito!",
       "empty": "Tu carrito está vacío.",
       "subtotal": "Subtotal"

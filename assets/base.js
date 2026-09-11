@@ -16,7 +16,6 @@ function syncHeaderHeight() {
 }
 syncHeaderHeight();
 window.addEventListener('resize', syncHeaderHeight, { passive: true });
-// item 3: re-measure after fonts/images settle
 window.addEventListener('load', syncHeaderHeight);
 document.fonts.ready.then(syncHeaderHeight);
 if (siteHeader) new ResizeObserver(syncHeaderHeight).observe(siteHeader);
@@ -38,9 +37,7 @@ if (siteHeader) {
   }
 }
 
-// ─── Mobile nav ────────────────────────────────────────────────────
-// item 2 + 14: encapsulated so it can be re-run on shopify:section:load,
-// with ARIA updates and Escape-key support.
+// ─── Mobile nav ───────────────────────────────────────────────────────
 function initMobileNav() {
   const hamburger = document.querySelector('.header__hamburger');
   const mobileNav  = document.querySelector('.mobile-nav');
@@ -68,7 +65,7 @@ function initMobileNav() {
 }
 initMobileNav();
 
-// ─── Cart Drawer ───────────────────────────────────────────────────
+// ─── Cart Drawer ───────────────────────────────────────────────────────────
 class CartDrawer {
   constructor() {
     this.drawer = document.querySelector('.cart-drawer');
@@ -77,11 +74,10 @@ class CartDrawer {
 
     if (!this.drawer) return;
     this.bindEvents();
-    this.bindCartItemEvents(); // item 5: bind once here, not on every render
+    this.bindCartItemEvents();
   }
 
   bindEvents() {
-    // item 6 / item 2: use document delegation so re-created sections still work
     document.addEventListener('click', e => {
       if (e.target.closest('[data-open-cart]')) this.open();
     });
@@ -119,7 +115,7 @@ class CartDrawer {
     if (!itemsContainer) return;
 
     if (cart.item_count === 0) {
-      itemsContainer.innerHTML = '<p style="padding:2rem 0;text-align:center;color:rgba(var(--color-base-text),0.6)">Seu carrinho está vazio.</p>';
+      itemsContainer.innerHTML = `<p style="padding:2rem 0;text-align:center;color:rgba(var(--color-base-text),0.6)">${window.cartStrings?.empty || 'Seu carrinho está vazio.'}</p>`;
     } else {
       itemsContainer.innerHTML = cart.items.map(item => `
         <div class="cart-item">
@@ -136,7 +132,7 @@ class CartDrawer {
                 <input class="quantity-input" type="number" value="${item.quantity}" min="1" data-key="${item.key}" style="width:4rem">
                 <button class="quantity-btn" data-action="increase" data-key="${item.key}">+</button>
               </div>
-              <button class="cart-item__remove" data-key="${item.key}">Remover</button>
+              <button class="cart-item__remove" data-key="${item.key}">${window.cartStrings?.remove || 'Remover'}</button>
             </div>
           </div>
         </div>
@@ -144,7 +140,9 @@ class CartDrawer {
     }
 
     if (subtotalEl) subtotalEl.textContent = this.formatMoney(cart.total_price);
-    // item 5: do NOT call bindCartItemEvents here — already bound in constructor
+
+    const titleEl = this.drawer.querySelector('.cart-drawer__title');
+    if (titleEl) titleEl.textContent = `${window.cartStrings?.title || 'Carrinho'} (${cart.item_count})`;
   }
 
   bindCartItemEvents() {
@@ -161,10 +159,16 @@ class CartDrawer {
         if (!input) return;
         let qty = parseInt(input.value);
         qty = btn.dataset.action === 'increase' ? qty + 1 : Math.max(0, qty - 1);
-        await this.updateItem(key, qty);
+        btn.disabled = true;
+        try {
+          await this.updateItem(key, qty);
+        } finally {
+          btn.disabled = false;
+        }
       }
 
       if (removeBtn) {
+        removeBtn.disabled = true;
         await this.updateItem(removeBtn.dataset.key, 0);
       }
     });
@@ -182,15 +186,25 @@ class CartDrawer {
       updateCartCount(cart.item_count);
     } catch (e) {
       console.error('Update cart error:', e);
+      showToast(window.cartStrings?.error || 'Erro ao atualizar carrinho.', 'error');
     }
   }
 
   formatMoney(cents) {
-    return 'R$ ' + (cents / 100).toFixed(2).replace('.', ',');
+    // Prefer window.Shopify.money_format which respects active currency in multi-currency stores
+    const fmt = (window.Shopify && window.Shopify.money_format)
+      || window.moneyFormat
+      || '€{{amount}}';
+    const amount = (cents / 100).toFixed(2).replace('.', ',');
+    return fmt
+      .replace('{{amount_with_comma_separator}}', amount)
+      .replace('{{amount_no_decimals_with_comma_separator}}', Math.round(cents / 100).toString())
+      .replace('{{amount_no_decimals}}', Math.round(cents / 100).toString())
+      .replace('{{amount}}', amount);
   }
 }
 
-// ─── Cart count update ─────────────────────────────────────────────
+// ─── Cart count update ───────────────────────────────────────────────────────
 function updateCartCount(count) {
   document.querySelectorAll('.cart-count-bubble').forEach(el => {
     el.textContent = count;
@@ -198,7 +212,7 @@ function updateCartCount(count) {
   });
 }
 
-// ─── Add to cart ───────────────────────────────────────────────────
+// ─── Add to cart ───────────────────────────────────────────────────────────
 async function addToCart(variantId, quantity = 1) {
   try {
     const res = await fetch(window.routes.cart_add_url, {
@@ -219,15 +233,15 @@ async function addToCart(variantId, quantity = 1) {
       window.cartDrawer?.open();
     }
 
-    showToast('Produto adicionado ao carrinho!');
+    showToast(window.cartStrings?.added || 'Produto adicionado ao carrinho!');
   } catch (e) {
-    showToast('Erro ao adicionar ao carrinho.', 'error');
+    showToast(window.cartStrings?.error || 'Erro ao adicionar ao carrinho.', 'error');
     throw e;
   }
 }
 
-// ─── Toast notification ────────────────────────────────────────────
-function showToast(message) {
+// ─── Toast notification ───────────────────────────────────────────────────────
+function showToast(message, type = '') {
   let toast = document.querySelector('.toast');
   if (!toast) {
     toast = document.createElement('div');
@@ -235,15 +249,15 @@ function showToast(message) {
     document.body.appendChild(toast);
   }
   toast.textContent = message;
-  toast.classList.add('is-visible');
-  setTimeout(() => toast.classList.remove('is-visible'), 3000);
+  toast.className = 'toast' + (type ? ' toast--' + type : '') + ' is-visible';
+  clearTimeout(toast._hideTimeout);
+  toast._hideTimeout = setTimeout(() => toast.classList.remove('is-visible'), 3000);
 }
 
-// ─── Product page variant picker ──────────────────────────────────
+// ─── Product page variant picker ────────────────────────────────────────────
 class VariantPicker {
   constructor(form) {
     this.form = form;
-    // item 11: prefer <script type="application/json" data-product-variants>
     const jsonEl = form.querySelector('[data-product-variants]');
     this.variants = JSON.parse(
       jsonEl ? jsonEl.textContent : (form.dataset.variants || '[]')
@@ -270,12 +284,12 @@ class VariantPicker {
         if (!this.currentVariant || !this.currentVariant.available) return;
         const qty = parseInt(this.form.querySelector('.quantity-input')?.value || 1);
         addBtn.disabled = true;
-        addBtn.textContent = 'Adicionando...';
+        addBtn.textContent = window.variantStrings?.adding || 'Adicionando...';
         try {
           await addToCart(this.currentVariant.id, qty);
         } finally {
           addBtn.disabled = false;
-          addBtn.textContent = 'Adicionar ao carrinho';
+          addBtn.textContent = window.variantStrings?.addToCart || 'Adicionar ao carrinho';
         }
       });
     }
@@ -297,27 +311,28 @@ class VariantPicker {
   updateUI() {
     const priceEl = this.form.closest('.product-info')?.querySelector('.product-info__price');
     const addBtn  = this.form.querySelector('[data-add-to-cart]');
-    // item 20: .product-info__stock is never rendered — references removed
 
     if (!this.currentVariant) {
-      if (addBtn) { addBtn.disabled = true; addBtn.textContent = 'Indisponível'; }
+      if (addBtn) { addBtn.disabled = true; addBtn.textContent = window.variantStrings?.unavailable || 'Indisponível'; }
       return;
     }
 
     if (priceEl) {
       if (this.currentVariant.compare_at_price > this.currentVariant.price) {
         priceEl.innerHTML = `
-          <span class="price__sale">R$&nbsp;${(this.currentVariant.price / 100).toFixed(2).replace('.', ',')}</span>
-          <span class="price__compare">R$&nbsp;${(this.currentVariant.compare_at_price / 100).toFixed(2).replace('.', ',')}</span>
+          <span class="price__sale">${window.cartDrawer?.formatMoney(this.currentVariant.price) || ''}</span>
+          <span class="price__compare">${window.cartDrawer?.formatMoney(this.currentVariant.compare_at_price) || ''}</span>
         `;
       } else {
-        priceEl.innerHTML = `<span class="price__regular">R$&nbsp;${(this.currentVariant.price / 100).toFixed(2).replace('.', ',')}</span>`;
+        priceEl.innerHTML = `<span class="price__regular">${window.cartDrawer?.formatMoney(this.currentVariant.price) || ''}</span>`;
       }
     }
 
     if (addBtn) {
       addBtn.disabled = !this.currentVariant.available;
-      addBtn.textContent = this.currentVariant.available ? 'Adicionar ao carrinho' : 'Esgotado';
+      addBtn.textContent = this.currentVariant.available
+        ? (window.variantStrings?.addToCart || 'Adicionar ao carrinho')
+        : (window.variantStrings?.soldOut || 'Esgotado');
     }
 
     const url = new URL(window.location.href);
@@ -326,7 +341,7 @@ class VariantPicker {
   }
 }
 
-// ─── Product media gallery ─────────────────────────────────────────
+// ─── Product media gallery ───────────────────────────────────────────────────
 class ProductGallery {
   constructor(gallery) {
     this.main   = gallery.querySelector('.product-media__main img');
@@ -337,7 +352,6 @@ class ProductGallery {
   bindEvents() {
     this.thumbs.forEach(thumb => {
       thumb.addEventListener('click', () => {
-        // item 10: use data-full for full-resolution src
         const fullSrc = thumb.dataset.full || thumb.querySelector('img').src;
         if (this.main) this.main.src = fullSrc;
         this.thumbs.forEach(t => t.classList.remove('is-active'));
@@ -347,8 +361,7 @@ class ProductGallery {
   }
 }
 
-// ─── Quantity selectors (outside cart drawer) ──────────────────────
-// item 5: skip drawer selectors to avoid double-updating with the drawer handler
+// ─── Quantity selectors (outside cart drawer) ────────────────────────────────────
 function initQuantitySelectors(root = document) {
   root.querySelectorAll('.quantity-selector').forEach(selector => {
     if (selector.closest('.cart-drawer') || selector._qtyInit) return;
@@ -364,7 +377,7 @@ function initQuantitySelectors(root = document) {
   });
 }
 
-// ─── Init ──────────────────────────────────────────────────────────
+// ─── Init ────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   window.cartDrawer = new CartDrawer();
 
@@ -380,7 +393,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initQuantitySelectors();
 
-  // item 2: use document delegation for quick-add — survives section re-renders
   document.addEventListener('click', async (e) => {
     const btn = e.target.closest('[data-quick-add]');
     if (!btn || btn._qaRunning) return;
@@ -400,8 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ─── Shopify Theme Editor re-init ──────────────────────────────────
-// item 2: re-run initializers when a section is reloaded in the editor
+// ─── Shopify Theme Editor re-init ──────────────────────────────────────────────
 document.addEventListener('shopify:section:load', (event) => {
   syncHeaderHeight();
   initMobileNav();
