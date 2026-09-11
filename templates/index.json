@@ -35,7 +35,7 @@
         "badge-1": {
           "type": "badge",
           "settings": {
-            "icon": "🚚",
+            "icon_type": "shipping",
             "title": "Frete Grátis",
             "text": "Pedidos acima de €99"
           }
@@ -43,7 +43,7 @@
         "badge-2": {
           "type": "badge",
           "settings": {
-            "icon": "💳",
+            "icon_type": "payment",
             "title": "Parcelamento",
             "text": "Sem juros"
           }
@@ -51,7 +51,7 @@
         "badge-3": {
           "type": "badge",
           "settings": {
-            "icon": "🔄",
+            "icon_type": "exchange",
             "title": "Troca Fácil",
             "text": "30 dias para trocar"
           }
@@ -59,7 +59,7 @@
         "badge-4": {
           "type": "badge",
           "settings": {
-            "icon": "🔒",
+            "icon_type": "security",
             "title": "Compra Segura",
             "text": "Site 100% protegido"
           }
