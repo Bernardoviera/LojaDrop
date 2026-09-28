@@ -1039,6 +1039,10 @@ img, svg { display: block; max-width: 100%; }
 .product-info__price .price__sale { font-size: 2.2rem; }
 .product-info__price .price__compare { font-size: 1.8rem; }
 
+.product-info .product-media__thumbnails {
+  margin: 2.8rem 0;
+}
+
 .product-info__description {
   font-size: 1.5rem;
   line-height: 1.8;
@@ -1157,6 +1161,76 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .product-info__meta span { font-weight: 600; color: rgb(var(--color-base-text)); }
+
+/* ---------- Sticky add-to-cart bar ---------- */
+body:has(.sticky-add-bar) { padding-bottom: 8rem; }
+
+.sticky-add-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 250;
+  background: rgb(var(--color-base-background-1));
+  border-top: 1px solid rgba(var(--color-base-text), 0.1);
+  box-shadow: 0 -0.4rem 1.6rem rgba(0, 0, 0, 0.06);
+  padding: 1.2rem 0;
+}
+
+.sticky-add-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+
+.sticky-add-bar__info {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  min-width: 0;
+}
+
+.sticky-add-bar__thumb {
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: calc(var(--media-radius) * 0.5);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.sticky-add-bar__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.sticky-add-bar__title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 28rem;
+}
+
+.sticky-add-bar__price { font-size: 1.4rem; color: rgba(var(--color-base-text), 0.7); }
+.sticky-add-bar__price .price__sale,
+.sticky-add-bar__price .price__regular { font-size: 1.4rem; }
+.sticky-add-bar__price .price__compare { font-size: 1.2rem; }
+
+.sticky-add-bar__btn {
+  flex-shrink: 0;
+  padding: 1.2rem 2.8rem;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 749px) {
+  .sticky-add-bar__inner { padding: 0 1.6rem; }
+  .sticky-add-bar__title { max-width: 14rem; }
+  .sticky-add-bar__btn { padding: 1.1rem 1.8rem; }
+}
 
 /* ---------- Collection Page ---------- */
 .collection-hero {
