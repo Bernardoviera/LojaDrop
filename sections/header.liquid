@@ -21,7 +21,7 @@
     </div>
 
     <!-- Desktop Navigation -->
-    <nav class="header__nav" role="navigation" aria-label="Menu principal">
+    <nav class="header__nav" role="navigation" aria-label="{{ 'general.navigation.main_menu' | t }}">
       <ul class="header__nav-list">
         {%- for link in section.settings.menu.links -%}
           <li class="header__nav-item">
@@ -77,7 +77,7 @@
         </a>
       {%- endif -%}
 
-      <button class="header__hamburger" aria-label="Menu" aria-expanded="false">
+      <button class="header__hamburger" aria-label="{{ 'general.navigation.menu' | t }}" aria-expanded="false">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
           <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
         </svg>
@@ -87,8 +87,8 @@
 </header>
 
 <!-- Mobile Navigation -->
-<nav class="mobile-nav" aria-label="Menu mobile" aria-hidden="true">
-  <button class="mobile-nav__close" aria-label="Fechar menu">
+<nav class="mobile-nav" aria-label="{{ 'general.navigation.mobile_menu' | t }}" aria-hidden="true">
+  <button class="mobile-nav__close" aria-label="{{ 'general.navigation.close_menu' | t }}">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
       <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
     </svg>

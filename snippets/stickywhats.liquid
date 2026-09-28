@@ -1,10 +1,10 @@
 {%- if settings.whatsapp_number != blank -%}
   <a
-    href="https://wa.me/55{{ settings.whatsapp_number | remove: ' ' | remove: '-' | remove: '(' | remove: ')' }}"
+    href="https://wa.me/{{ settings.whatsapp_number | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '+' }}"
     class="whatsapp-sticky"
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Falar no WhatsApp"
+    aria-label="{{ 'general.contact.whatsapp_cta' | t }}"
   >
     <img
       src="{{ 'VisionWpp.png' | asset_url }}"

@@ -1,0 +1,102 @@
+{%- liquid
+  assign search_terms = search.terms | escape
+-%}
+
+<div class="collection-hero">
+  <div class="page-width">
+    <h1 class="collection-hero__title">
+      {%- if search.performed -%}
+        {{ 'general.search.results' | t: terms: search_terms }}
+      {%- else -%}
+        {{ 'general.search.search' | t }}
+      {%- endif -%}
+    </h1>
+
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-page-form">
+      <div class="search-page-form__field">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ 'general.search.placeholder' | t }}"
+          aria-label="{{ 'general.search.placeholder' | t }}"
+          class="search-page-form__input"
+          autofocus
+        >
+        <input type="hidden" name="type" value="product">
+        <input type="hidden" name="options[prefix]" value="last">
+      </div>
+      <button type="submit" class="btn btn--primary search-page-form__submit">
+        {{ 'general.search.search' | t }}
+      </button>
+    </form>
+  </div>
+</div>
+
+{%- if search.performed -%}
+  <section class="section">
+    <div class="page-width">
+      {%- paginate search.results by 24 -%}
+        {%- if search.results_count > 0 -%}
+          <div class="collection-toolbar">
+            <span class="collection-toolbar__count">
+              {{ 'general.search.results_count' | t: count: search.results_count }}
+            </span>
+          </div>
+
+          <div class="product-grid" style="--grid-cols-desktop:{{ section.settings.columns_desktop }}">
+            {%- for item in search.results -%}
+              {%- if item.object_type == 'product' -%}
+                {%- render 'card-product', product: item -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          {%- if paginate.pages > 1 -%}
+            <nav class="pagination" style="display:flex;justify-content:center;gap:1rem;margin-top:5rem">
+              {%- if paginate.previous -%}
+                <a href="{{ paginate.previous.url }}" class="btn btn--secondary">&lsaquo; {{ 'general.pagination.previous' | t }}</a>
+              {%- endif -%}
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}
+                  <a href="{{ part.url }}" class="btn btn--secondary">{{ part.title }}</a>
+                {%- else -%}
+                  <span class="btn btn--primary">{{ part.title }}</span>
+                {%- endif -%}
+              {%- endfor -%}
+              {%- if paginate.next -%}
+                <a href="{{ paginate.next.url }}" class="btn btn--secondary">{{ 'general.pagination.next' | t }} &rsaquo;</a>
+              {%- endif -%}
+            </nav>
+          {%- endif -%}
+        {%- else -%}
+          <p style="text-align:center;padding:6rem 0;color:rgba(var(--color-base-text),0.6)">
+            {{ 'general.search.no_results' | t: terms: search_terms }}
+          </p>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Busca",
+  "tag": "section",
+  "templates": ["search"],
+  "settings": [
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "Colunas no desktop"
+    }
+  ]
+}
+{% endschema %}

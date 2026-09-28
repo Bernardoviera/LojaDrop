@@ -27,8 +27,8 @@
               {{ 'product-' | append: placeholder_idx | placeholder_svg_tag: 'placeholder-svg' }}
             </div>
             <div class="product-card__info">
-              <div class="product-card__title">Sample product {{ i }}</div>
-              <div class="price"><span class="price__regular">R$ 129,00</span></div>
+              <div class="product-card__title">{{ 'products.product.placeholder_title' | t }} {{ i }}</div>
+              <div class="price"><span class="price__regular">{{ 12900 | money }}</span></div>
             </div>
           </div>
         {%- endfor -%}
