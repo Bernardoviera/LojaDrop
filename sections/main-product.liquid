@@ -14,20 +14,6 @@
             {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
           {%- endif -%}
         </div>
-
-        {%- if product.images.size > 1 -%}
-          <div class="product-media__thumbnails">
-            {%- for image in product.images limit: 8 -%}
-              <div class="product-media__thumb{% if forloop.first %} is-active{% endif %}" data-media-id="{{ image.id }}" data-full="{{ image | image_url: width: 900 }}">
-                {{
-                  image
-                  | image_url: width: 200
-                  | image_tag: loading: 'lazy', width: 200, alt: product.title
-                }}
-              </div>
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
       </div>
 
       <!-- Info -->
@@ -110,6 +96,21 @@
           </div>
         {%- endform -%}
 
+        <!-- More photos (after buy button, before description) -->
+        {%- if product.images.size > 1 -%}
+          <div class="product-media__thumbnails">
+            {%- for image in product.images limit: 8 -%}
+              <div class="product-media__thumb{% if forloop.first %} is-active{% endif %}" data-media-id="{{ image.id }}" data-full="{{ image | image_url: width: 900 }}">
+                {{
+                  image
+                  | image_url: width: 200
+                  | image_tag: loading: 'lazy', width: 200, alt: product.title
+                }}
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
         <!-- Description (after buy button) -->
         {%- if product.description != blank -%}
           <div class="product-info__description">{{ product.description }}</div>
@@ -125,6 +126,41 @@
           {%- endif -%}
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Sticky add-to-cart bar -->
+  <div class="sticky-add-bar" id="sticky-add-bar">
+    <div class="page-width sticky-add-bar__inner">
+      <div class="sticky-add-bar__info">
+        {%- if product.featured_image -%}
+          {{
+            product.featured_image
+            | image_url: width: 80
+            | image_tag: loading: 'lazy', width: 80, alt: product.title, class: 'sticky-add-bar__thumb'
+          }}
+        {%- endif -%}
+        <div class="sticky-add-bar__text">
+          <span class="sticky-add-bar__title">{{ product.title }}</span>
+          <span class="sticky-add-bar__price">
+            {%- render 'price', product: product -%}
+          </span>
+        </div>
+      </div>
+      <button
+        type="submit"
+        name="add"
+        form="product-form"
+        class="btn btn--primary sticky-add-bar__btn"
+        data-add-to-cart
+        {%- unless product.selected_or_first_available_variant.available -%}disabled{%- endunless -%}
+      >
+        {%- if product.selected_or_first_available_variant.available -%}
+          {{ 'products.product.add_to_cart' | t }}
+        {%- else -%}
+          {{ 'products.product.sold_out' | t }}
+        {%- endif -%}
+      </button>
     </div>
   </div>
 </section>

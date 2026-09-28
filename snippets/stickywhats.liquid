@@ -45,6 +45,12 @@
       }
     }
 
+    /* Make room for the sticky add-to-cart bar on product pages */
+    body:has(.sticky-add-bar) .whatsapp-sticky { bottom: calc(8rem + 20px); }
+    @media (max-width: 749px) {
+      body:has(.sticky-add-bar) .whatsapp-sticky { bottom: calc(8rem + 18px); }
+    }
+
     {%- unless settings.whatsapp_show_desktop -%}
       @media (min-width: 750px) { .whatsapp-sticky { display: none !important; } }
     {%- endunless -%}

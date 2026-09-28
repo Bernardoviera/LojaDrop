@@ -267,6 +267,12 @@ class VariantPicker {
     this.updateUI();
   }
 
+  // Add-to-cart buttons can live outside <form> and reference it via form="product-form",
+  // so they're found by matching the native .form property rather than DOM nesting.
+  getAddButtons() {
+    return Array.from(document.querySelectorAll('[data-add-to-cart]')).filter(btn => btn.form === this.form);
+  }
+
   bindEvents() {
     this.form.querySelectorAll('.variant-opt').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -279,22 +285,23 @@ class VariantPicker {
       });
     });
 
-    const addBtn = this.form.querySelector('[data-add-to-cart]');
-    if (addBtn) {
-      this.form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (!this.currentVariant || !this.currentVariant.available) return;
-        const qty = parseInt(this.form.querySelector('.quantity-input')?.value || 1);
-        addBtn.disabled = true;
-        addBtn.textContent = window.variantStrings?.adding || 'Adicionando...';
-        try {
-          await addToCart(this.currentVariant.id, qty);
-        } finally {
-          addBtn.disabled = false;
-          addBtn.textContent = window.variantStrings?.addToCart || 'Adicionar ao carrinho';
-        }
-      });
-    }
+    this.form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!this.currentVariant || !this.currentVariant.available) return;
+      const qty = parseInt(this.form.querySelector('.quantity-input')?.value || 1);
+      const addBtns = this.getAddButtons();
+      addBtns.forEach(btn => { btn.disabled = true; btn.textContent = window.variantStrings?.adding || 'Adicionando...'; });
+      try {
+        await addToCart(this.currentVariant.id, qty);
+      } finally {
+        addBtns.forEach(btn => {
+          btn.disabled = false;
+          btn.textContent = this.currentVariant?.available
+            ? (window.variantStrings?.addToCart || 'Adicionar ao carrinho')
+            : (window.variantStrings?.soldOut || 'Esgotado');
+        });
+      }
+    });
   }
 
   updateVariant() {
@@ -311,15 +318,16 @@ class VariantPicker {
   }
 
   updateUI() {
-    const priceEl = this.form.closest('.product-info')?.querySelector('.product-info__price');
-    const addBtn  = this.form.querySelector('[data-add-to-cart]');
+    const root = this.form.closest('.product');
+    const priceEls = root ? root.querySelectorAll('.product-info__price, .sticky-add-bar__price') : [];
+    const addBtns = this.getAddButtons();
 
     if (!this.currentVariant) {
-      if (addBtn) { addBtn.disabled = true; addBtn.textContent = window.variantStrings?.unavailable || 'Indisponível'; }
+      addBtns.forEach(btn => { btn.disabled = true; btn.textContent = window.variantStrings?.unavailable || 'Indisponível'; });
       return;
     }
 
-    if (priceEl) {
+    priceEls.forEach(priceEl => {
       if (this.currentVariant.compare_at_price > this.currentVariant.price) {
         priceEl.innerHTML = `
           <span class="price__sale">${window.cartDrawer?.formatMoney(this.currentVariant.price) || ''}</span>
@@ -328,25 +336,24 @@ class VariantPicker {
       } else {
         priceEl.innerHTML = `<span class="price__regular">${window.cartDrawer?.formatMoney(this.currentVariant.price) || ''}</span>`;
       }
-    }
+    });
 
-    if (addBtn) {
-      addBtn.disabled = !this.currentVariant.available;
-      addBtn.textContent = this.currentVariant.available
+    addBtns.forEach(btn => {
+      btn.disabled = !this.currentVariant.available;
+      btn.textContent = this.currentVariant.available
         ? (window.variantStrings?.addToCart || 'Adicionar ao carrinho')
         : (window.variantStrings?.soldOut || 'Esgotado');
-    }
+    });
 
     const variantImage = this.currentVariant.featured_image;
-    if (variantImage) {
-      const gallery = this.form.closest('.product')?.querySelector('.product-media-gallery');
-      const mainImg = gallery?.querySelector('.product-media__main img');
+    if (variantImage && root) {
+      const mainImg = root.querySelector('.product-media__main img');
       const resizedSrc = variantImage.src + (variantImage.src.includes('?') ? '&' : '?') + 'width=900';
       if (mainImg && mainImg.src !== resizedSrc) {
         mainImg.removeAttribute('srcset');
         mainImg.src = resizedSrc;
       }
-      gallery?.querySelectorAll('.product-media__thumb').forEach(thumb => {
+      root.querySelectorAll('.product-media__thumb').forEach(thumb => {
         thumb.classList.toggle('is-active', String(thumb.dataset.mediaId) === String(variantImage.id));
       });
     }
@@ -358,10 +365,12 @@ class VariantPicker {
 }
 
 // ─── Product media gallery ───────────────────────────────────────────────────
+// root is the .product wrapper: the main image lives in .product-media-gallery,
+// but the thumbnails now live further down in .product-info, after the buy button.
 class ProductGallery {
-  constructor(gallery) {
-    this.main   = gallery.querySelector('.product-media__main img');
-    this.thumbs = gallery.querySelectorAll('.product-media__thumb');
+  constructor(root) {
+    this.main   = root.querySelector('.product-media__main img');
+    this.thumbs = root.querySelectorAll('.product-media__thumb');
     this.bindEvents();
   }
 
@@ -407,7 +416,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.querySelectorAll('.product-media-gallery').forEach(gallery => {
-    new ProductGallery(gallery);
+    const root = gallery.closest('.product') || gallery;
+    new ProductGallery(root);
   });
 
   initQuantitySelectors();
@@ -448,7 +458,9 @@ document.addEventListener('shopify:section:load', (event) => {
   });
 
   section.querySelectorAll?.('.product-media-gallery').forEach(gallery => {
-    if (!gallery._gallery) gallery._gallery = new ProductGallery(gallery);
+    if (gallery._gallery) return;
+    const root = gallery.closest('.product') || gallery;
+    gallery._gallery = new ProductGallery(root);
   });
 
   initQuantitySelectors(section);
