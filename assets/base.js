@@ -342,7 +342,10 @@ class VariantPicker {
       const gallery = this.form.closest('.product')?.querySelector('.product-media-gallery');
       const mainImg = gallery?.querySelector('.product-media__main img');
       const resizedSrc = variantImage.src + (variantImage.src.includes('?') ? '&' : '?') + 'width=900';
-      if (mainImg && mainImg.src !== resizedSrc) mainImg.src = resizedSrc;
+      if (mainImg && mainImg.src !== resizedSrc) {
+        mainImg.removeAttribute('srcset');
+        mainImg.src = resizedSrc;
+      }
       gallery?.querySelectorAll('.product-media__thumb').forEach(thumb => {
         thumb.classList.toggle('is-active', String(thumb.dataset.mediaId) === String(variantImage.id));
       });
@@ -366,7 +369,10 @@ class ProductGallery {
     this.thumbs.forEach(thumb => {
       thumb.addEventListener('click', () => {
         const fullSrc = thumb.dataset.full || thumb.querySelector('img').src;
-        if (this.main) this.main.src = fullSrc;
+        if (this.main) {
+          this.main.removeAttribute('srcset');
+          this.main.src = fullSrc;
+        }
         this.thumbs.forEach(t => t.classList.remove('is-active'));
         thumb.classList.add('is-active');
       });
