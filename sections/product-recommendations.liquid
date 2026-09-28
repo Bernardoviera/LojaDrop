@@ -1,0 +1,59 @@
+{%- liquid
+  assign limit = section.settings.products_to_show
+-%}
+
+{%- if recommendations.performed -%}
+  {%- if recommendations.products_count > 0 -%}
+    <section class="section product-recommendations">
+      <div class="page-width">
+        <div class="section-header">
+          <h2 class="section-header__title">{{ section.settings.heading }}</h2>
+        </div>
+        <div class="product-grid" style="--grid-cols-desktop:{{ section.settings.columns_desktop }}">
+          {%- for product in recommendations.products -%}
+            {%- render 'card-product', product: product -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+{%- else -%}
+  <div
+    data-product-recommendations
+    data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ limit }}&intent=related"
+  ></div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Produtos Relacionados",
+  "tag": "section",
+  "templates": ["product"],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Você também pode gostar",
+      "label": "Título"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Número de produtos"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "Colunas no desktop"
+    }
+  ]
+}
+{% endschema %}

@@ -405,6 +405,25 @@ function initQuantitySelectors(root = document) {
   });
 }
 
+// ─── Product recommendations (fetched via Shopify's Section Rendering API) ──
+function initProductRecommendations(root = document) {
+  root.querySelectorAll('[data-product-recommendations]').forEach(el => {
+    if (el._recoInit) return;
+    el._recoInit = true;
+    const url = el.dataset.url;
+    if (!url) return;
+    fetch(url)
+      .then(r => r.text())
+      .then(html => {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const content = doc.querySelector('.product-recommendations');
+        if (content) el.outerHTML = content.outerHTML;
+        else el.remove();
+      })
+      .catch(() => el.remove());
+  });
+}
+
 // ─── Init ────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   window.cartDrawer = new CartDrawer();
@@ -421,6 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   initQuantitySelectors();
+  initProductRecommendations();
 
   document.addEventListener('click', async (e) => {
     const btn = e.target.closest('[data-quick-add]');
@@ -464,4 +484,5 @@ document.addEventListener('shopify:section:load', (event) => {
   });
 
   initQuantitySelectors(section);
+  initProductRecommendations();
 });
