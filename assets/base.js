@@ -273,6 +273,8 @@ class VariantPicker {
         const option = btn.dataset.option;
         this.form.querySelectorAll(`.variant-opt[data-option="${option}"]`).forEach(b => b.classList.remove('is-selected'));
         btn.classList.add('is-selected');
+        const labelSpan = btn.closest('.product-form__option')?.querySelector('.variant-label span');
+        if (labelSpan) labelSpan.textContent = btn.dataset.value;
         this.updateVariant();
       });
     });
@@ -333,6 +335,17 @@ class VariantPicker {
       addBtn.textContent = this.currentVariant.available
         ? (window.variantStrings?.addToCart || 'Adicionar ao carrinho')
         : (window.variantStrings?.soldOut || 'Esgotado');
+    }
+
+    const variantImage = this.currentVariant.featured_image;
+    if (variantImage) {
+      const gallery = this.form.closest('.product')?.querySelector('.product-media-gallery');
+      const mainImg = gallery?.querySelector('.product-media__main img');
+      const resizedSrc = variantImage.src + (variantImage.src.includes('?') ? '&' : '?') + 'width=900';
+      if (mainImg && mainImg.src !== resizedSrc) mainImg.src = resizedSrc;
+      gallery?.querySelectorAll('.product-media__thumb').forEach(thumb => {
+        thumb.classList.toggle('is-active', String(thumb.dataset.mediaId) === String(variantImage.id));
+      });
     }
 
     const url = new URL(window.location.href);
