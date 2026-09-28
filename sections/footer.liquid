@@ -38,10 +38,10 @@
 
           <div class="footer__contact-info">
             {%- if section.settings.contact_email != blank -%}
-              <p>E-mail: <a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></p>
+              <p>{{ 'general.contact.email' | t }}: <a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></p>
             {%- endif -%}
             {%- if section.settings.contact_phone != blank -%}
-              <p>Telefone: <a href="tel:{{ section.settings.contact_phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' }}">{{ section.settings.contact_phone }}</a></p>
+              <p>{{ 'general.contact.phone' | t }}: <a href="tel:{{ section.settings.contact_phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' }}">{{ section.settings.contact_phone }}</a></p>
             {%- endif -%}
             {%- if section.settings.contact_whatsapp != blank -%}
               <p>WhatsApp: <a href="https://wa.me/{{ section.settings.contact_whatsapp | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '+' }}">{{ section.settings.contact_whatsapp }}</a></p>

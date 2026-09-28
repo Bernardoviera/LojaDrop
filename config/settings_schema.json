@@ -79,12 +79,16 @@
   {
     "name": "Parcelamento",
     "settings": [
-      { "type": "checkbox", "id": "parcelamento_enable", "label": "Ativar modal de parcelamento", "default": true },
+      { "type": "paragraph", "content": "Simulador de parcelamento no cartão. As opções de PIX e Boleto são específicas do Brasil — deixe-as desativadas em lojas de outros países." },
+      { "type": "checkbox", "id": "parcelamento_enable", "label": "Ativar simulador de formas de pagamento", "default": true },
       { "type": "range", "id": "max_parcelas", "min": 1, "max": 12, "step": 1, "default": 12, "label": "Máximo de parcelas" },
-      { "type": "range", "id": "juros_parcelamento", "min": 0, "max": 5, "step": 1, "default": 0, "label": "Juros por parcela (%)", "info": "0 = sem juros" },
-      { "type": "checkbox", "id": "show_pix_parcelamento", "label": "Mostrar opção PIX no modal", "default": true },
-      { "type": "checkbox", "id": "show_boleto_parcelamento", "label": "Mostrar opção Boleto no modal", "default": true },
-      { "type": "text", "id": "desconto_pix", "label": "Desconto por PIX (%)", "default": "5", "info": "Ex: 5 para 5% de desconto" }
+      { "type": "range", "id": "juros_parcelamento", "min": 0, "max": 5, "step": 1, "default": 0, "label": "Juros por parcela adicional (%)", "info": "0 = sem juros" },
+      { "type": "checkbox", "id": "show_pix_parcelamento", "label": "Mostrar opção PIX no modal (somente Brasil)", "default": false },
+      { "type": "text", "id": "desconto_pix", "label": "Desconto por PIX (%)", "default": "5", "info": "Ex: 5 para 5% de desconto" },
+      { "type": "text", "id": "desconto_pix_text", "label": "Texto extra sob o desconto do PIX", "info": "Opcional. Deixe em branco para ocultar." },
+      { "type": "checkbox", "id": "show_boleto_parcelamento", "label": "Mostrar opção Boleto no modal (somente Brasil)", "default": false },
+      { "type": "text", "id": "desconto_boleto", "label": "Desconto por Boleto (%)", "default": "0", "info": "Ex: 5 para 5% de desconto" },
+      { "type": "text", "id": "desconto_boleto_text", "label": "Texto extra sob o desconto do Boleto", "info": "Opcional. Deixe em branco para ocultar." }
     ]
   },
   {

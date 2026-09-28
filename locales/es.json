@@ -14,14 +14,24 @@
     },
     "cart": {
       "title": "Carrito",
+      "product": "Producto",
+      "quantity": "Cant.",
+      "total": "Total",
+      "increase_quantity": "Aumentar cantidad",
+      "decrease_quantity": "Disminuir cantidad",
       "cart_count": "{{ count }} artículos en el carrito",
       "cart_error": "No se pudo añadir al carrito.",
       "cart_quantity_error_html": "Solo nos queda <strong>{{ quantity }}</strong> de este artículo.",
+      "order_summary": "Resumen del pedido",
+      "shipping": "Envío",
+      "calculated_at_checkout": "Calculado al finalizar la compra",
       "taxes": "Gastos de envío e impuestos calculados al finalizar la compra",
       "checkout": "Finalizar compra",
+      "continue_shopping": "Seguir comprando",
       "view_cart": "Ver carrito",
       "added": "¡Producto añadido al carrito!",
-      "empty": "Tu carrito está vacío.",
+      "empty": "Tu carrito está vacío",
+      "empty_text": "¡Añade productos increíbles a tu carrito!",
       "subtotal": "Subtotal"
     },
     "slideshow": {
@@ -43,16 +53,41 @@
       "placeholder": "Buscar productos...",
       "no_results": "No se encontraron resultados para \"{{ terms }}\"",
       "search": "Buscar",
-      "results": "Resultados para \"{{ terms }}\""
+      "results": "Resultados para \"{{ terms }}\"",
+      "results_count": {
+        "one": "{{ count }} producto encontrado",
+        "other": "{{ count }} productos encontrados"
+      }
     },
     "share": {
       "success_message": "¡Enlace copiado!"
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "navigation": {
+      "main_menu": "Menú principal",
+      "menu": "Menú",
+      "mobile_menu": "Menú móvil",
+      "close_menu": "Cerrar menú"
+    },
+    "contact": {
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "whatsapp_cta": "Hablar por WhatsApp"
+    },
+    "404": {
+      "title": "Página no encontrada",
+      "text": "¡Ups! La página que buscas no existe o fue movida.",
+      "link": "Volver a la tienda"
     },
     "remove": "Eliminar",
     "copyright": "Todos los derechos reservados"
   },
   "accessibility": {
     "skip_to_text": "Saltar al contenido principal",
+    "close": "Cerrar",
     "refresh_page": "Página actualizada",
     "link_messages": {
       "new_window": "Abrir en una ventana nueva"
@@ -61,6 +96,10 @@
   "products": {
     "product": {
       "add_to_cart": "Añadir al carrito",
+      "view_options": "Ver opciones",
+      "on_sale": "Oferta",
+      "new": "Nuevo",
+      "placeholder_title": "Producto de muestra",
       "sold_out": "Agotado",
       "unavailable": "No disponible",
       "adding": "Añadiendo...",
@@ -73,6 +112,16 @@
       "media": {
         "image_available": "Imagen {{ index }}"
       }
+    },
+    "collection": {
+      "sort_by": "Ordenar por:",
+      "sort_featured": "Destacados",
+      "sort_best_selling": "Más vendidos",
+      "sort_price_ascending": "Precio: menor a mayor",
+      "sort_price_descending": "Precio: mayor a menor",
+      "sort_created_descending": "Más nuevos",
+      "sort_title_ascending": "A-Z",
+      "empty": "No se encontraron productos en esta colección."
     }
   },
   "customer": {
@@ -94,5 +143,17 @@
   },
   "localization": {
     "country_results_count": "{{ count }} resultados"
+  },
+  "parcelamento": {
+    "cta": "+ Formas de pago",
+    "title": "Formas de pago",
+    "credit_card": "Tarjeta de crédito",
+    "cash": "Al contado",
+    "installment_interest_free": "{{ n }}x sin interés de {{ amount }}",
+    "installment": "{{ n }}x de {{ amount }}",
+    "total": "Total: {{ amount }}",
+    "we_accept": "Aceptamos:",
+    "cash_method": "Al contado con {{ method }}",
+    "cash_discount_html": "Al contado con {{ method }} con <strong>{{ percent }}% OFF</strong>"
   }
 }

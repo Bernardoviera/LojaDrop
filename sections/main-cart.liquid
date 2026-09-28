@@ -1,14 +1,14 @@
 <section class="section">
   <div class="page-width">
-    <h1 style="margin-bottom:4rem">Carrinho</h1>
+    <h1 style="margin-bottom:4rem">{{ 'sections.cart.title' | t }}</h1>
 
     {%- if cart.item_count > 0 -%}
       <div class="cart-page">
         <div class="cart-items">
           <div class="cart-items-header">
-            <span>Produto</span>
-            <span>Qtd.</span>
-            <span>Total</span>
+            <span>{{ 'sections.cart.product' | t }}</span>
+            <span>{{ 'sections.cart.quantity' | t }}</span>
+            <span>{{ 'sections.cart.total' | t }}</span>
           </div>
 
           {%- for item in cart.items -%}
@@ -31,11 +31,11 @@
                   {%- render 'price', product: item.product, variant: item.variant -%}
                 </div>
                 <div class="quantity-selector" style="margin-top:0.8rem">
-                  <button type="button" class="quantity-btn" data-cart-action="decrease" data-cart-key="{{ item.key }}" aria-label="Diminuir quantidade">−</button>
-                  <input class="quantity-input" type="number" value="{{ item.quantity }}" min="1" aria-label="Quantidade">
-                  <button type="button" class="quantity-btn" data-cart-action="increase" data-cart-key="{{ item.key }}" aria-label="Aumentar quantidade">+</button>
+                  <button type="button" class="quantity-btn" data-cart-action="decrease" data-cart-key="{{ item.key }}" aria-label="{{ 'sections.cart.decrease_quantity' | t }}">−</button>
+                  <input class="quantity-input" type="number" value="{{ item.quantity }}" min="1" aria-label="{{ 'cart.item_quantity' | t }}">
+                  <button type="button" class="quantity-btn" data-cart-action="increase" data-cart-key="{{ item.key }}" aria-label="{{ 'sections.cart.increase_quantity' | t }}">+</button>
                 </div>
-                <button type="button" class="cart-item__remove" data-cart-remove="{{ item.key }}">Remover</button>
+                <button type="button" class="cart-item__remove" data-cart-remove="{{ item.key }}">{{ 'general.remove' | t }}</button>
               </div>
             </div>
           {%- endfor -%}
@@ -43,41 +43,41 @@
 
         <!-- Summary -->
         <div class="cart-summary">
-          <h2 class="cart-summary__title">Resumo do Pedido</h2>
+          <h2 class="cart-summary__title">{{ 'sections.cart.order_summary' | t }}</h2>
 
           <div class="cart-summary__row">
-            <span>Subtotal</span>
+            <span>{{ 'sections.cart.subtotal' | t }}</span>
             <span data-cart-total>{{ cart.total_price | money }}</span>
           </div>
           <div class="cart-summary__row">
-            <span>Frete</span>
-            <span>Calculado no checkout</span>
+            <span>{{ 'sections.cart.shipping' | t }}</span>
+            <span>{{ 'sections.cart.calculated_at_checkout' | t }}</span>
           </div>
           <div class="cart-summary__row cart-summary__row--total">
-            <span>Total</span>
+            <span>{{ 'sections.cart.total' | t }}</span>
             <span data-cart-total>{{ cart.total_price | money }}</span>
           </div>
 
           <p class="cart-summary__note">
-            Impostos e frete calculados no checkout
+            {{ 'sections.cart.taxes' | t }}
           </p>
 
           <a href="/checkout" class="btn btn--primary btn--full">
-            Finalizar pedido
+            {{ 'sections.cart.checkout' | t }}
           </a>
 
           <div style="text-align:center;margin-top:1.6rem">
             <a href="{{ routes.root_url }}" style="font-size:1.4rem;text-decoration:underline;color:rgba(var(--color-base-text),0.6)">
-              Continuar comprando
+              {{ 'sections.cart.continue_shopping' | t }}
             </a>
           </div>
         </div>
       </div>
     {%- else -%}
       <div class="cart-empty">
-        <h2 class="cart-empty__title">Seu carrinho está vazio</h2>
-        <p class="cart-empty__text">Adicione produtos incríveis ao seu carrinho!</p>
-        <a href="{{ routes.root_url }}" class="btn btn--primary">Explorar produtos</a>
+        <h2 class="cart-empty__title">{{ 'sections.cart.empty' | t }}</h2>
+        <p class="cart-empty__text">{{ 'sections.cart.empty_text' | t }}</p>
+        <a href="{{ routes.root_url }}" class="btn btn--primary">{{ 'sections.cart.continue_shopping' | t }}</a>
       </div>
     {%- endif -%}
   </div>
@@ -105,9 +105,17 @@
     }
   });
 
+  {%- raw -%}
   function formatMoney(cents) {
-    return 'R$ ' + (cents / 100).toFixed(2).replace('.', ',');
+    var fmt = (window.Shopify && window.Shopify.money_format) || window.moneyFormat || '{{amount}}';
+    var amount = (cents / 100).toFixed(2).replace('.', ',');
+    return fmt
+      .replace('{{amount_with_comma_separator}}', amount)
+      .replace('{{amount_no_decimals_with_comma_separator}}', Math.round(cents / 100).toString())
+      .replace('{{amount_no_decimals}}', Math.round(cents / 100).toString())
+      .replace('{{amount}}', amount);
   }
+  {%- endraw -%}
 
   function cartPageUpdate(key, qty, itemEl) {
     fetch('/cart/change.js', {

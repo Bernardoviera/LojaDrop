@@ -4,14 +4,41 @@
       "search": "Search",
       "placeholder": "Search products...",
       "results": "Results for \"{{ terms }}\"",
+      "results_count": {
+        "one": "{{ count }} product found",
+        "other": "{{ count }} products found"
+      },
       "no_results": "No results for \"{{ terms }}\""
     },
     "share": {
       "success_message": "Link copied!"
-    }
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "navigation": {
+      "main_menu": "Main menu",
+      "menu": "Menu",
+      "mobile_menu": "Mobile menu",
+      "close_menu": "Close menu"
+    },
+    "contact": {
+      "email": "Email",
+      "phone": "Phone",
+      "whatsapp_cta": "Chat on WhatsApp"
+    },
+    "404": {
+      "title": "Page not found",
+      "text": "Oops! The page you're looking for doesn't exist or has been moved.",
+      "link": "Back to store"
+    },
+    "remove": "Remove",
+    "copyright": "All rights reserved"
   },
   "accessibility": {
     "skip_to_text": "Skip to main content",
+    "close": "Close",
     "refresh_page": "Page refreshed",
     "link_messages": {
       "new_window": "Opens in new window"
@@ -23,24 +50,69 @@
     },
     "cart": {
       "title": "Cart",
+      "product": "Product",
+      "quantity": "Qty",
+      "total": "Total",
+      "increase_quantity": "Increase quantity",
+      "decrease_quantity": "Decrease quantity",
       "cart_count": "{{ count }} items in cart",
       "cart_error": "Could not add to cart.",
-      "cart_quantity_error_html": "We only have <strong>{{ quantity }}</strong> of this item."
+      "cart_quantity_error_html": "We only have <strong>{{ quantity }}</strong> of this item.",
+      "order_summary": "Order Summary",
+      "shipping": "Shipping",
+      "calculated_at_checkout": "Calculated at checkout",
+      "taxes": "Shipping and taxes calculated at checkout",
+      "checkout": "Checkout",
+      "continue_shopping": "Continue shopping",
+      "view_cart": "View full cart",
+      "added": "Product added to cart!",
+      "empty": "Your cart is empty",
+      "empty_text": "Add some great products to your cart!",
+      "subtotal": "Subtotal"
     },
     "slideshow": {
       "pause_slideshow": "Pause slideshow",
       "play_slideshow": "Play slideshow"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "name_label": "Name",
+      "email_label": "Email",
+      "phone_label": "Phone (optional)",
+      "message_label": "Message",
+      "submit": "Send message",
+      "success": "Message sent successfully! We'll get back to you soon."
     }
   },
   "products": {
     "product": {
       "add_to_cart": "Add to cart",
+      "view_options": "View options",
+      "on_sale": "Sale",
+      "new": "New",
+      "placeholder_title": "Sample product",
       "sold_out": "Sold out",
       "unavailable": "Unavailable",
+      "adding": "Adding...",
       "value_unavailable": "{{ option_value }} - unavailable",
+      "quantity": {
+        "label": "Quantity"
+      },
+      "category": "Category",
+      "sku": "SKU",
       "media": {
         "image_available": "Image {{ index }}"
       }
+    },
+    "collection": {
+      "sort_by": "Sort by:",
+      "sort_featured": "Featured",
+      "sort_best_selling": "Best selling",
+      "sort_price_ascending": "Price: low to high",
+      "sort_price_descending": "Price: high to low",
+      "sort_created_descending": "Newest",
+      "sort_title_ascending": "A-Z",
+      "empty": "No products found in this collection."
     }
   },
   "customer": {
@@ -62,5 +134,17 @@
   },
   "cart": {
     "item_quantity": "Quantity"
+  },
+  "parcelamento": {
+    "cta": "+ Payment Options",
+    "title": "Payment options",
+    "credit_card": "Credit card",
+    "cash": "Upfront",
+    "installment_interest_free": "{{ n }}x interest-free of {{ amount }}",
+    "installment": "{{ n }}x of {{ amount }}",
+    "total": "Total: {{ amount }}",
+    "we_accept": "We accept:",
+    "cash_method": "Pay upfront with {{ method }}",
+    "cash_discount_html": "Pay upfront with {{ method }} and get <strong>{{ percent }}% OFF</strong>"
   }
 }

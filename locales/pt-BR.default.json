@@ -4,16 +4,41 @@
       "search": "Buscar",
       "placeholder": "Buscar produtos...",
       "results": "Resultados para \"{{ terms }}\"",
+      "results_count": {
+        "one": "{{ count }} produto encontrado",
+        "other": "{{ count }} produtos encontrados"
+      },
       "no_results": "Nenhum resultado para \"{{ terms }}\""
     },
     "share": {
       "success_message": "Link copiado!"
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Próximo"
+    },
+    "navigation": {
+      "main_menu": "Menu principal",
+      "menu": "Menu",
+      "mobile_menu": "Menu mobile",
+      "close_menu": "Fechar menu"
+    },
+    "contact": {
+      "email": "E-mail",
+      "phone": "Telefone",
+      "whatsapp_cta": "Falar no WhatsApp"
+    },
+    "404": {
+      "title": "Página não encontrada",
+      "text": "Ops! A página que você está procurando não existe ou foi movida.",
+      "link": "Voltar para a loja"
     },
     "remove": "Remover",
     "copyright": "Todos os direitos reservados"
   },
   "accessibility": {
     "skip_to_text": "Pular para o conteúdo principal",
+    "close": "Fechar",
     "refresh_page": "Página atualizada",
     "link_messages": {
       "new_window": "Abre em nova janela"
@@ -25,14 +50,24 @@
     },
     "cart": {
       "title": "Carrinho",
+      "product": "Produto",
+      "quantity": "Qtd.",
+      "total": "Total",
+      "increase_quantity": "Aumentar quantidade",
+      "decrease_quantity": "Diminuir quantidade",
       "cart_count": "{{ count }} items no carrinho",
       "cart_error": "Não foi possível adicionar ao carrinho.",
       "cart_quantity_error_html": "Só temos <strong>{{ quantity }}</strong> deste item.",
+      "order_summary": "Resumo do Pedido",
+      "shipping": "Frete",
+      "calculated_at_checkout": "Calculado no checkout",
       "taxes": "Frete e impostos calculados no checkout",
       "checkout": "Finalizar pedido",
+      "continue_shopping": "Continuar comprando",
       "view_cart": "Ver carrinho completo",
       "added": "Produto adicionado ao carrinho!",
-      "empty": "Seu carrinho está vazio.",
+      "empty": "Seu carrinho está vazio",
+      "empty_text": "Adicione produtos incríveis ao seu carrinho!",
       "subtotal": "Subtotal"
     },
     "slideshow": {
@@ -52,6 +87,10 @@
   "products": {
     "product": {
       "add_to_cart": "Adicionar ao carrinho",
+      "view_options": "Ver opções",
+      "on_sale": "Promoção",
+      "new": "Novo",
+      "placeholder_title": "Produto de exemplo",
       "sold_out": "Esgotado",
       "unavailable": "Indisponível",
       "adding": "Adicionando...",
@@ -64,6 +103,16 @@
       "media": {
         "image_available": "Imagem {{ index }}"
       }
+    },
+    "collection": {
+      "sort_by": "Ordenar por:",
+      "sort_featured": "Destaques",
+      "sort_best_selling": "Mais vendidos",
+      "sort_price_ascending": "Menor preço",
+      "sort_price_descending": "Maior preço",
+      "sort_created_descending": "Mais novos",
+      "sort_title_ascending": "A-Z",
+      "empty": "Nenhum produto encontrado nesta coleção."
     }
   },
   "customer": {
@@ -85,5 +134,17 @@
   },
   "cart": {
     "item_quantity": "Quantidade"
+  },
+  "parcelamento": {
+    "cta": "+ Formas de Pagamento",
+    "title": "Formas de pagamento",
+    "credit_card": "Cartão de crédito",
+    "cash": "À vista",
+    "installment_interest_free": "{{ n }}x sem juros de {{ amount }}",
+    "installment": "{{ n }}x de {{ amount }}",
+    "total": "Total: {{ amount }}",
+    "we_accept": "Aceitamos:",
+    "cash_method": "À vista no {{ method }}",
+    "cash_discount_html": "À vista no {{ method }} com <strong>{{ percent }}% OFF</strong>"
   }
 }

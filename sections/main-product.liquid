@@ -42,7 +42,9 @@
           {%- render 'price', product: product -%}
         </div>
 
-        {%- render 'parcelamento', product: product -%}
+        {%- if settings.parcelamento_enable -%}
+          {%- render 'parcelamento', product: product -%}
+        {%- endif -%}
 
         {%- form 'product', product,
           id: 'product-form',

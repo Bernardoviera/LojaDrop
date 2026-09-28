@@ -36,10 +36,10 @@
 
     <div class="product-card__badges">
       {%- if on_sale -%}
-        <span class="badge badge--sale">Promoção</span>
+        <span class="badge badge--sale">{{ 'products.product.on_sale' | t }}</span>
       {%- endif -%}
       {%- if product.tags contains 'new' or product.tags contains 'novo' -%}
-        <span class="badge badge--new">Novo</span>
+        <span class="badge badge--new">{{ 'products.product.new' | t }}</span>
       {%- endif -%}
     </div>
 
@@ -49,11 +49,11 @@
         data-quick-add="{{ first_available_variant.id }}"
         aria-label="{{ 'products.product.add_to_cart' | t }}: {{ product.title }}"
       >
-        Adicionar
+        {{ 'products.product.add_to_cart' | t }}
       </button>
     {%- elsif product.variants.size > 1 -%}
       <a href="{{ product.url }}" class="product-card__quick-add">
-        Ver opções
+        {{ 'products.product.view_options' | t }}
       </a>
     {%- endif -%}
   </div>
